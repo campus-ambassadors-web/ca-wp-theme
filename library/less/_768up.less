@@ -1,0 +1,560 @@
+/******************************************************************
+Site Name:
+Author:
+
+Stylesheet: Tablet & Small Desktop Stylesheet
+
+Here's where you can start getting into the good stuff.
+This size will work on iPads, other tablets, and desktops.
+So you can start working with more styles, background images,
+and other resources. You'll also notice the grid starts to
+come into play. Have fun!
+
+******************************************************************/
+
+#size-feedback * { display: none }
+#size-768 { display: block }
+
+/*********************
+GENERAL STYLES
+*********************/
+
+body {}
+
+#container {
+	.nav {
+		display: block;
+	}
+}
+
+#header-wrap, #header-wrap > div {
+	.borderRadius( 0 );
+}
+
+/*********************
+LAYOUT & GRID STYLES
+*********************/
+
+.wrap {
+	max-width: 1140px;
+}
+
+/*********************
+HEADER SYTLES
+*********************/
+
+.header {}
+
+	#logo {}
+
+
+#main-header {
+	width: 100%;
+	height: auto;
+	min-height: 115px;
+	margin: 0 auto;
+	padding-top: 1px;
+	z-index: 0;
+	
+	img.header-logo {
+		display: block;
+		max-height: 150px;
+		max-width: 410px;
+		width: auto;
+		padding: 0;
+		margin: 20px;
+	}
+	
+	#mobile-header-fixed {
+		display: none;
+	}
+}
+
+#header-title {
+	max-width: 410px;
+	font-size: 80%;
+	h2 {
+		display: block;
+		margin-top: 0.5em;
+		opacity: 0.5;
+		font-size: 130%;
+	}
+}
+
+#container > .header {
+	/* background-color: @secondary-bg-color;
+	in customization file */
+}
+
+.social-media-icons {
+	float: left;
+	line-height: 1.5em;
+	margin-top: 0;
+	font-size: 150%;
+	margin-right: 0;
+}
+
+/*********************
+WIDGET
+*********************/
+
+/* header photos */
+#header-photos {
+	top: -12px;
+	left: 440px;
+	height: 180px;
+	padding-right: 30px;
+	
+	div {
+		margin-left: 30px;
+		
+		img {
+			width: 125px;
+			height: 125px;
+		}
+	}
+}
+
+/*********************
+NAVIGATION STYLES
+*********************/
+
+#inner-header {
+	width: 100%;
+	padding: 0 2%;
+}
+
+#main-nav {
+	display: block;
+	position: relative;
+	
+	.top-nav {
+		float: left;
+		> ul {
+			font-size: 120%;
+			position: relative;
+			
+			> li {
+				&.current_page_item, &.current_page_ancestor {
+					/* background-color: @primary-bg-color;
+					in customization file */
+				}
+				> .children {
+					padding: 0 1px;
+				}
+			}
+		}
+	}
+	
+	ul {
+		list-style: none;
+		margin-top: 0;
+		
+		.children {
+			display: none;
+			position: absolute;
+			top: 0;
+			margin: 2.1em 0 0 0;
+			padding: 0;
+			min-width: 100%;
+			white-space: nowrap;
+			
+			li {
+				float: none;
+				.clearfix;
+				a:before {
+					content: '› ';
+				}
+				&.current_page_item > a {
+					/* color: @secondary-bg-color-dark;
+					in customization file */
+				}
+			}
+			li:last-child {
+				border-bottom: none !important;
+			}
+			li:first-child {
+				border-top: none !important;
+			}
+			.children {
+				margin: 0;
+				padding: 0;
+				padding-left: 1em;
+				position: relative;
+				background: none;
+				border: none;
+				li {
+					border: none;
+				}
+			}
+		}
+		
+		li {
+			display: block;
+			float: left;
+			position: relative;
+			z-index: 10;
+			
+			a {
+				color: #333;
+				font-family: @link-serif;
+				display: block;
+				padding: 0.3em 0.6em;
+				text-decoration: none;
+				font-weight: bold;
+				border: none;
+				
+				&:hover {
+					text-decoration: none;
+					color: black;
+				}
+				&:active {
+					color: black;
+				}
+			}
+			
+			&:hover {
+				.children {
+					display: block;
+				}
+			}
+		}
+	}
+}
+
+
+#mobile-child-nav {
+	display: none;
+}
+
+#desktop-child-nav {
+	display: block;
+	margin-top: 25px;
+	
+	h2 {
+		display: none;
+	}
+}
+
+
+/*********************
+SIDEBARS & ASIDES
+*********************/
+
+.sidebar {
+	margin-top: 2.2em;
+}
+
+	.widget_sp_image {
+		display: block;
+		
+		img {
+			max-width: 100%;
+			margin: 0 auto;
+			width: auto;
+			height: auto;
+		}
+	}
+
+
+	/* links widget */
+	.widget_links {}
+	.widget_links ul {}
+	.widget_links ul li {}
+	.widget_links ul li a {}
+
+	/* meta widget */
+	.widget_meta {}
+	.widget_meta ul {}
+	.widget_meta ul li {}
+	.widget_meta ul li a {}
+
+	/* pages widget */
+	.widget_pages {}
+	.widget_pages ul {}
+	.widget_pages ul li {}
+	.widget_pages ul li a {}
+
+	/* recent-posts widget */
+	.widget_recent_entries {}
+	.widget_recent_entries ul {}
+	.widget_recent_entries ul li {}
+	.widget_recent_entries ul li a {}
+
+	/* archives widget */
+	.widget_archive {}
+	.widget_archive ul {}
+	.widget_archive ul li {}
+	.widget_archive ul li a {}
+	.widget_archive select {}
+	.widget_archive option {}
+
+	/* tag-cloud widget */
+	.widget_links {}
+	.widget_links li:after {}
+	.widget_links li:before {}
+	.widget_tag_cloud {}
+	.widget_tag_cloud a {}
+	.widget_tag_cloud a:after {}
+	.widget_tag_cloud a:before {}
+
+	/* calendar widget */
+	.widget_calendar {}
+	#calendar_wrap {}
+	#calendar_wrap th {}
+	#calendar_wrap td {}
+	#wp-calendar tr td {}
+	#wp-calendar caption {}
+	#wp-calendar a {}
+	#wp-calendar #today {}
+	#wp-calendar #prev {}
+	#wp-calendar #next {}
+	#wp-calendar #next a {}
+	#wp-calendar #prev a {}
+
+	/* category widget */
+	.widget_categories {}
+	.widget_categories ul {}
+	.widget_categories ul li {}
+	.widget_categories ul ul.children {}
+	.widget_categories a {}
+	.widget_categories select{}
+	.widget_categories select#cat {}
+	.widget_categories select.postform {}
+	.widget_categories option {}
+	.widget_categories .level-0 {}
+	.widget_categories .level-1 {}
+	.widget_categories .level-2 {}
+	.widget_categories .level-3 {}
+
+	/* recent-comments widget */
+	.recentcomments {}
+	#recentcomments {}
+	#recentcomments li {}
+	#recentcomments li a {}
+	.widget_recent_comments {}
+
+	/* search widget */
+	#searchform {}
+	.widget_search {}
+	.screen-reader-text {}
+
+	/* text widget */
+	.textwidget {}
+	.widget_text {}
+	.textwidget p {}
+
+
+/*********************
+FOOTER STYLES
+*********************/
+
+/*
+you'll probably need to do quite a bit
+of overriding here if you styled them for
+mobile. Make sure to double check these!
+*/
+
+
+#footer-image-center {
+	margin-left: 0;
+}
+#footer-image {
+	width: 100%;
+	margin-left: 0;
+}
+
+.footer {
+	background: none;
+	padding-top: 0;
+}
+
+.footer-links {
+	ul {
+		li {
+			a {
+				&:hover {}
+			}
+			/*
+			be careful with the depth of your menus.
+			it's very rare to have multi-depth menus in
+			the footer.
+			*/
+			ul {}
+		}
+	}
+} /* end .footer-links */
+
+
+/*********************
+PARALLAX
+*********************/
+
+.parallax {
+	#header-wrap {
+		background-attachment: fixed;
+		max-width: 1140px;
+	}
+	#main-header {
+		background: none;
+	}
+	&.hide-logo {
+		#main-header > a {
+			display: none;
+		}
+	}
+}
+
+/*********************
+ROUNDED CORNERS
+*********************/
+
+.rounded-corners {
+	#main-nav ul .children {
+		.borderRadius( 0, 0, 5px, 5px );
+		li:last-child {
+			.borderRadius( 0, 0, 5px, 5px );
+		}
+		li {
+			.borderRadius( 0 );
+		}
+	}
+	#main-nav ul li,
+	{
+		.borderRadius( 10px, 10px, 0, 0 );
+	}
+	&.nav-above-header {
+		#main-nav .top-nav > ul > li {
+			.borderRadius( 0 );
+		}
+	}
+}
+
+
+/*********************
+SIDEBAR STYLE
+*********************/
+
+.sidebar-style-column {
+	.sidebar {
+		float: none;
+	}
+	#desktop-child-nav {
+		padding-top: 1em;
+		padding-bottom: 1em;
+		margin-top: 0;
+	}
+	
+	#content {
+		display: table;
+		width: 100%;
+		padding: 0 0 0 2%;
+		max-width: 1140px;
+		margin-left: auto;
+		margin-right: auto;
+	}
+	#inner-content {
+		display: table-row;
+		&:after, &:before {
+			content: none;
+		}
+	}
+	#main {
+		display: table-cell;
+		float: none;
+		padding-right: 3%;
+		padding-left: 0;
+		vertical-align: top;
+	}
+	.all-sidebars {
+		display: table-cell;
+		width: auto;
+		vertical-align: top;
+		float: none;
+	}
+}
+
+
+/*********************
+BOX SHADOWS
+*********************/
+
+.box-shadows {
+	#main-nav .top-nav > ul > li > .children {
+		.boxShadow( 1px, 1px, 2px, 0, rgba(0,0,0,0.5) );
+	}
+	&.nav-above-header #inner-header {
+		.boxShadow( 0, 1px, 4px, 0, rgba(0,0,0,0.4) );
+	}
+}
+
+/*********************
+TEXT SHADOWS
+*********************/
+
+.text-shadows {
+	#main-nav ul li a {
+		.textShadow( 0px, 1px, 0px, rgba(255,255,255,0.3) );
+	}
+}
+
+
+/*********************
+IMAGE BORDERS
+*********************/
+.image-borders {
+	#header-photos {
+		img {
+			padding: 5px;
+		}
+	}
+}
+
+
+/*********************
+NAVIGATION LOCATION
+*********************/
+.nav-above-header {
+	margin-top: 2.5em;
+	
+	#main-header {
+		padding-bottom: 20px;
+	}
+	
+	#header-wrap {
+		/*max-width: 1140px;*/
+	}
+	
+	#inner-header {
+		/* background-color: fadeout( @secondary-bg-color, 15% );
+		in customization file */
+		position: fixed;
+		top: 0;
+		left: 0;
+		max-width: none;
+		.social-media-icons a {
+			color: white;
+		}
+	}
+	
+	#main-nav .top-nav > ul > li {
+		a {
+			color: #ccc;
+			&:hover, &:active {
+				color: white;
+			}
+		}
+	}
+	
+	&.admin-bar {
+		#inner-header {
+			top: 32px;
+		}
+	}
+	&.text-shadows {
+		#main-nav ul li a,
+		.social-media-icons a {
+			.textShadow( 0px, -1px, 0px, rgba(0,0,0,0.6) ) !important;
+		}
+	}
+}

@@ -1,0 +1,10 @@
+html {
+  background-image: url(../images/bg-patterns/grainy.png);
+  background-repeat: repeat;
+  background-color: #e9e0cc;
+}
+@media only screen and (-webkit-min-device-pixel-ratio: 1.5),only screen and (min--moz-device-pixel-ratio: 1.5),only screen and (min-device-pixel-ratio: 1.5) {
+  html {
+    background-size: 64px 64px;
+  }
+}

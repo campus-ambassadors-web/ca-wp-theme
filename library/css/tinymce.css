@@ -1,0 +1,40 @@
+@import url('_mixins.css');
+
+.mce_revealable_section_start, .mce_revealable_section_end {
+	height: 0.8em;
+	display: block;
+	width: 100%;
+	border: 1px dashed #faa;
+	color: #faa;
+	text-align: center;
+	border-width: 0 0 1px 0;
+}
+.mce_revealable_section_end {
+	margin-top: -1em;
+	margin-bottom: 1em;
+}
+.mce_revealable_section_start:after, .mce_revealable_section_end:after {
+	content: 'Revealable section start';
+	text-align: center;
+	display: inline-block;
+	margin: 0 auto;
+	background: white;
+
+}
+.mce_revealable_section_end:after {
+	content: 'Revealable section end';
+}
+.mce_revealable_section_start + button, .mce_revealable_section_start + p > button {
+	display: block;
+	clear: both;
+}
+.mce_revealable_section + button:after, .mce_revealable_section_start + p > button:after {
+	content: ' »';
+}
+
+.clear-break {
+	clear: both;
+	border: none;
+	border-top: 1px dashed #bbb;
+	margin: 0 2%;
+}
