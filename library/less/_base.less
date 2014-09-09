@@ -1503,8 +1503,13 @@ ROUNDED CORNERS
 	.qtip-contentWrapper,
 	.gce-qtip-content,
 	.gce-event-info,
-	.gce-widget-list {
+	.gce-widget-list,
+	.entry-content img,
+	.wp-caption {
 		.borderRadius( 4px );
+	}
+	.wp-caption img {
+		.borderRadius( 4px 4px 0 0 );
 	}
 }
 
@@ -1532,6 +1537,9 @@ EXTRA SIDEBAR STYLE
 	#content {
 		padding-bottom: 0;
 	}
+	#header-wrap {
+		.borderRadius( 0 );
+	}
 }
 
 
@@ -1540,10 +1548,12 @@ BOX SHADOWS
 *********************/
 
 .box-shadows {
-	.entry-content {
-		img {
-			.boxShadow( 2px, 2px, 4px, 0, rgba(0, 0, 0, 0.3) );
-		}
+	.entry-content img,
+	.wp-caption {
+		.boxShadow( 2px, 2px, 4px, 0, rgba(0, 0, 0, 0.3) );
+	}
+	.wp-caption img {
+		.boxShadow( none );
 	}
 	.widget {
 		.boxShadow( 0, 1px, 4px, 0px, rgba(0,0,0,0.3) );
@@ -1559,8 +1569,8 @@ BOX SHADOWS
 		.widget {
 			.boxShadow( none );
 		}
-		.all-sidebars {
-			.boxShadow( 0, 1px, 4px, 0px, rgba(0,0,0,0.3) );
+		#main {
+			.boxShadow( 0, 0, 4px, 0, rgba(0,0,0,0.3) );
 		}
 	}
 }

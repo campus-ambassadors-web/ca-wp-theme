@@ -63,6 +63,7 @@ ob_start();
  *		sidebar_bg_color
  *		footer_bg_color
  *		nav_bg_color
+ *		main_bg_color
  *		header_height
  *		accent_text_color
  *		accent_font
@@ -153,6 +154,7 @@ $sidebar_bg_color = get_val_default( 'sidebar_bg_color', '#ffffff' );
 $footer_bg_color = get_val_default( 'footer_bg_color', '#0b9041' );
 $header_height = intval( get_val_default( 'header_height', 200 ) );
 $nav_bg_color = get_val_default( 'nav_bg_color', '#473f68' );
+$main_bg_color = get_val_default( 'main_bg_color', '#ffffff' );
 $accent_text_color = get_val_default( 'accent_text_color', '#643804' );
 
 
@@ -254,10 +256,16 @@ hr {
 }
 
 .sidebar-style-column {
-	.all-sidebars {
-		background: $sidebar_bg_color;
-		.widget {
-			background: none
+	.all-sidebars .widget {
+		background: none
+	}
+	#main {
+		background: $main_bg_color;
+	}
+	#main-nav > .top-nav > ul > li {
+		&.current_page_item,
+		&.current_page_ancestor {
+			background: $main_bg_color;
 		}
 	}
 }

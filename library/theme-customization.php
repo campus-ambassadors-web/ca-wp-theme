@@ -104,10 +104,6 @@ function theme_customization_additions( $wp_customize ) {
 			'label' => 'Widget header background color',
 			'default' => '#7d6eb3'
 		),
-		'sidebar_bg_color' => array(
-			'label' => 'Sidebar/widget background color',
-			'default' => '#ffffff'
-		),
 		'footer_bg_color' => array(
 			'label' => 'Footer background color',
 			'default' => '#0b9041'
@@ -120,6 +116,16 @@ function theme_customization_additions( $wp_customize ) {
 			'label' => 'Navigation background color',
 			'default' => '#473f68',
 			'active_callback' => 'customizer_callback_nav_above_header'
+		),
+		'sidebar_bg_color' => array(
+			'label' => 'Widget background color',
+			'default' => '#ffffff',
+			'active_callback' => 'customizer_callback_not_column_sidebar'
+		),
+		'main_bg_color' => array(
+			'label' => 'Main content background color',
+			'default' => '#ffffff',
+			'active_callback' => 'customizer_callback_column_sidebar'
 		)
 	);
 	
@@ -443,7 +449,7 @@ add_action( 'login_enqueue_scripts', 'login_customization_styles', 1000 );
 function customization_styles( $is_login = false ) {
 	
 	$getvars = array();
-	$mod_names = array('bg_pattern', 'accent_font', 'primary_bg_color', 'header_bg_color', 'sidebar_header_bg_color', 'sidebar_bg_color', 'footer_bg_color', 'nav_bg_color', 'accent_text_color', 'header_height');
+	$mod_names = array('bg_pattern', 'accent_font', 'primary_bg_color', 'header_bg_color', 'sidebar_header_bg_color', 'sidebar_bg_color', 'footer_bg_color', 'nav_bg_color', 'main_bg_color', 'accent_text_color', 'header_height');
 	foreach( $mod_names as $mod_name ) {
 		$mod = get_theme_mod( $mod_name, false );
 		if ( $mod ) $getvars[$mod_name] = $mod;
@@ -465,14 +471,21 @@ function login_customization_styles() {
 	customization_styles( true );
 }
 
+
+
 function customizer_callback_is_parallax() {
 	$header_photo_style = get_theme_mod( 'header_photo_style', 'polaroid' );
 	return ( $header_photo_style == 'parallax hide-logo' );
 }
-
 function customizer_callback_nav_above_header() {
 	$nav_loc = get_theme_mod( 'nav_location', 'nav-below-header' );
 	return ( $nav_loc == 'nav-above-header' );
 }
-
+function customizer_callback_column_sidebar() {
+	$sidebar = get_theme_mod( 'sidebar_style', 'sidebar-style-boxes' );
+	return ( $sidebar == 'sidebar-style-column' );
+}
+function customizer_callback_not_column_sidebar() {
+	return !customizer_callback_column_sidebar();
+}
 ?>
