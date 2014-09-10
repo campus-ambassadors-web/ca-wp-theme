@@ -131,7 +131,7 @@ NAVIGATION STYLES
 	.top-nav {
 		float: left;
 		> ul {
-			font-size: 120%;
+			font-size: 105%;
 			position: relative;
 			
 			> li {
@@ -199,7 +199,7 @@ NAVIGATION STYLES
 				color: #333;
 				font-family: @link-serif;
 				display: block;
-				padding: 0.3em 0.6em;
+				padding: 0.35em 1em 0.25em;
 				text-decoration: none;
 				font-weight: bold;
 				border: none;
@@ -393,7 +393,7 @@ PARALLAX
 .parallax {
 	#header-wrap {
 		background-attachment: fixed;
-		max-width: 1140px;
+		.wrap;
 	}
 	#main-header {
 		background: none;
@@ -419,11 +419,14 @@ ROUNDED CORNERS
 			.borderRadius( 0 );
 		}
 	}
-	#main-nav ul li,
-	{
-		.borderRadius( 10px, 10px, 0, 0 );
+	
+	#main-nav .top-nav > ul > li {
+		.borderRadius( 5px, 5px, 0, 0 );
 	}
-	&.nav-above-header {
+	
+	&.nav-above-header,
+	&.sidebar-style-column,
+	&.parallax.hide-logo {
 		#main-nav .top-nav > ul > li {
 			.borderRadius( 0 );
 		}
@@ -449,6 +452,12 @@ SIDEBAR STYLE
 	}
 	.all-sidebars {
 		margin-left: 0;
+	}
+	
+	#header-wrap {
+		.wrap;
+		margin-left: auto;
+		margin-right: auto;
 	}
 }
 
@@ -493,26 +502,32 @@ IMAGE BORDERS
 NAVIGATION LOCATION
 *********************/
 .nav-above-header {
-	margin-top: 2.5em;
+	margin-top: 2.2em;
 	
 	#main-header {
 		padding-bottom: 20px;
 	}
 	
-	#header-wrap {
-		/*max-width: 1140px;*/
-	}
-	
 	#inner-header {
-		/* background-color: fadeout( @secondary-bg-color, 15% );
-		in customization file */
 		position: fixed;
 		top: 0;
 		left: 0;
 		max-width: none;
-		.social-media-icons a {
-			color: white;
+	}
+	
+	&.admin-bar {
+		#inner-header {
+			top: 32px;
 		}
+	}
+}
+
+.nav-above-header,
+.nav-below-header.sidebar-style-column {
+	#inner-header {
+		.social-media-icons a {
+				color: white;
+			}
 	}
 	
 	#main-nav .top-nav > ul > li {
@@ -524,11 +539,6 @@ NAVIGATION LOCATION
 		}
 	}
 	
-	&.admin-bar {
-		#inner-header {
-			top: 32px;
-		}
-	}
 	&.text-shadows {
 		#main-nav ul li a,
 		.social-media-icons a {

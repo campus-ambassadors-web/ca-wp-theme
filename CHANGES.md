@@ -1,3 +1,6 @@
+#### 1.1.2
+* Numerous CSS improvements to background patterns, the navigation bar, and column-style layout
+
 #### 1.1.1
 * Fixed various small CSS bugs
 * Added support for the use of `no-shadow` class on any element to force it not to use a box shadow (if global box shadows are enabled)

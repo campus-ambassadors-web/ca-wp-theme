@@ -51,18 +51,18 @@ function theme_customization_additions( $wp_customize ) {
 		'panel'		=> 'theme_style_panel'
 	));
 	
-	// sidebar style
+	// Page layout style
 	$wp_customize->add_setting( 'sidebar_style', array(
 		'default'     => 'sidebar-style-boxes'
 	));
 	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'sidebar_style', array(
-		'label'		=> 'Sidebar style',
+		'label'		=> 'Page layout style',
 		'section'	=> 'layout_section',
 		'settings'	=> 'sidebar_style',
 		'type'		=> 'radio',
 		'choices'	=> array(
-			'sidebar-style-boxes'	=> 'Boxes',
-			'sidebar-style-column'	=> 'Column'
+			'sidebar-style-boxes'	=> 'Floating sidebar',
+			'sidebar-style-column'	=> 'Columns'
 		)
 	)));
 	
@@ -115,7 +115,7 @@ function theme_customization_additions( $wp_customize ) {
 		'nav_bg_color' => array(
 			'label' => 'Navigation background color',
 			'default' => '#473f68',
-			'active_callback' => 'customizer_callback_nav_above_header'
+			'active_callback' => 'customizer_callback_show_nav_bg_color'
 		),
 		'sidebar_bg_color' => array(
 			'label' => 'Widget background color',
@@ -477,9 +477,13 @@ function customizer_callback_is_parallax() {
 	$header_photo_style = get_theme_mod( 'header_photo_style', 'polaroid' );
 	return ( $header_photo_style == 'parallax hide-logo' );
 }
-function customizer_callback_nav_above_header() {
+function customizer_callback_show_nav_bg_color() {
 	$nav_loc = get_theme_mod( 'nav_location', 'nav-below-header' );
-	return ( $nav_loc == 'nav-above-header' );
+	$sidebar_style = get_theme_mod( 'sidebar_style', 'sidebar-style-boxes' );
+	if ( $nav_loc == 'nav-above-header' ||
+	 $nav_loc == 'nav-below-header' && $sidebar_style == 'sidebar-style-column' ) {
+		return true;
+	} else return false;
 }
 function customizer_callback_column_sidebar() {
 	$sidebar = get_theme_mod( 'sidebar_style', 'sidebar-style-boxes' );

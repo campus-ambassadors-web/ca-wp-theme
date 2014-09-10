@@ -79,10 +79,6 @@ if ( isset( $_GET['bg_pattern'] ) ) {
 	$image_size = getimagesize( dirname(__FILE__) . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'images' . DIRECTORY_SEPARATOR . 'bg-patterns' . DIRECTORY_SEPARATOR . $_GET['bg_pattern'] . '.png' );
 	$half_width = $image_size[0]/2;
 	$half_height = $image_size[1]/2;
-	$bg_pattern_css = <<<EOT
-		background-image: url(../images/bg-patterns/{$_GET['bg_pattern']}.png);
-		background-repeat: repeat;
-EOT;
 }
 
 
@@ -94,7 +90,8 @@ if ( isLoginPage() ) {
 		
 		echo <<<EOT
 		html {
-			$bg_pattern_css
+			background-image: url(../images/bg-patterns/subtle/{$_GET['bg_pattern']}.png);
+			background-repeat: repeat;
 			background-color: $bg
 		}
 		$media_query_2x {
@@ -121,10 +118,21 @@ if ( isset( $_GET['bg_pattern'] ) ) {
 	/* background patterns courtesy of http://subtlepatterns.com/
 	   CC-BY-SA 3.0 */
 	
-	#container,
-	#mobile-icons,
-	#main-nav .top-nav > ul > li.current_page_item,
-	#main-nav .top-nav > ul > li.current_page_ancestor { $bg_pattern_css }
+	.sidebar-style-boxes {
+		#container,
+		#mobile-icons,
+		#main-nav .top-nav > ul > li.current_page_item,
+		#main-nav .top-nav > ul > li.current_page_ancestor {
+			background-image: url(../images/bg-patterns/subtle/{$_GET['bg_pattern']}.png);
+			background-repeat: repeat;
+		}
+	}
+	.sidebar-style-column {
+		#container {
+			background-image: url(../images/bg-patterns/{$_GET['bg_pattern']}.png);
+			background-repeat: repeat;
+		}
+	}
 	
 	$media_query_2x {
 		#container, #mobile-icons,
@@ -260,8 +268,11 @@ hr {
 }
 
 .sidebar-style-column {
-	.all-sidebars .widget {
-		background: none
+	.all-sidebars {
+		background: lighten( fadeout( $primary_bg_color, 33% ), 5% );
+		.widget {
+			background: none;
+		}
 	}
 	#main {
 		background: $main_bg_color;
@@ -303,16 +314,19 @@ hr {
 			}
 			&.page_item_has_children:hover,
 			> .children {
-				background: darken( $header_bg_color, 15% );
+				background: lighten( $header_bg_color, 15% );
 				> li {
-					border-bottom: 1px solid darken( $header_bg_color, 27% );
-					border-top: 1px solid darken( $header_bg_color, 3% );
+					border-bottom: 1px solid lighten( $header_bg_color, 3% );
+					border-top: 1px solid lighten( $header_bg_color, 27%% );
 				}
 			}
 		}
 	}
 	
-	.nav-above-header {
+	
+	.nav-above-header,
+	.nav-below-header.sidebar-style-column {
+		
 		#inner-header {
 			background: $nav_bg_color;
 		}
@@ -332,6 +346,9 @@ hr {
 				}
 			}
 		}
+	}
+	.nav-below-header.sidebar-style-column.parallax #inner-header {
+		background: fadeout( $nav_bg_color, 20% );
 	}
 }
 
