@@ -1221,8 +1221,6 @@ hr.clear-break {
 }
 
 .widgettitle {
-	/* background-color: @secondary-bg-color-dark;
-	in customization file */
 	color: white;
 	padding: 0.4em 0.8em;
 	margin: 0;
@@ -1527,11 +1525,28 @@ EXTRA SIDEBAR STYLE
 .sidebar-style-column {
 	.widgettitle {
 		.borderRadius( 0 ) !important;
+		margin: 0 
 	}
 	.sidebar {
 		margin-top: 0;
+		padding-left: 0.5em;
+		padding-right: 0.5em;
 		&.child-nav {
 			margin-bottom: 0;
+		}
+		.widgettitle {
+			border-bottom: 1px solid rgba(0,0,0,0.15);
+			padding-left: 0;
+			padding-right: 0;
+			padding-top: 0.75em;
+			margin: 0 0.5em;
+			color: rgba(0,0,0,0.5);
+		}
+		.widget {
+			margin-bottom: 1.5em;
+			&:last-child {
+				margin-bottom: 0;
+			}
 		}
 	}
 	#inner-content {

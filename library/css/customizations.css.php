@@ -270,7 +270,8 @@ hr {
 .sidebar-style-column {
 	.all-sidebars {
 		background: lighten( fadeout( $primary_bg_color, 33% ), 5% );
-		.widget {
+		.widget,
+		.widgettitle {
 			background: none;
 		}
 	}
