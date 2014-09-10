@@ -1,3 +1,6 @@
+#### 1.1.3
+* CSS fix for sidebars in column-style layout
+
 #### 1.1.2
 * Numerous CSS improvements to background patterns, the navigation bar, and column-style layout
 
