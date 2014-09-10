@@ -2,7 +2,7 @@
 #mobile-icons,
 #main-nav .top-nav > ul > li.current_page_item,
 #main-nav .top-nav > ul > li.current_page_ancestor {
-  background-image: url(../images/bg-patterns/grainy.png);
+  background-image: url(../images/bg-patterns/doodles.png);
   background-repeat: repeat;
 }
 @media only screen and (-webkit-min-device-pixel-ratio: 1.5),only screen and (min--moz-device-pixel-ratio: 1.5),only screen and (min-device-pixel-ratio: 1.5) {
@@ -10,11 +10,11 @@
   #mobile-icons,
   #main-nav .top-nav > ul > li.current_page_item,
   #main-nav .top-nav > ul > li.current_page_ancestor {
-    background-size: 64px 64px;
+    background-size: 200px 200px;
   }
 }
 #container {
-  background-color: #e9e0cc;
+  background-color: #f2efd5;
 }
 h1,
 .h1,
@@ -56,10 +56,10 @@ h2,
   color: #643804;
 }
 #container .child-nav ul li.current_page_item > a {
-  background: #cabd9e;
+  background: #d9d4a1;
 }
 #mobile-child-nav h2 {
-  border-bottom-color: #cabd9e;
+  border-bottom-color: #d9d4a1;
 }
 .single-title a,
 .single-title a:hover,
@@ -79,10 +79,10 @@ h2,
 }
 hr {
   border-bottom-color: #ffffff;
-  border-top-color: #cab585;
+  border-top-color: #dad187;
 }
 .widgettitle {
-  background-color: #478e65;
+  background-color: #7d6eb3;
 }
 .widget {
   background-color: #ffffff;
@@ -104,14 +104,21 @@ hr {
 .gce-event-when {
   color: #a06014;
 }
-.sidebar-style-column .all-sidebars {
-  background: #ffffff;
+.wp-caption {
+  background: #d6d1a4;
 }
 .sidebar-style-column .all-sidebars .widget {
   background: none;
 }
-.wp-caption {
-  background: #c7bba2;
+.sidebar-style-column #main {
+  background: #ffffff;
+}
+.sidebar-style-column #main-nav > .top-nav > ul > li.current_page_item,
+.sidebar-style-column #main-nav > .top-nav > ul > li.current_page_ancestor {
+  background: #ffffff;
+}
+.sidebar-style-column .wp-caption {
+  background: #d9d9d9;
 }
 .parallax #main-header {
   background: #cac3d2;
@@ -130,7 +137,7 @@ hr {
   }
   #main-nav .top-nav > ul > li.current_page_item,
   #main-nav .top-nav > ul > li.current_page_ancestor {
-    background-color: #e9e0cc;
+    background-color: #f2efd5;
   }
   #main-nav .top-nav > ul > li.page_item_has_children:hover,
   #main-nav .top-nav > ul > li > .children {

@@ -668,7 +668,8 @@ body.home #main {
 }
 
 /* entry content */
-.entry-content {
+.entry-content,
+.widget_black_studio_tinymce .textwidget {
 
 	p {}
 
@@ -1419,7 +1420,6 @@ view.
 			font-size: 90%;
 			font-family: @sans-serif;
 			ul {
-				padding-left: 1em;
 				li {
 					margin-top: 2em;
 					&:first-child {
@@ -1428,10 +1428,15 @@ view.
 				}
 			}
 		}
+		.gce-list li {
+			margin-top: 1.5em;
+		}
+		.gce-list li:first-child {
+			margin-top: 0;
+		}
 		.gce-widget-list {
 			ul { list-style: none }
 			li .gce-list-title {
-				margin-left: -1em;
 				border-top: 1px dotted #ccc !important;
 				margin-top: -1em !important;
 				padding-top: 0.5em !important;
@@ -1446,8 +1451,13 @@ view.
 				background-color: transparent !important;
 				/* color: @accent-text-color;
 				in customization file */
-				margin-left: -1em;
 				font-weight: bold;
+			}
+			.gce-list-event, .gce-tooltip-event {
+				* {
+					font-weight: normal;
+					color: black;
+				}
 			}
 			.gce-event-description {
 				line-height: 1.2em;
@@ -1477,16 +1487,11 @@ VIDEO PLAYER
 PARALLAX
 *********************/
 
-.parallax #header-wrap {
-	background-size: cover;
-	background-position: center top;
-	#main-header {
-		/* background: fadeout( @secondary-bg-color, 15% );
-		in customization file */
+@media only screen and (max-width: 767px) {
+	.parallax #header-wrap {
+		background-image: none !important;
 	}
 }
-
-
 /*********************
 ROUNDED CORNERS
 *********************/
@@ -1505,6 +1510,7 @@ ROUNDED CORNERS
 	.gce-event-info,
 	.gce-widget-list,
 	.entry-content img,
+	.widget_black_studio_tinymce .textwidget img,
 	.wp-caption {
 		.borderRadius( 4px );
 	}
@@ -1549,6 +1555,7 @@ BOX SHADOWS
 
 .box-shadows {
 	.entry-content img,
+	.widget_black_studio_tinymce .textwidget img,
 	.wp-caption {
 		.boxShadow( 2px, 2px, 4px, 0, rgba(0, 0, 0, 0.3) );
 	}
@@ -1572,6 +1579,9 @@ BOX SHADOWS
 		#main {
 			.boxShadow( 0, 0, 4px, 0, rgba(0,0,0,0.3) );
 		}
+	}
+	.no-shadow {
+		.boxShadow( none ) !important;
 	}
 }
 
@@ -1615,15 +1625,24 @@ IMAGE BORDERS
 *********************/
 
 .image-borders {
-	.entry-content {
+	.entry-content,
+	.widget_black_studio_tinymce .textwidget {
 		img {
 			border: 6px solid white;
 		}
-	}
-	.wp-caption {
-		img {
-			margin-left: -6px;
-			margin-top: -6px;
+		p > img.aligncenter {
+			position: relative;
+			left: -6px;
 		}
+	}
+	.wp-caption img {
+		position: relative;
+		left: -6px;
+		margin-top: -6px;
+	}
+	img.no-border {
+		border: 0;
+		left: auto;
+		margin-top: auto;
 	}
 }

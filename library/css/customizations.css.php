@@ -255,6 +255,10 @@ hr {
 	color: desaturate( lighten( $accent_text_color, 15% ), 15% );
 }
 
+.wp-caption {
+	background: darken( desaturate( $primary_bg_color, 15% ), 15% );
+}
+
 .sidebar-style-column {
 	.all-sidebars .widget {
 		background: none
@@ -268,10 +272,9 @@ hr {
 			background: $main_bg_color;
 		}
 	}
-}
-
-.wp-caption {
-	background: darken( desaturate( $primary_bg_color, 15% ), 15% );
+	.wp-caption {
+		background: darken( desaturate( $main_bg_color, 15% ), 15% );
+	}
 }
 
 .parallax #main-header {

@@ -96,25 +96,8 @@ $(document).ready(function($) {
 	}
 	adjustFixedHeader();
  	
-	fixWpVideo();
-	$(window).resize( function() {
-		fixWpVideo();
-	});
 }); /* end of as page load scripts */
 
-function fixWpVideo() {
-	// fix wp_videos for the "column" style sidebar
-	// for "column" style sidebar, we display things as a table, and the widths can exceed the window width,
-	// so we need to define a pixel width for the max width of the video
-	if ( $('.sidebar-style-column').length > 0 ) {
-		// shrink the size of wp-videos down to nothing to figure out what the parent's height ought to be
-		$('.wp-video').each( function() {
-			$(this).css('max-width', '0');
-			$(this).css('max-width', $(this).parent().innerWidth() + 'px');
-		});
-	}
-}
-fixWpVideo();
 
 function hideSection( button ) {
 	var section = $(button).find(' + .revealable-section');
@@ -226,7 +209,7 @@ function adjustParallax() {
 			
 			moveParallax();
 		}
-	} else setParallaxBackgroundForMobile();
+	}
 }
 
 function moveParallax() {
@@ -239,14 +222,7 @@ function moveParallax() {
 			if ( $('body').hasClass('admin-bar') ) yPos += $('#wpadminbar').height();
 			$obj.css( 'background-position', 'center '+ yPos + 'px' );
 		}
-	} else setParallaxBackgroundForMobile();
-}
-
-function setParallaxBackgroundForMobile() {
-	jQuery('.parallax-element').css({
-		'background-position' : 'center top',
-		'background-size' : 'cover'
-	});
+	}
 }
 
 

@@ -436,41 +436,19 @@ SIDEBAR STYLE
 *********************/
 
 .sidebar-style-column {
-	.sidebar {
-		float: none;
-	}
 	#desktop-child-nav {
 		padding-top: 1em;
 		padding-bottom: 1em;
 		margin-top: 0;
 	}
-	
-	#content {
-		display: table;
-		width: 100%;
-		padding: 0;
-		max-width: 1140px;
-		margin-left: auto;
-		margin-right: auto;
+	#main.eightcol {
+		width: 68.50829388%;
 	}
-	#inner-content {
-		display: table-row;
-		&:after, &:before {
-			content: none;
-		}
-	}
-	#main {
-		display: table-cell;
-		float: none;
-		padding-right: 3%;
-		padding-left: 2%;
-		vertical-align: top;
+	&.home #main {
+		margin-top: 0;
 	}
 	.all-sidebars {
-		display: table-cell;
-		width: auto;
-		vertical-align: top;
-		float: none;
+		margin-left: 0;
 	}
 }
 
