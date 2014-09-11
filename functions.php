@@ -157,8 +157,8 @@ function bones_comments($comment, $args, $depth) {
 				<img data-gravatar="http://www.gravatar.com/avatar/<?php echo md5($bgauthemail); ?>?s=32" class="load-gravatar avatar avatar-48 photo" height="32" width="32" src="<?php echo get_template_directory_uri(); ?>/library/images/nothing.gif" />
 				<!-- end custom gravatar call -->
 				<?php printf(__('<cite class="fn">%s</cite>', 'bonestheme'), get_comment_author_link()) ?>
-				<time datetime="<?php echo comment_time('Y-m-j'); ?>"><a href="<?php echo htmlspecialchars( get_comment_link( $comment->comment_ID ) ) ?>"><?php comment_time(__('F jS, Y', 'bonestheme')); ?> </a></time>
-				<?php edit_comment_link(__('(Edit)', 'bonestheme'),'  ','') ?>
+				<time datetime="<?php echo comment_time('Y-m-j'); ?>"><i class="icon-calendar"></i> <a href="<?php echo htmlspecialchars( get_comment_link( $comment->comment_ID ) ) ?>"><?php comment_time(__('F jS, Y', 'bonestheme')); ?> </a></time>
+				<?php edit_comment_link(__('Edit', 'bonestheme'),'  ','') ?>
 			</header>
 			<?php if ($comment->comment_approved == '0') : ?>
 				<div class="alert alert-info">
@@ -207,7 +207,7 @@ function getIP() {
 }
 
 
-/************* REVEALABLE SECTION AND CLEAR BREAK FOR TINYMCE *****************/
+/************* REVEALABLE SECTION, CLEAR BREAK, AND INSERT BUTTON FOR TINYMCE *****************/
 
 function revealable_section_shortcode_handler( $atts, $content = null ) {
 	$a = shortcode_atts( array(
@@ -227,6 +227,20 @@ function revealable_section_shortcode_handler( $atts, $content = null ) {
 	return ob_get_clean();
 }
 
+function insert_button_shortcode_handler( $atts, $content = null ) {
+	$a = shortcode_atts( array(
+		'button_text' => 'Do something',
+		'link' => get_site_url(),
+		'size' => '100%',
+		'style' => 'nice-button'
+	), $atts );
+	
+	$html_output = <<<EOT
+	<a class="{$a['style']}" style="font-size: {$a['size']}" href="{$a['href']}">{$a['button_text']}</a>
+EOT;
+	return $html_output;
+}
+
 function tinymce_register_buttons( $buttons ) {
 	// find which index the "outdent" button is at and put my buttons right before it
 	// if "outdent" isn't found, just put the buttons before "undo"... if "undo" isn't found, pu the buttons at the end
@@ -236,9 +250,9 @@ function tinymce_register_buttons( $buttons ) {
 	}
 	
 	if ( $array_index === false ) {
-		array_push( $buttons, 'clear_break', 'revealable_section' );
+		array_push( $buttons, 'clear_break', 'revealable_section', 'insert_button' );
 	} else {
-		array_splice( $buttons, $array_index, 0, array( 'clear_break', 'revealable_section' ) );
+		array_splice( $buttons, $array_index, 0, array( 'clear_break', 'revealable_section', 'insert_button' ) );
 	}
 	return $buttons;
 }
@@ -246,10 +260,12 @@ function tinymce_register_buttons( $buttons ) {
 function tinymce_javascript( $plugin_array ) {
 	$plugin_array['clear_break'] = get_template_directory_uri() . '/library/js/tinymce.js';
 	$plugin_array['revealable_section'] = get_template_directory_uri() . '/library/js/tinymce.js';
+	$plugin_array['insert_button'] = get_template_directory_uri() . '/library/js/tinymce.js';
 	return $plugin_array;
 }
 
 add_shortcode( 'revealable_section', 'revealable_section_shortcode_handler' );
+add_shortcode( 'insert_button', 'insert_button_shortcode_handler' );
 add_filter('mce_buttons_2', 'tinymce_register_buttons');
 add_filter('mce_external_plugins', 'tinymce_javascript');
 
@@ -476,8 +492,16 @@ class Output_Latest_Posts_Widget extends WP_Widget {
 					<article <?php post_class('clearfix'); ?> role="article" itemscope itemtype="http://schema.org/BlogPosting">
 						<header class="article-header">
 							<h3 class="h2 entry-title single-title" itemprop="headline"><a href="<?php the_permalink() ?>"><?php the_title(); ?></a></h3>
-							<p class="byline-amount-<?php echo $instance['byline_amount'] ?> byline vcard"><?php
-								printf(__('<span class="show-author"><span class="icon-pencil"></span> %3$s</span> <time class="updated show-time" datetime="%1$s" pubdate>%2$s</time> <span class="show-author">by</span> <span class="show-full"><span class="amp">&amp;</span> filed under %4$s.</span>', 'bonestheme'), get_the_time('Y-m-j'), get_the_time(get_option('date_format')), bones_get_the_author_posts_link(), get_the_category_list(', '));
+							<p class="byline vcard"><?php
+								if ( $instance['byline_author'] ) {
+									?><i class="icon-pencil"></i> <?php echo bones_get_the_author_posts_link();
+								}
+								if ( $instance['byline_time'] ) {
+									?><i class="icon-calendar"></i> <time class="updated" datetime="<?php echo get_the_time('Y-m-j') ?>" pubdate><?php echo get_the_time(get_option('date_format')) ?></time> <?php
+								}
+								if ( $instance['byline_category'] ) {
+									?><i class="icon-folder-open"></i> <?php echo get_the_category_list(', ');
+								}
 							?></p>
 						</header> <!-- end article header -->
 						<?php if ( $instance['show_amount'] == 'title' ) :
@@ -546,19 +570,19 @@ class Output_Latest_Posts_Widget extends WP_Widget {
 		<?php
 		$byline_amount = get_val( $instance['byline_amount'], 'time' );
 		$byline_amount_options = array(
-			'none' => 'None',
-			'time' => 'Time only',
-			'author' => 'Time and author only',
-			'full' => 'Full byline'
+			'byline_author' => 'Author',
+			'byline_time' => 'Time',
+			'byline_category' => 'Category'
 		);
 		?>
-		<p><label>Amount of byline to show:<br />
-			<select name="<?php echo $this->get_field_name( 'byline_amount' ) ?>" class="widefat">
+		<p><label>Amount of byline to show:</label><br />
 			<?php foreach( $byline_amount_options as $key=>$desc ) {
-				echo "<option value='$key' " . ( $byline_amount == $key ? 'selected="selected"' : '' ) . ">$desc</option>";
+				?><label>
+					<input type="checkbox" name="<?php echo $this->get_field_name( $key ) ?>" <?php if ( get_val( $instance[ $key ], false ) ) echo 'checked="checked"' ?> />
+					<?php echo $desc; ?> &nbsp;&nbsp;&nbsp;
+				</label><?php
 			} ?>
-			</select>
-		</label></p>
+		</p>
 		<p><label>
 			Number of posts to show: 
 			<input type="number" min="1" max="20" name="<?php echo $this->get_field_name( 'num_posts' ) ?>" value="<?php echo get_val( $instance['num_posts'], 3 ) ?>" />
@@ -572,7 +596,9 @@ class Output_Latest_Posts_Widget extends WP_Widget {
 			'title'				=> strip_tags( $new_instance['title'] ),
 			'show_thumbnail'	=> (bool) get_val( $new_instance['show_thumbnail'], false ),
 			'show_amount'		=> strip_tags( $new_instance['show_amount'] ),
-			'byline_amount'		=> strip_tags( $new_instance['byline_amount'] ),
+			'byline_author'		=> (bool) get_val( $new_instance['byline_author'], false ),
+			'byline_time'		=> (bool) get_val( $new_instance['byline_time'], false ),
+			'byline_category'	=> (bool) get_val( $new_instance['byline_category'], false ),
 			'num_posts'			=> min( max( intval( $new_instance['num_posts'] ), 1 ), 20 )
 		);
 	}

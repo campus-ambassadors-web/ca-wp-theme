@@ -69,9 +69,9 @@ http://0to255.com/
 @bones-blue:        #1990db;
 
 
-@link-color:        #1a83c5;
-@link-hover:        @link-color;
-@link-active:		#db4749;
+@link-color:        #3686b7;
+@link-hover:        #266389;
+@link-active:		#a47273;
 
 @accent-text-color: #696969;
 
@@ -337,6 +337,26 @@ BUTTONS
 	}
 }
 
+
+.flatlink {
+	background: @link-color;
+	color: white;
+	text-decoration: none;
+	padding: 0.4em 0.8em;
+	transition: color 0.2s, background 0.2s;
+	
+	&:visited {
+		color: white;
+	}
+	&:hover {
+		background: white;
+		color: black;
+	}
+	&:active {
+		color: black;
+		background: lighten( @link-color, 40% );
+	}
+}
 
 /*
 .button, .button:visited {

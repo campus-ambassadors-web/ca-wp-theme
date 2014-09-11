@@ -333,10 +333,10 @@ function bones_page_navi($before = '', $after = '') {
 	echo $before.'<nav class="page-navigation"><ol class="bones_page_navi clearfix">'."";
 	if ($start_page >= 2 && $pages_to_show < $max_page) {
 		$first_page_text = __( "First", 'bonestheme' );
-		echo '<li class="bpn-first-page-link"><a href="'.get_pagenum_link().'" title="'.$first_page_text.'">'.$first_page_text.'</a></li>';
+		echo '<li class="bpn-first-page-link"><a href="'.get_pagenum_link().'" title="'.$first_page_text.'">&laquo;</a></li>';
 	}
 	echo '<li class="bpn-prev-link">';
-	previous_posts_link('<<');
+	previous_posts_link('&lsaquo;');
 	echo '</li>';
 	for($i = $start_page; $i  <= $end_page; $i++) {
 		if($i == $paged) {
@@ -346,11 +346,11 @@ function bones_page_navi($before = '', $after = '') {
 		}
 	}
 	echo '<li class="bpn-next-link">';
-	next_posts_link('>>');
+	next_posts_link('&rsaquo;');
 	echo '</li>';
 	if ($end_page < $max_page) {
 		$last_page_text = __( "Last", 'bonestheme' );
-		echo '<li class="bpn-last-page-link"><a href="'.get_pagenum_link($max_page).'" title="'.$last_page_text.'">'.$last_page_text.'</a></li>';
+		echo '<li class="bpn-last-page-link"><a href="'.get_pagenum_link($max_page).'" title="'.$last_page_text.'">&raquo;</a></li>';
 	}
 	echo '</ol></nav>'.$after."";
 } /* end page navi */
@@ -368,12 +368,12 @@ function bones_filter_ptags_on_images($content){
 function bones_excerpt_more($more) {
 	global $post;
 	// edit here if you like
-return '...<br /><a class="excerpt-read-more nice-button blue-button" href="'. get_permalink($post->ID) . '" title="'. __('Read', 'bonestheme') . get_the_title($post->ID).'">'. __('Read more', 'bonestheme') .'</a>';
+return '...<br /><br /><a class="excerpt-read-more flatlink" href="'. get_permalink($post->ID) . '" title="'. __('Read', 'bonestheme') . get_the_title($post->ID).'">'. __('Read more', 'bonestheme') .'</a>';
 }
 
 add_filter( 'the_content_more_link', 'modify_read_more_link' );
 function modify_read_more_link() {
-	return '<a class="more-link nice-button blue-button" href="' . get_permalink() . '">Read more</a>';
+	return '<br /><a class="more-link flatlink" href="' . get_permalink() . '">Read more</a>';
 }
 
 /*

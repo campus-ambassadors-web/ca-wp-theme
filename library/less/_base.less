@@ -152,17 +152,14 @@ img {
 
 a, a:visited {
 	color: @link-color;
-	border-color: @link-color;
 	text-decoration: none;
-	border-bottom: 1px dotted fadeout( @link-color, 75% );
-	transition: border-bottom-color 0.2s;
+	transition: color 0.2s;
 }
 a:hover {
-	border-bottom-color: @link-color;
+	color: @link-hover;
 }
 a:active {
 	color: @link-active;
-	border-color: @link-active;
 }
 
 /******************************************************************
@@ -861,32 +858,49 @@ hr.clear-break {
 	margin: 1.1em 0 2.2em;
 }
 	.bones_page_navi {
-
+		font-size: 90%;
+		
 		li {
 			float: left;
-			margin-left: 10px;
-
+			display: block;
+			margin-left: 6px;
+			background: @link-color; 
+			transition: background 0.2s;
+			
 			a {
-				padding: 3px 6px;
 				display: block;
 				text-decoration: none;
 				position: relative;
-
-				&:hover,
-				&:focus {
-					color: @link-active;
-					text-decoration: underline;
+				color: white;
+				transition: color 0.2s;
+				border-bottom: none;
+				
+				&:hover {
+					border-bottom: none;
+					color: black;
+				}
+				&:active {
+					background: lighten( @link-color, 40% );
 				}
 			}
-
+			&:hover {
+				background: #fff;
+			}
 		}
-
+		
+		li a,
+		li.bpn-current {
+			width: 2em;
+			height: 2em;
+			line-height: 2em;
+			text-align: center;
+		}
+		
 		/* current page link */
 		li.bpn-current {
-			padding: 3px 6px;
-			border-bottom: 2px solid @link-active;
-			position: relative;
-
+			color: black;
+			background: white;
+			
 			a {
 				/* hovering on current page link */
 				&:hover,
@@ -895,15 +909,11 @@ hr.clear-break {
 			}
 
 		} /* end .bones_page_navi .bpn-current */
-
+		
+		
 		/* common styles for page-navi links */
 		li.bpn-prev-link,
 		li.bpn-next-link {
-			font-weight: 700;
-
-			a {
-				padding: 0;
-			}
 		}
 
 		/* remove the bg on end links */
@@ -975,6 +985,14 @@ hr.clear-break {
 
 }
 
+.comment-logout,
+.comment-edit-link {
+	font-size: 90%;
+}
+.comment-edit-link {
+	.flatlink;
+}
+
 .comment-nav {
 
 	ul {
@@ -992,11 +1010,14 @@ hr.clear-break {
 		clear: both;
 		overflow: hidden;
 		list-style-type: none;
+		padding: 0.7335em 10px 0;
 		margin-bottom: 1.5em;
-		padding: 0.7335em 10px;
-
 		&:last-child {
 			margin-bottom: 0;
+		}
+		
+		article {
+			margin-bottom: 1em;
 		}
 
 		ul.children {
@@ -1070,14 +1091,18 @@ hr.clear-break {
 		}
 
 		time {
+			font-size: 80%;
 			float: right;
+			color: rgba(0,0,0,0.6);
+			i {
+				padding-right: 0.5em;
+			}
 
 			a {
-				color: #999;
-				text-decoration: none;
-
+				color: rgba(0,0,0,0.6);
+				
 				&:hover {
-					text-decoration: underline;
+					color: black;
 				}
 
 			}
@@ -1291,18 +1316,7 @@ hr.clear-break {
 
 .widget_output_latest_posts {
 	.byline { display: block }
-	.byline-amount-none { display: none }
-	.byline-amount-time {
-		.show-author,
-		.show-full {
-			display: none;
-		}
-	}
-	.byline-amount-author {
-		.show-full {
-			display: none;
-		}
-	}
+	
 	section p:first-child,
 	section a:first-child + p {
 		margin-top: 0;
@@ -1541,6 +1555,11 @@ ROUNDED CORNERS
 	}
 	.wp-caption img {
 		.borderRadius( 4px 4px 0 0 );
+	}
+	.bones_page_navi li,
+	.bones_page_navi a,
+	.flatlink {
+		.borderRadius( 4px );
 	}
 }
 

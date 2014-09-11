@@ -22,11 +22,6 @@ function add_rec_plugin_dashboard_widget() {
 				'url' => admin_url('/plugin-install.php?tab=plugin-information&plugin=wp-super-cache'),
 				'is_active' => is_plugin_active( 'wp-super-cache/wp-cache.php' )
 			),
-			'InfiniteWP Client' => array(
-				'desc' => 'Allows a webmaster to easily manage this WordPress site (along with many others) from a central dashboard.',
-				'url' => admin_url('/plugin-install.php?tab=plugin-information&plugin=iwp-client'),
-				'is_active' => is_plugin_active( 'iwp-client/init.php' )
-			),
 			'GitHub Updater' => array(
 				'desc' => 'Allows automatic updating of plugins and themes hosted on GitHub (like this theme!).',
 				'url' => 'https://github.com/afragen/github-updater',
