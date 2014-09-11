@@ -14,7 +14,7 @@
 
 									<h1 class="entry-title single-title" itemprop="headline"><?php the_title(); ?></h1>
 									<p class="byline vcard"><?php
-										printf(__('Posted <time class="updated" datetime="%1$s" pubdate>%2$s</time> by <span class="author">%3$s</span> <span class="amp">&amp;</span> filed under %4$s.', 'bonestheme'), get_the_time('Y-m-j'), get_the_time(get_option('date_format')), bones_get_the_author_posts_link(), get_the_category_list(', '));
+										printf(__('<span class="author"><i class="icon-pencil"></i> By %3$s</span> <i class="icon-calendar"></i> <time class="updated" datetime="%1$s" pubdate>%2$s</time> <i class="icon-folder-open"></i> %4$s', 'bonestheme'), get_the_time('Y-m-j'), get_the_time(get_option('date_format')), bones_get_the_author_posts_link(), get_the_category_list(', '));
 									?></p>
 
 								</header> <!-- end article header -->
@@ -24,7 +24,7 @@
 								</section> <!-- end article section -->
 
 								<footer class="article-footer">
-									<?php the_tags('<p class="tags"><span class="tags-title">' . __('Tags:', 'bonestheme') . '</span> ', ', ', '</p>'); ?>
+									<?php the_tags('<p class="tags"><i class="icon-tags"></i> ', ', ', '</p>'); ?>
 
 								</footer> <!-- end article footer -->
 

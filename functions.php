@@ -477,7 +477,7 @@ class Output_Latest_Posts_Widget extends WP_Widget {
 						<header class="article-header">
 							<h3 class="h2 entry-title single-title" itemprop="headline"><a href="<?php the_permalink() ?>"><?php the_title(); ?></a></h3>
 							<p class="byline-amount-<?php echo $instance['byline_amount'] ?> byline vcard"><?php
-								printf(__('<span class="show-author">Posted</span> <time class="updated show-time" datetime="%1$s" pubdate>%2$s</time> <span class="show-author">by</span> <span class="author show-author">%3$s</span> <span class="show-full"><span class="amp">&amp;</span> filed under %4$s.</span>', 'bonestheme'), get_the_time('Y-m-j'), get_the_time(get_option('date_format')), bones_get_the_author_posts_link(), get_the_category_list(', '));
+								printf(__('<span class="show-author"><span class="icon-pencil"></span> %3$s</span> <time class="updated show-time" datetime="%1$s" pubdate>%2$s</time> <span class="show-author">by</span> <span class="show-full"><span class="amp">&amp;</span> filed under %4$s.</span>', 'bonestheme'), get_the_time('Y-m-j'), get_the_time(get_option('date_format')), bones_get_the_author_posts_link(), get_the_category_list(', '));
 							?></p>
 						</header> <!-- end article header -->
 						<?php if ( $instance['show_amount'] == 'title' ) :
@@ -615,20 +615,21 @@ function show_social_media_icons() {
 		<?php
 		// an array of the options and the associated letters in the icon font and name of the site
 		$sm_icons = array(
-			'sm_facebook_url'	=> array( 'b', 'Facebook' ),
-			'sm_twitter_url'	=> array( 'a', 'Twitter' ),
-			'sm_instagram_url'	=> array( 'x', 'Instagram' ),
-			'sm_pinterest_url'	=> array( 'd', 'Pinterest' )
+			'sm_facebook_url'	=> array( 'icon-facebook', 'Facebook' ),
+			'sm_twitter_url'	=> array( 'icon-twitter', 'Twitter' ),
+			'sm_instagram_url'	=> array( 'icon-instagram', 'Instagram' ),
+			'sm_pinterest_url'	=> array( 'icon-pinterest', 'Pinterest' )
 		);
 		
 		foreach( $sm_icons as $option_name=>$icon_props ) {
 			$option_value = get_theme_mod( $option_name );
 			if ( $option_value ) {
 				?><a
+					class="<?php echo $icon_props[0] ?>"
 					href="<?php echo $option_value ?>"
 					target="_blank"
 					title="Visit us on <?php echo $icon_props[1] ?>"
-				><?php echo $icon_props[0] ?></a><?php
+				></a><?php
 			}
 		}
 		?>
