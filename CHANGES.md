@@ -1,3 +1,6 @@
+#### 1.2.2
+* CSS bugfix for top navigation
+
 #### 1.2.1
 * Logo is not hidden in either parallax option
 
