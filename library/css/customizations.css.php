@@ -298,8 +298,10 @@ hr {
 		#inner-header, #main-header {
 			background-color: fadeout( $header_bg_color, 15% );
 		}
-		&.hide-logo #main-header {
+		#main-header {
 			height: {$header_height}px;
+		}
+		&.not-faded #main-header {
 			background: none;
 		}
 	}

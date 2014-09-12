@@ -136,8 +136,10 @@ hr {
   .parallax #main-header {
     background-color: rgba(202,195,210,0.85);
   }
-  .parallax.hide-logo #main-header {
-    height: 200px;
+  .parallax #main-header {
+    height: 250px;
+  }
+  .parallax.not-faded #main-header {
     background: none;
   }
   #container > .header {

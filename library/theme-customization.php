@@ -267,8 +267,8 @@ function theme_customization_additions( $wp_customize ) {
 		'type'		=> 'radio',
 		'choices'	=> array(
 			'polaroid'	=> 'Polaroid',
-			'parallax'	=> 'Parallax',
-			'parallax hide-logo' => 'Parallax (hide logo)'
+			'parallax not-faded' => 'Parallax',
+			'parallax'	=> 'Parallax (faded)'
 		)
 	)));
 	
@@ -475,7 +475,7 @@ function login_customization_styles() {
 
 function customizer_callback_is_parallax() {
 	$header_photo_style = get_theme_mod( 'header_photo_style', 'polaroid' );
-	return ( $header_photo_style == 'parallax hide-logo' );
+	return ( $header_photo_style == 'parallax not-faded' || $header_photo_style == 'parallax' );
 }
 function customizer_callback_show_nav_bg_color() {
 	$nav_loc = get_theme_mod( 'nav_location', 'nav-below-header' );

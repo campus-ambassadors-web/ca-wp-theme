@@ -1,3 +1,6 @@
+#### 1.2.1
+* Logo is not hidden in either parallax option
+
 #### 1.2.0
 * CSS fix for sidebars in column-style layout
 * Style improvements for "read more" links, bylines, pagination, footer menu, and comments
