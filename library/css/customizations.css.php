@@ -267,6 +267,20 @@ hr {
 	background: darken( desaturate( $primary_bg_color, 15% ), 15% );
 }
 
+.bones_page_navi li,
+.flatlink {
+	background: $accent_text_color;
+}
+.bones_page_navi li a,
+.flatlink {
+	&:hover {
+		color: $accent_text_color;
+	}
+	&:active {
+		background: lighten( $accent_text_color, 40% );
+	}
+}
+
 .sidebar-style-column {
 	.all-sidebars {
 		background: lighten( fadeout( $primary_bg_color, 33% ), 5% );

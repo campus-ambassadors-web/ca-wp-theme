@@ -1,3 +1,7 @@
+#### 1.2.3
+* Fix for caption-stripping error in tinymce widget plugin
+* Color flat buttons as text highlight color
+
 #### 1.2.2
 * CSS bugfix for top navigation
 

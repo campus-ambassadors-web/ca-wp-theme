@@ -114,7 +114,7 @@ insert button
 						jQuery.extend( true, values, extractButtonPropertiesFromHTML( $selection[0].outerHTML ) );
 					}
 					
-					editor.windowManager.open({
+					var dialog_window = editor.windowManager.open({
 						title: ( is_editing ? 'Edit button' : 'Insert button' ),
 						body: [{
 							type: 'textbox',
@@ -273,3 +273,4 @@ insert button
 	tinymce.PluginManager.add( 'insert_button', tinymce.plugins.insert_button);
 	
 })();
+

@@ -693,3 +693,12 @@ function get_val( $value, $default ) {
 	if ( !isset( $value ) || $value === NULL ) return $default;
 	else return $value;
 }
+
+
+// fix for tinymce widget error
+add_filter( 'tiny_mce_before_init', 'fix_black_studio_tinymce_bug', 100 );
+function fix_black_studio_tinymce_bug( $initArray ) {
+	$initArray['indent '] = false;
+	$initArray['indent'] = false;
+	return $initArray;
+}
