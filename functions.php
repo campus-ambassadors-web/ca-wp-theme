@@ -232,11 +232,12 @@ function insert_button_shortcode_handler( $atts, $content = null ) {
 		'button_text' => 'Do something',
 		'link' => get_site_url(),
 		'size' => '100%',
-		'style' => 'nice-button'
+		'style' => 'nice-button',
+		'position' => 'inline'
 	), $atts );
 	
 	$html_output = <<<EOT
-	<a class="{$a['style']}" style="font-size: {$a['size']}" href="{$a['href']}">{$a['button_text']}</a>
+	<a class="{$a['style']} {$a['position']}" style="font-size: {$a['size']}" href="{$a['link']}">{$a['button_text']}</a>
 EOT;
 	return $html_output;
 }

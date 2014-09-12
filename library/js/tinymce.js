@@ -96,24 +96,41 @@ insert button
 	tinymce.create('tinymce.plugins.insert_button', {
 		init: function(editor, url) {
 			editor.addButton('insert_button', {
-				title : 'Insert button',
+				title : 'Insert/edit button',
 				image : url + '/../images/insert-button-icon.png',
 				onclick: function() {
+					var values = {
+						button_text: '',
+						link: 'http://',
+						size: '100%',
+						style: 'nice-button',
+						position: 'inline'
+					};
+					
+					var is_editing = false;
+					var $selection = jQuery( editor.selection.getNode() );
+					if ( $selection.data('insert-button') != undefined ) {
+						is_editing = true;
+						jQuery.extend( true, values, extractButtonPropertiesFromHTML( $selection[0].outerHTML ) );
+					}
+					
 					editor.windowManager.open({
-						title: 'Insert button',
+						title: ( is_editing ? 'Edit button' : 'Insert button' ),
 						body: [{
 							type: 'textbox',
 							name: 'button_text',
-							label: 'Button text'
+							label: 'Button text',
+							value: values.button_text
 						}, {
 							type: 'textbox',
 							name: 'link',
-							label: 'Link'
+							label: 'Link URL',
+							value: values.link
 						}, {
 							type: 'listbox',
 							name: 'size',
 							label: 'Size',
-							value: '100%',
+							value: values.size,
 							values: [
 								{ text: '60%', value: '60%' },
 								{ text: '80%', value: '80%' },
@@ -128,13 +145,32 @@ insert button
 							type: 'listbox',
 							name: 'style',
 							label: 'Button style',
+							value: values.style,
 							values: [
 								{ text: 'Raised grey', value: 'nice-button' },
-								{ text: 'Flat blue', value: 'flatlink' }
+								{ text: 'Flat colored', value: 'flatlink' }
+							]
+						}, {
+							type: 'listbox',
+							name: 'position',
+							label: 'Positioning',
+							value: values.position,
+							values: [
+								{ text: 'Inline', value: 'inline' },
+								{ text: 'Full width', value: 'full-width' }
 							]
 						}],
 						onsubmit: function( e ) {
-							editor.insertContent( '[insert_button button_text="' + e.data.button_text.replace('"', '') + '" link="' + e.data.link + '" size="' + e.data.size + '" style="' + e.data.style + '" /]' );
+							if ( is_editing ) {
+								// if editing, replace the content of the old button with a new one
+								var $new_element = jQuery( generateHTML( e.data.button_text.replace('"', ''), e.data.link, e.data.size, e.data.style, e.data.position ) );
+								$selection.replaceWith( $new_element );
+								// make tinymce's editor select the new element so the user can hit the 'edit button' button again right away without issues
+								editor.selection.select( $new_element[0] );
+							} else {
+								// insert a new button
+								editor.insertContent( generateShortcode( e.data.button_text.replace('"', ''), e.data.link, e.data.size, e.data.style, e.data.position ) );
+							}
 						}
 					});
 				}
@@ -142,12 +178,29 @@ insert button
 			
 			// Replace ugly shortcode notation with nice html
 			editor.on('BeforeSetcontent', function(e){
-				e.content = e.content.replace(/\[insert_button button_text="([^"]*)" link="([^"]*)" size="([^"]*)" style="([^"]*)" \/]/gim, '<a class="$4" style="font-size:$3" data-href="$2">$1</a>');
+				// get buttons
+				var buttons = e.content.match(/\[insert_button .*?\/]/gi);
+				if ( buttons != null ) {
+					for (var i=0; i<buttons.length; i++) {
+						var props = extractButtonPropertiesFromShortcode( buttons[i] );
+						
+						// replace this shortcode with something that looks nice in the tinymce editor
+						var html_button = generateHTML( props.button_text, props.link, props.size, props.style, props.position );
+						e.content = e.content.replace( buttons[i], html_button );
+					}
+				}
 			});
 			
 			// Replace nice html with ugly shortcode notation
 			editor.on('PostProcess', function(e) {
-				e.content = e.content.replace(/<a class="([^"]*)" style="font-size:([^"]*)" data-href="([^"]*)"[^"]*>([^"]*)<\/a>/gim, '[insert_button button_text="$4" link="$3" size="$2" style="$1" /]');
+				var buttons = e.content.match(/<a[^>]* data-insert-button[= ].*?>.*?<\/a>/gi);
+				if ( buttons != null ) {
+					for (var i=0; i<buttons.length; i++) {
+						var props = extractButtonPropertiesFromHTML( buttons[i] );
+						var shortcode_button = generateShortcode( props.button_text, props.link, props.size, props.style, props.position );
+						e.content = e.content.replace( buttons[i], shortcode_button );
+					}
+				}
 			});
 			
 		},
@@ -164,6 +217,58 @@ insert button
 			};
 		}
 	});
+	
+	generateShortcode = function( button_text, link, size, style, position ) {
+		return '[insert_button button_text="' + button_text + '" link="' + link + '" size="' + size + '" style="' + style + '" position="' + position + '" /]'
+	};
+	
+	generateHTML = function( button_text, link, size, style, position ) {
+		var css = 'font-size:' + size + ';';
+		if ( position == 'full-width' ) css += 'display:block; text-align:center';
+		return '<a data-insert-button data-link="' + link + '" data-size="' + size + '" data-style="' + style + '" data-position="' + position + '" class="' + style + '" style="' + css + '">' + button_text + '</a>';
+	};
+	
+	extractButtonPropertiesFromHTML = function( string_to_search ) {
+		return extractButtonProperties( string_to_search, />(.*?)<\/a>/i, /data-link="(.*?)"/i, /data-size="(.*?)"/i, /data-style="(.*?)"/i, /data-position="(.*?)"/i );
+	};
+	
+	extractButtonPropertiesFromShortcode = function( string_to_search ) {
+		return extractButtonProperties( string_to_search, /button_text="(.*?)"/i, /link="(.*?)"/i, /size="(.*?)"/i, /style="(.*?)"/i, /position="(.*?)"/i );
+	};
+	
+	extractButtonProperties = function( string_to_search, button_text_regex, link_regex, size_regex, style_regex, position_regex ) {
+		// default properties
+		var properties = [{
+			property: 'button_text',
+			default: 'Button text',
+			regex: button_text_regex
+		}, {
+			property: 'link',
+			default: 'http://',
+			regex: link_regex
+		}, {
+			property: 'size',
+			default: '100%',
+			regex: size_regex,
+		}, {
+			property: 'style',
+			default: 'nice-button',
+			regex: style_regex
+		}, {
+			property: 'position',
+			default: 'inline',
+			regex: position_regex
+		}];
+		
+		var extracted_values = {};
+		
+		for ( var i=0; i<properties.length; i++ ) {
+			var match_result = string_to_search.match( properties[i].regex );
+			extracted_values[ properties[i].property ] = ( match_result == null ) ? properties[i].default : match_result[1];
+		}
+		
+		return extracted_values;
+	};
 	
 	tinymce.PluginManager.add( 'insert_button', tinymce.plugins.insert_button);
 	

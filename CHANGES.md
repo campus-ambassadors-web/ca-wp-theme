@@ -1,6 +1,6 @@
-#### 1.1.3
+#### 1.2.0
 * CSS fix for sidebars in column-style layout
-* Style improvements for "read more" links, bylines, pagination, and comments
+* Style improvements for "read more" links, bylines, pagination, footer menu, and comments
 * Now using an icon font with a smaller filesize than the one used before
 * Removed InfiniteWP from the list of recommended plugins
 * Improved "Output latest posts" widget
