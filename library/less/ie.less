@@ -19,15 +19,39 @@ import the mixins file so LESS can understand the variables.
 */
 
 /* import mixins */
+
 @import "_mixins.less";
 
 @import "_481up.less";
 
-/* import grid */
+
 @import "_grid.less";
 
 @import "_768up.less";
 @import "_1030up.less";
+
+.parallax{
+	&.nav-below-header {
+		#main-nav ul,
+		#main-nav li,
+		#inner-header {
+			background: white;
+		}
+	}
+	
+	&.nav-above-header {
+		#main-nav ul,
+		#main-nav li,
+		#inner-header {
+			background: white;
+		}
+	}
+}
+
+#main-nav ul,
+#main-nav li {
+	list-style: none;
+}
 
 /* 
 you can call the larger styles if you want, but there's really no need 

@@ -1,3 +1,10 @@
+#### 1.2.4
+* Added browser caching for the dynamic-php-generated customizations css file
+* Added partial support for IE 8
+* Commented out MailPoet from the list of recommended plugins
+* Added a rudimentary 403 page that you can point to from your .htaccess file
+* Made the readme file much more detailed
+
 #### 1.2.3
 * Fix for caption-stripping error in tinymce widget plugin
 * Color flat buttons as text highlight color

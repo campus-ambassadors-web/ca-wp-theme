@@ -111,7 +111,20 @@ hr {
 .wp-caption {
   background: #d6d1a4;
 }
+.bones_page_navi li,
+.flatlink {
+  background: #643804;
+}
+.bones_page_navi li a:hover,
+.flatlink:hover {
+  color: #643804;
+}
+.bones_page_navi li a:active,
+.flatlink:active {
+  background: #f7a23d;
+}
 .sidebar-style-column .all-sidebars {
+  background: #f8f6e8;
   background: rgba(248,246,232,0.67);
 }
 .sidebar-style-column .all-sidebars .widget,
@@ -134,10 +147,11 @@ hr {
 @media only screen and (min-width: 768px) {
   .parallax #inner-header,
   .parallax #main-header {
+    background-color: #cac3d2;
     background-color: rgba(202,195,210,0.85);
   }
   .parallax #main-header {
-    height: 250px;
+    height: 200px;
   }
   .parallax.not-faded #main-header {
     background: none;
@@ -182,6 +196,7 @@ hr {
     border-top: 1px solid #8076ac;
   }
   .nav-below-header.sidebar-style-column.parallax #inner-header {
+    background: #473f68;
     background: rgba(71,63,104,0.8);
   }
 }

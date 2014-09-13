@@ -54,11 +54,11 @@ function add_rec_plugin_dashboard_widget() {
 				'url' => admin_url('/plugin-install.php?tab=plugin-information&plugin=ml-slider'),
 				'is_active' => is_plugin_active( 'ml-slider/ml-slider.php' ),
 			),
-			'MailPoet Newsletters' => array(
+			/*'MailPoet Newsletters' => array(
 				'desc' => 'Send newsletters, post notifications or autoresponders from WordPress easily and beautifully.',
 				'url' => admin_url('/plugin-install.php?tab=plugin-information&plugin=wysija-newsletters'),
 				'is_active' => is_plugin_active( 'wysija-newsletters/index.php' )
-			),
+			),*/
 			'Google Analytics Dashboard for WP' => array(
 				'desc' => 'Displays Google Analytics Reports and Real-Time Statistics in your Dashboard. Automatically inserts the tracking code in every page of your website.',
 				'url' => admin_url('/plugin-install.php?tab=plugin-information&plugin=google-analytics-dashboard-for-wp'),

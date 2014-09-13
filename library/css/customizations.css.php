@@ -13,6 +13,11 @@ function isLoginPage() {
 // make the browser believe we are sending a css file... otherwise it may be skeptical and not load it since the file extension ends in .php
 header('Content-Type: text/css');
 
+// enable browser caching of this file for a month.
+// .htaccess directives may not get the browser to cache this file since it uses GET parameters, and since it is a php file.
+header("Pragma: cache");
+header('Cache-Control: max-age=2592000');
+
 // the easiest way to make these style customizations is to insert GET variables into CSS code
 // Well, rather than CSS, I use LESS, particularly because of its color transformation functions.
 // This means that the LESS compiler needs to run on the server when this file is loaded.
@@ -283,6 +288,7 @@ hr {
 
 .sidebar-style-column {
 	.all-sidebars {
+		background: lighten( $primary_bg_color, 5% ); /* support for browsetards */
 		background: lighten( fadeout( $primary_bg_color, 33% ), 5% );
 		.widget,
 		.widgettitle {
@@ -310,6 +316,7 @@ hr {
 @media only screen and (min-width: 768px) {
 	.parallax {
 		#inner-header, #main-header {
+			background-color: $header_bg_color; /* support for browsetards */
 			background-color: fadeout( $header_bg_color, 15% );
 		}
 		#main-header {
@@ -365,6 +372,7 @@ hr {
 		}
 	}
 	.nav-below-header.sidebar-style-column.parallax #inner-header {
+		background: $nav_bg_color; /* support for browsetards */
 		background: fadeout( $nav_bg_color, 20% );
 	}
 }
