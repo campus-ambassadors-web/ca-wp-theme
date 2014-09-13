@@ -14,13 +14,13 @@ Please let me know if you use this theme--you certainly have permission, but I'm
 * http://caboulder.com
 
 ### Features
-* *Responsive design*--automatically works with any mobile device or any desktop browser (IE 9+ is supported. IE 8 has mild issues)
-* Support for *widgets* and *menus* (in the header and footer)
-* Option to use *a separate sidebar* on posts/archives
-* Option to insert *Google Analytics* tracking code
-* Extra *TinyMCE editor features*: insert a button, insert a "clearing break/newline" insert a revealable section (hidden at first, shows at the click of a button)
-* *Updates automatically* if you have the [github-updater](https://github.com/afragen/github-updater) plugin installed
-* Designed to work well with the following awesome *plugins*: [Page Builder by Site Origin](https://wordpress.org/plugins/siteorigin-panels/), [Black Studio TinyMCE Widget](https://wordpress.org/plugins/black-studio-tinymce-widget/), [MetaSlider](https://wordpress.org/plugins/ml-slider/), [Google Calendar Events](https://wordpress.org/plugins/google-calendar-events/), [Image Widget](https://wordpress.org/plugins/image-widget/)
+* **Responsive design**--automatically works with any mobile device or any desktop browser (IE 9+ is supported. IE 8 has mild issues)
+* Support for **widgets** and **menus** (in the header and footer)
+* Option to use **a separate sidebar** on posts/archives
+* Option to insert **Google Analytics** tracking code
+* Extra **TinyMCE editor features**: insert a button, insert a "clearing break/newline" insert a revealable section (hidden at first, shows at the click of a button)
+* **Updates automatically** if you have the [github-updater](https://github.com/afragen/github-updater) plugin installed
+* Designed to work well with the following awesome **plugins**: [Page Builder by Site Origin](https://wordpress.org/plugins/siteorigin-panels/), [Black Studio TinyMCE Widget](https://wordpress.org/plugins/black-studio-tinymce-widget/), [MetaSlider](https://wordpress.org/plugins/ml-slider/), [Google Calendar Events](https://wordpress.org/plugins/google-calendar-events/), [Image Widget](https://wordpress.org/plugins/image-widget/)
 * Large amount of theme style/layout customizability (see the next section)
 
 ### Theme Customizability
