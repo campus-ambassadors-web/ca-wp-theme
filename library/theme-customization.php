@@ -121,7 +121,7 @@ function theme_customization_additions( $wp_customize ) {
 		'footer_bg_color' => array(
 			'label' => 'Footer background color',
 			'default' => '#0b9041',
-			'active_callback' => 'customizer_callback_is_custom_footer_and_custom_color_scheme'
+			'active_callback' => 'customizer_callback_show_footer_bg_color'
 		),
 		'accent_text_color' => array(
 			'label' => 'Accent text color',
@@ -538,6 +538,10 @@ function customizer_callback_column_sidebar() {
 function customizer_callback_is_custom_color_scheme_and_not_column_sidebar() {
 	if ( !customizer_callback_is_custom_color_scheme() ) return false;
 	return !customizer_callback_column_sidebar();
+}
+function customizer_callback_show_footer_bg_color() {
+	$footer_preset = get_theme_mod( 'footer_art_preset', 'hills.png' );
+	return ( $footer_preset == 'custom' || $footer_preset == 'none' ) && customizer_callback_is_custom_color_scheme();
 }
 function customizer_callback_is_custom_footer_and_custom_color_scheme() {
 	$footer_preset = get_theme_mod( 'footer_art_preset', 'hills.png' );
