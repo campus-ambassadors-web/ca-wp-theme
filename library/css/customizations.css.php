@@ -251,6 +251,15 @@ hr {
 .widget {
 	background-color: $sidebar_bg_color;
 }
+.sidebar {
+	.widgettitle {
+		color: contrast( $sidebar_header_bg_color, black, #ddd );
+	}
+	.widget {
+		color: contrast( $sidebar_bg_color, black, #ddd );
+	}
+}
+
 .panel.widget {
 	background-color: transparent;
 	.widgettitle {
@@ -269,7 +278,13 @@ hr {
 }
 
 .wp-caption {
-	background: darken( desaturate( $primary_bg_color, 15% ), 15% );
+	@caption-bg-color: contrast( $primary_bg_color,
+		darken( desaturate( $primary_bg_color, 15% ), 20% ),
+		lighten( desaturate( $primary_bg_color, 15% ), 20% ),
+		85%
+	);
+	background: @caption-bg-color;
+	color: contrast( @caption-bg-color, black, #ddd );
 }
 
 .bones_page_navi li,
@@ -295,6 +310,15 @@ hr {
 			background: none;
 		}
 	}
+	.sidebar {
+		.widgettitle {
+			color: contrast( $primary_bg_color, rgba(0,0,0,0.5), rgba(255,255,255,0.5) );
+		}
+		.widget {
+			color: contrast( $primary_bg_color, black, #ddd );
+		}
+	}
+	
 	#main {
 		background: $main_bg_color;
 	}
@@ -305,7 +329,13 @@ hr {
 		}
 	}
 	.wp-caption {
-		background: darken( desaturate( $main_bg_color, 15% ), 15% );
+		@caption-bg-color: contrast( $main_bg_color,
+			darken( desaturate( $main_bg_color, 15% ), 25% ),
+			lighten( desaturate( $main_bg_color, 15% ), 25% ),
+			85%
+		);
+		background: @caption-bg-color;
+		color: contrast( @caption-bg-color, black, #ddd );
 	}
 }
 

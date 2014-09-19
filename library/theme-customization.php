@@ -92,7 +92,7 @@ function theme_customization_additions( $wp_customize ) {
 	
 	// color presets
 	$wp_customize->add_setting( 'color_preset', array(
-		'default'	=> 'preset1'
+		'default'	=> 'crimson_nightlife'
 	));
 	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'color_preset', array(
 		'label'		=> 'Color scheme presets',
@@ -101,7 +101,9 @@ function theme_customization_additions( $wp_customize ) {
 		'type'		=> 'select',
 		'priority'	=> 1,
 		'choices'	=> array(
-			'preset1'	=> 'Preset 1',
+			'crimson_nightlife'	=> 'Crimson Nightlife',
+			'rolling_hills'		=> 'Rolling Hills',
+			'purple_mountains'	=> 'Purple Mountains',
 			'custom'	=> '[Custom color scheme]'
 		)
 	)));
@@ -549,7 +551,7 @@ function customizer_callback_is_custom_footer_and_custom_color_scheme() {
 }
 
 function customizer_callback_is_custom_color_scheme() {
-	$color_scheme = get_theme_mod( 'color_preset', 'preset1' );
+	$color_scheme = get_theme_mod( 'color_preset', 'crimson_nightlife' );
 	return ( $color_scheme == 'custom' );
 }
 
