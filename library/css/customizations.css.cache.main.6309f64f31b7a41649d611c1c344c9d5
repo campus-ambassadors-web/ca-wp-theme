@@ -18,7 +18,7 @@
   }
 }
 #container {
-  background-color: #f2efd5;
+  background-color: #e9e0cc;
 }
 h1,
 .h1,
@@ -60,10 +60,10 @@ h2,
   color: #643804;
 }
 #container .child-nav ul li.current_page_item > a {
-  background: #d9d4a1;
+  background: #cabd9e;
 }
 #mobile-child-nav h2 {
-  border-bottom-color: #d9d4a1;
+  border-bottom-color: #cabd9e;
 }
 .single-title a,
 .single-title a:hover,
@@ -83,7 +83,7 @@ h2,
 }
 hr {
   border-bottom-color: #ffffff;
-  border-top-color: #dad187;
+  border-top-color: #cab585;
 }
 .widgettitle {
   background-color: #7d6eb3;
@@ -98,7 +98,7 @@ hr {
   color: #643804;
 }
 #inner-footer {
-  background-color: #0b9041;
+  background-color: #05724d;
 }
 .gce-list-event,
 .gce-tooltip-event {
@@ -109,7 +109,7 @@ hr {
   color: #a06014;
 }
 .wp-caption {
-  background: #d6d1a4;
+  background: #c7bba2;
 }
 .bones_page_navi li,
 .flatlink {
@@ -124,8 +124,8 @@ hr {
   background: #f7a23d;
 }
 .sidebar-style-column .all-sidebars {
-  background: #f8f6e8;
-  background: rgba(248,246,232,0.67);
+  background: #f1ebde;
+  background: rgba(241,235,222,0.67);
 }
 .sidebar-style-column .all-sidebars .widget,
 .sidebar-style-column .all-sidebars .widgettitle {
@@ -161,7 +161,7 @@ hr {
   }
   #main-nav .top-nav > ul > li.current_page_item,
   #main-nav .top-nav > ul > li.current_page_ancestor {
-    background-color: #f2efd5;
+    background-color: #e9e0cc;
   }
   #main-nav .top-nav > ul > li.page_item_has_children:hover,
   #main-nav .top-nav > ul > li > .children {

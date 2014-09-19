@@ -1,16 +1,30 @@
 			<?php
-			$footer_art = get_theme_mod( 'footer_art', '' );
-			if ( !empty( $footer_art ) ) :
-				$footer_src = wp_get_attachment_image_src( $footer_art, array( 1500, 300 ) );
-				if ( $footer_src ) :
+			$footer_art_preset = get_theme_mod( 'footer_art_preset', 'hills.png' );
+			if ( $footer_art_preset != 'none' ) {
+				if ( $footer_art_preset == 'custom' ) {
+					// find the source of the custom footer image
+					$footer_art = get_theme_mod( 'footer_art', '' );
+					if ( !empty( $footer_art ) ) {
+						$footer_src_info = wp_get_attachment_image_src( $footer_art, array( 1500, 300 ) );
+						$footer_src = $footer_src_info[0];
+					}
+				} else {
+					// preset footer image
+					$footer_src = get_stylesheet_directory_uri() . '/library/images/footers/' . $footer_art_preset;
+				}
+				
+				// output the footer image, if we have one
+				if ( $footer_src ) {
 					?>
 					<div id="footer-image-wrap">
 						<div id="footer-image-center">
-							<img src="<?php echo $footer_src[0] ?>" alt="" id="footer-image" />
+							<img src="<?php echo $footer_src ?>" alt="" id="footer-image" />
 						</div>
 					</div>
-				<?php endif; ?>
-			<?php endif; ?>
+					<?php
+				}
+			}
+			?>
 			
 			<footer class="footer clearfix" role="contentinfo">
 				<div id="inner-footer" class="wrap clearfix">

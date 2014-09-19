@@ -1358,6 +1358,8 @@ hr.clear-break {
 	width: 100%;
 	overflow: hidden;
 	margin: 0;
+	z-index: 61;
+	position: relative;
 }
 #footer-image-center {
 	width: 100%;
@@ -1374,6 +1376,7 @@ hr.clear-break {
 	clear: both;
 	position: relative;
 	z-index: 60;
+	margin-top: -3px; /* fix for gap between footer image and footer, due to the way the browser renders scaled images */
 }
 
 #inner-footer {

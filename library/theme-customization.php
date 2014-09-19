@@ -90,45 +90,67 @@ function theme_customization_additions( $wp_customize ) {
 		'priority'	=> 5,
 	));
 	
+	// color presets
+	$wp_customize->add_setting( 'color_preset', array(
+		'default'	=> 'preset1'
+	));
+	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'color_preset', array(
+		'label'		=> 'Color scheme presets',
+		'section'	=> 'colors_section',
+		'settings'	=> 'color_preset',
+		'type'		=> 'select',
+		'priority'	=> 1,
+		'choices'	=> array(
+			'preset1'	=> 'Preset 1',
+			'custom'	=> '[Custom color scheme]'
+		)
+	)));
+	
 	// colors
 	$colors = array(
 		'primary_bg_color' => array(
 			'label' => 'Primary background color',
-			'default' => '#e9e0cc'
+			'default' => '#e9e0cc',
+			'active_callback' => 'customizer_callback_is_custom_color_scheme'
 		),
 		'header_bg_color' => array(
 			'label' => 'Page header background color',
-			'default' => '#cac3d2'
-		),
-		'sidebar_header_bg_color' => array(
-			'label' => 'Widget header background color',
-			'default' => '#7d6eb3'
+			'default' => '#cac3d2',
+			'active_callback' => 'customizer_callback_is_custom_color_scheme'
 		),
 		'footer_bg_color' => array(
 			'label' => 'Footer background color',
-			'default' => '#0b9041'
+			'default' => '#0b9041',
+			'active_callback' => 'customizer_callback_is_custom_footer_and_custom_color_scheme'
 		),
 		'accent_text_color' => array(
 			'label' => 'Accent text color',
-			'default' => '#643804'
+			'default' => '#643804',
+			'active_callback' => 'customizer_callback_is_custom_color_scheme'
 		),
 		'nav_bg_color' => array(
 			'label' => 'Navigation background color',
 			'default' => '#473f68',
 			'active_callback' => 'customizer_callback_show_nav_bg_color'
 		),
+		'sidebar_header_bg_color' => array(
+			'label' => 'Widget header background color',
+			'default' => '#7d6eb3',
+			'active_callback' => 'customizer_callback_is_custom_color_scheme_and_not_column_sidebar'
+		),
 		'sidebar_bg_color' => array(
 			'label' => 'Widget background color',
 			'default' => '#ffffff',
-			'active_callback' => 'customizer_callback_not_column_sidebar'
+			'active_callback' => 'customizer_callback_is_custom_color_scheme_and_not_column_sidebar'
 		),
 		'main_bg_color' => array(
 			'label' => 'Main content background color',
 			'default' => '#ffffff',
-			'active_callback' => 'customizer_callback_column_sidebar'
+			'active_callback' => 'customizer_callback_is_custom_color_scheme_and_column_sidebar'
 		)
 	);
 	
+	$inc = 3;
 	foreach( $colors as $key=>$color ) {
 		$wp_customize->add_setting( $key, array(
 			'default'	=> $color['default']
@@ -136,7 +158,8 @@ function theme_customization_additions( $wp_customize ) {
 		$control_options = array(
 			'label'		=> $color['label'],
 			'section'	=> 'colors_section',
-			'settings'	=> $key
+			'settings'	=> $key,
+			'priority'	=> $inc++
 		);
 		if ( isset( $color['active_callback'] ) ) $control_options['active_callback'] = $color['active_callback'];
 		$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, $key, $control_options ));
@@ -161,7 +184,7 @@ function theme_customization_additions( $wp_customize ) {
 		'settings'   => 'bg_pattern',
 		'type'		 => 'select',
 		'choices'	 => array(
-			'none'			=> 'None (flat color)',
+			'none'			=> '[None (flat color)]',
 			'axiom'			=> 'Axiom',
 			'brick-wall'	=> 'Brick Wall',
 			'diamonds'		=> 'Diamonds',
@@ -237,15 +260,6 @@ function theme_customization_additions( $wp_customize ) {
 	)));
 	
 	
-	/////////////////////////////////////////////
-	// Header & Footer
-	/////////////////////////////////////////////
-	
-	safe_add_panel( $wp_customize, 'header_footer_panel', array(
-		'title'          => 'Header & Footer',
-		'priority'       => 71
-	));
-	
 	/////////////////////////
 	// Header photos
 	
@@ -253,7 +267,7 @@ function theme_customization_additions( $wp_customize ) {
 	$wp_customize->add_section( 'header_photo_section', array(
 		'title'      => __( 'Header Photos', 'bonestheme' ),
 		'description' => 'Add up to four photos to use as decoration in the header.',
-		'panel'		=> 'header_footer_panel',
+		'panel'		=> 'theme_style_panel',
 		'priority'   => 70
 	));
 	
@@ -310,18 +324,47 @@ function theme_customization_additions( $wp_customize ) {
 	// Footer art
 	$wp_customize->add_section( 'footer_art_section', array(
 		'title'      => __( 'Footer Art', 'bonestheme' ),
-		'description' => 'Art to place above the footer. Please use a very wide image.',
-		'panel'		=> 'header_footer_panel',
+		'description' => 'This can only be changed if you are using a custom color scheme.',
+		'panel'		=> 'theme_style_panel',
 		'priority'   => 71
 	));
 	
+	// presets
+	$wp_customize->add_setting( 'footer_art_preset', array(
+		'default'	=> 'hills.png'
+	));
+	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'footer_art_preset', array(
+		'section'	=> 'footer_art_section',
+		'settings'	=> 'footer_art_preset',
+		'priority'	=> 10,
+		'type'		=> 'select',
+		'active_callback' => 'customizer_callback_is_custom_color_scheme',
+		'choices'	=> array(
+			'none'			=> '[None]',
+			'city1.png'		=> 'City 1',
+			'city2.png'		=> 'City 2',
+			'desert.png'	=> 'Desert',
+			'forest.png'	=> 'Forest',
+			'hills.png'		=> 'Hills',
+			'house.png'		=> 'House',
+			'manger_cross.png' => 'Manger and Cross',
+			'mountains.png'	=> 'Mountains',
+			'custom'	=> '[Custom footer art]'
+		)
+	)));
+	
+	// custom footer art
 	$footer_art_options = array( 'footer_art' );
 	global $footer_art_values;
 	foreach( $footer_art_options as $id ) {
 		$wp_customize->add_setting( $id );
 		$control = new WP_Customize_Image_Control( $wp_customize, $id, array(
+			'label'		=> 'Custom footer image',
 			'section'    => 'footer_art_section',
-			'settings'   => $id
+			'description'	=> 'You may also set a footer color in the "Colors" section.<br />Please use a very wide image.',
+			'settings'   => $id,
+			'priority'	=> 20,
+			'active_callback' => 'customizer_callback_is_custom_footer_and_custom_color_scheme'
 		));
 		$wp_customize->add_control( $control );
 		// add a media library tab to the control
@@ -337,8 +380,7 @@ function theme_customization_additions( $wp_customize ) {
 	$wp_customize->add_section( 'social_media_section', array(
 		'title'		=> __( 'Social Media Icons', 'bonestheme' ),
 		'description' => 'Enter the URLs for your social media pages to add linked icons to the site.',
-		'panel'		=> 'header_footer_panel',
-		'priority'	=> 100
+		'priority'	=> 145
 	));
 	$wp_customize->add_setting( 'sm_header', array(
 		'default'	=> true
@@ -478,6 +520,7 @@ function customizer_callback_is_parallax() {
 	return ( $header_photo_style == 'parallax not-faded' || $header_photo_style == 'parallax' );
 }
 function customizer_callback_show_nav_bg_color() {
+	if ( !customizer_callback_is_custom_color_scheme() ) return false;
 	$nav_loc = get_theme_mod( 'nav_location', 'nav-below-header' );
 	$sidebar_style = get_theme_mod( 'sidebar_style', 'sidebar-style-boxes' );
 	if ( $nav_loc == 'nav-above-header' ||
@@ -485,11 +528,35 @@ function customizer_callback_show_nav_bg_color() {
 		return true;
 	} else return false;
 }
+function customizer_callback_is_custom_color_scheme_and_column_sidebar() {
+	return ( customizer_callback_column_sidebar() && customizer_callback_is_custom_color_scheme() );
+}
 function customizer_callback_column_sidebar() {
 	$sidebar = get_theme_mod( 'sidebar_style', 'sidebar-style-boxes' );
 	return ( $sidebar == 'sidebar-style-column' );
 }
-function customizer_callback_not_column_sidebar() {
+function customizer_callback_is_custom_color_scheme_and_not_column_sidebar() {
+	if ( !customizer_callback_is_custom_color_scheme() ) return false;
 	return !customizer_callback_column_sidebar();
 }
+function customizer_callback_is_custom_footer_and_custom_color_scheme() {
+	$footer_preset = get_theme_mod( 'footer_art_preset', 'hills.png' );
+	return ( $footer_preset == 'custom' && customizer_callback_is_custom_color_scheme() );
+}
+
+function customizer_callback_is_custom_color_scheme() {
+	$color_scheme = get_theme_mod( 'color_preset', 'preset1' );
+	return ( $color_scheme == 'custom' );
+}
+
+
+function customizer_add_js() {
+	// add a script if we are on the cutomizer page
+	if ( get_current_screen()->base == 'customize' ) {
+		wp_register_script( 'customizer-js', get_stylesheet_directory_uri() . '/library/js/customizer.js', array( 'jquery' ), filemtime( get_stylesheet_directory( '/library/js/customizer.js' ) ), true );
+		wp_enqueue_script( 'customizer-js' );
+	}
+}
+add_action( 'admin_enqueue_scripts', 'customizer_add_js' );
+
 ?>

@@ -105,7 +105,7 @@ function rec_plugin_dashboard_widget_function( $post, $callback_args ) {
 		}
 	}
 	if ( $output ) {
-		echo "<h4 class='rec-plugins-info'>Install/activate the following recommended plugins for greatly increased functionality:</h4>";
+		echo "<h4 class='rec-plugins-info'>Consider the following recommended plugins for increased functionality:</h4>";
 		echo "<div class='rec-plugins-info'>$output</div>";
 	}
 }

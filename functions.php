@@ -177,7 +177,7 @@ function bones_comments($comment, $args, $depth) {
 
 // fix a mild issue with a certain plugin
 function load_admin_scripts() {
-	wp_register_script( 'custom-admin-js', get_stylesheet_directory_uri() . '/library/js/admin.js', array( 'jquery' ), '', true );
+	wp_register_script( 'custom-admin-js', get_stylesheet_directory_uri() . '/library/js/admin.js', array( 'jquery' ), filemtime( get_stylesheet_directory( '/library/js/admin.js' ) ), true );
     wp_enqueue_script( 'custom-admin-js' );
 }
 add_action( 'admin_enqueue_scripts', 'load_admin_scripts' );
