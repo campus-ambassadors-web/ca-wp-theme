@@ -102,8 +102,12 @@ function theme_customization_additions( $wp_customize ) {
 		'priority'	=> 1,
 		'choices'	=> array(
 			'crimson_nightlife'	=> 'Crimson Nightlife',
+			'sandy_dusk'		=> 'Sandy Dusk',
+			'evergreen'			=> 'Evergreen',
 			'rolling_hills'		=> 'Rolling Hills',
+			'country_cottage'	=> 'Country Cottage',
 			'purple_mountains'	=> 'Purple Mountains',
+			'grey_and_gold'		=> 'Grey and Gold',
 			'custom'	=> '[Custom color scheme]'
 		)
 	)));

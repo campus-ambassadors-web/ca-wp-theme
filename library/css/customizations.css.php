@@ -90,7 +90,7 @@ if ( isset( $_GET['bg_pattern'] ) ) {
 //////////////////////
 // if login page
 if ( isLoginPage() ) {
-	if ( isset( $_GET['bg_pattern'] ) ) {
+	if ( isset( $_GET['bg_pattern'] ) && $_GET['bg_pattern'] != 'none' ) {
 		$bg = get_val_default( 'primary_bg_color', '#e9e0cc' );
 		
 		echo <<<EOT
@@ -117,7 +117,9 @@ EOT;
 ////////////////////////////////////////////
 // bg_pattern //////////////////////////////
 ////////////////////////////////////////////
-if ( isset( $_GET['bg_pattern'] ) ) {
+$has_bg_pattern = false;
+if ( isset( $_GET['bg_pattern'] ) && $_GET['bg_pattern'] != 'none' ) {
+	$has_bg_pattern = true;
 	
 	echo <<<EOT
 	/* background patterns courtesy of http://subtlepatterns.com/
@@ -326,6 +328,9 @@ hr {
 			background: none;
 		}
 	}
+	&.bg-pattern-none .all-sidebars {
+		background: none;
+	}
 	.sidebar {
 		.widgettitle {
 			color: contrast( $primary_bg_color, rgba(0,0,0,0.5), rgba(255,255,255,0.5) );
@@ -393,26 +398,34 @@ hr {
 		
 		#main-nav {
 			.top-nav > ul > li {
+				
+				&:hover {
+					background: @nav-hover-bg-color;
+				}
+				
 				a {
 					color: @nav-text-color;
 				}
 				&.current_page_item,
 				&.current_page_ancestor {
 					background-color: @nav-active-bg-color;
+					&:hover {
+						background-color: @nav-active-bg-color;
+					}
 					a {
 						color: contrast( @nav-active-bg-color, #333, #ddd );
 					}
 				}
 				
-				&:hover. {
-					background: @nav-hover-bg-color;
-				}
-				
 				&.page_item_has_children:hover,
 				> .children {
-					background: lighten( @nav-child-bg-color-base, 8% );
-					a:hover {
-						color: contrast( lighten( @nav-child-bg-color-base, 8% ), black, white );
+					@child-bg-color: lighten( @nav-child-bg-color-base, 8% );
+					background: @child-bg-color;
+					a {
+						color: contrast( @child-bg-color, #333, #ddd );
+						&:hover {
+							color: contrast( @child-bg-color, black, white );
+						}
 					}
 					> li {
 						border-bottom: 1px solid lighten( @nav-child-bg-color-base, 2% );
@@ -444,6 +457,16 @@ hr {
 }
 
 EOT;
+
+if ( $primary_bg_color == $main_bg_color ) {
+	echo <<<EOT
+	.box-shadows.sidebar-style-column #main {
+		-webkit-box-shadow: none;
+		-moz-box-shadow: none;
+		box-shadow: none;
+	}
+EOT;
+}
 
 
 ////////////////////////////////////////////

@@ -35,6 +35,32 @@
 			},
 			footer_art_preset: 'city2.png'
 		},
+		sandy_dusk: {
+			colors: {
+				primary_bg_color: '#d6c1a9',
+				header_bg_color: '#231300',
+				footer_bg_color: '#000000',
+				accent_text_color: '#6b3504',
+				nav_bg_color: '#874b0c',
+				sidebar_header_bg_color: '#c57117',
+				sidebar_bg_color: '#231300',
+				main_bg_color: '#ffffff'
+			},
+			footer_art_preset: 'desert.png'
+		},
+		evergreen: {
+			colors: {
+				primary_bg_color: '#ffffff',
+				header_bg_color: '#003023',
+				footer_bg_color: '#05724d',
+				accent_text_color: '#073977',
+				nav_bg_color: '#4a618c',
+				sidebar_header_bg_color: '#0a6546',
+				sidebar_bg_color: '#e0e0e0',
+				main_bg_color: '#ffffff'
+			},
+			footer_art_preset: 'forest.png'
+		},
 		rolling_hills: {
 			colors: {
 				primary_bg_color: '#ede7dc',
@@ -48,12 +74,38 @@
 			},
 			footer_art_preset: 'hills.png'
 		},
+		country_cottage : {
+			colors: {
+				primary_bg_color: '#e2dbbe',
+				header_bg_color: '#ffffff',
+				footer_bg_color: '#005496',
+				accent_text_color: '#5b5b5b',
+				nav_bg_color: '#073977',
+				sidebar_header_bg_color: '#073977',
+				sidebar_bg_color: '#ffffff',
+				main_bg_color: '#efecdc'
+			},
+			footer_art_preset: 'house.png'
+		},
+		grey_and_gold: {
+			colors: {
+				primary_bg_color: '#d8d8d8',
+				header_bg_color: '#bfaa78',
+				footer_bg_color: '#bfaa78',
+				accent_text_color: '#917931',
+				nav_bg_color: '#5b490b',
+				sidebar_header_bg_color: '#bfaa78',
+				sidebar_bg_color: '#212121',
+				main_bg_color: '#ffffff'
+			},
+			footer_art_preset: 'none'
+		},
 		purple_mountains: {
 			colors: {
-				primary_bg_color: '#e9e0cc',
+				primary_bg_color: '#eff4f2',
 				header_bg_color: '#cac3d2',
 				footer_bg_color: '#0b9041',
-				accent_text_color: '#643804',
+				accent_text_color: '#346d36',
 				nav_bg_color: '#473f68',
 				sidebar_header_bg_color: '#7d6eb3',
 				sidebar_bg_color: '#ffffff',
