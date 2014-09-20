@@ -1171,15 +1171,17 @@ class lessc {
 		if ($args[0] != 'list' || count($args[2]) < 3) {
 			return array(array('color', 0, 0, 0), 0);
 		}
-
-		list($inputColor, $darkColor, $lightColor) = $args[2];
-
+		list($inputColor, $darkColor, $lightColor, $threshold) = $args[2];
+		
+		if ( $threshold == NULL ) $threshold = array( 'number', '45', '%' );
+		$this->assertNumber( $threshold );
+		
 		$inputColor = $this->assertColor($inputColor);
 		$darkColor = $this->assertColor($darkColor);
 		$lightColor = $this->assertColor($lightColor);
 		$hsl = $this->toHSL($inputColor);
 
-		if ($hsl[3] > 50) {
+		if ($hsl[3] > $threshold[1]) {
 			return $darkColor;
 		}
 

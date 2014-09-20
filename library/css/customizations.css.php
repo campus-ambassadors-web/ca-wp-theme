@@ -289,16 +289,6 @@ hr {
 	color: desaturate( lighten( $accent_text_color, 15% ), 15% );
 }
 
-.wp-caption {
-	@caption-bg-color: contrast( $primary_bg_color,
-		darken( desaturate( $primary_bg_color, 15% ), 20% ),
-		lighten( desaturate( $primary_bg_color, 15% ), 20% ),
-		85%
-	);
-	background: @caption-bg-color;
-	color: contrast( @caption-bg-color, black, #ddd );
-}
-
 .bones_page_navi li,
 .flatlink {
 	background: $accent_text_color;
@@ -311,6 +301,20 @@ hr {
 	&:active {
 		background: lighten( $accent_text_color, 40% );
 	}
+}
+
+.captionColors( @content-bg-color ) {
+	@caption-bg-color: contrast( @content-bg-color,
+		darken( desaturate( @content-bg-color, 15% ), 15% ),
+		lighten( desaturate( @content-bg-color, 15% ), 25% ),
+		90%
+	);
+	background: @caption-bg-color;
+	color: contrast( @caption-bg-color, black, #ddd );
+}
+
+.wp-caption {
+	.captionColors( $primary_bg_color );
 }
 
 .sidebar-style-column {
@@ -337,19 +341,21 @@ hr {
 	
 	
 	.wp-caption {
-		@caption-bg-color: contrast( $main_bg_color,
-			darken( desaturate( $main_bg_color, 15% ), 25% ),
-			lighten( desaturate( $main_bg_color, 15% ), 25% ),
-			85%
-		);
-		background: @caption-bg-color;
-		color: contrast( @caption-bg-color, black, #ddd );
+		.captionColors( $main_bg_color );
 	}
 }
 
 .parallax #main-header {
 	background: $header_bg_color;
 }
+
+
+.footer .social-media-icons a,
+#inner-footer ul.nav li a,
+#inner-footer ul.nav li	a:visited {
+	color: contrast( $footer_bg_color, black, white );
+}
+
 
 @media only screen and (min-width: 768px) {
 	.parallax {
