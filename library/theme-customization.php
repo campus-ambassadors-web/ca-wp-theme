@@ -281,12 +281,31 @@ function theme_customization_additions( $wp_customize ) {
 		'section'	=> 'header_photo_section',
 		'settings'	=> 'header_photo_style',
 		'type'		=> 'radio',
+		'priority'	=> 10,
 		'choices'	=> array(
 			'polaroid'	=> 'Polaroid',
-			'parallax not-faded' => 'Parallax',
-			'parallax'	=> 'Parallax (faded)'
+			'parallax' => 'Parallax'
 		)
 	)));
+	
+	// fade out parallax image
+	$wp_customize->add_setting( 'parallax_fade', array(
+		'default' => 'parallax-fade-none'
+	));
+	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'parallax_fade', array(
+		'label'		=> 'Parallax image fade',
+		'section'	=> 'header_photo_section',
+		'settings'	=> 'parallax_fade',
+		'type'		=> 'select',
+		'priority'	=> 15,
+		'active_callback' => 'customizer_callback_is_parallax',
+		'choices'	=> array(
+			'parallax-fade-none'	=> 'No parallax image fade',
+			'parallax-fade-logo'	=> 'Fade image behind logo/title only',
+			'parallax-fade-all'		=> 'Fade entire image'
+		)
+	)));
+	
 	
 	// add a header height field
 	$wp_customize->add_setting( 'header_height', array(
@@ -297,6 +316,7 @@ function theme_customization_additions( $wp_customize ) {
 		'section'	=> 'header_photo_section',
 		'settings'	=> 'header_height',
 		'type'		=> 'number',
+		'priority'	=> 20,
 		'active_callback' => 'customizer_callback_is_parallax',
 		'input_attrs' => array(
 			'min'	=> 100,
@@ -307,11 +327,13 @@ function theme_customization_additions( $wp_customize ) {
 	// header photos
 	$header_photo_options = array( 'header_photo_1', 'header_photo_2', 'header_photo_3', 'header_photo_4' );
 	global $header_photo_values;
-	foreach( $header_photo_options as $id ) {
+	foreach( $header_photo_options as $index=>$id ) {
 		$wp_customize->add_setting( $id );
 		$control = new WP_Customize_Image_Control( $wp_customize, $id, array(
-			'section'    => 'header_photo_section',
-			'settings'   => $id
+			'label'		=> 'Header image ' . ($index+1),
+			'section'	=> 'header_photo_section',
+			'settings'	=> $id,
+			'priority'	=> 30
 		));
 		$wp_customize->add_control( $control );
 		// add a media library tab to the control
@@ -519,7 +541,7 @@ function login_customization_styles() {
 
 function customizer_callback_is_parallax() {
 	$header_photo_style = get_theme_mod( 'header_photo_style', 'polaroid' );
-	return ( $header_photo_style == 'parallax not-faded' || $header_photo_style == 'parallax' );
+	return ( $header_photo_style == 'parallax' );
 }
 function customizer_callback_show_nav_bg_color() {
 	if ( !customizer_callback_is_custom_color_scheme() ) return false;

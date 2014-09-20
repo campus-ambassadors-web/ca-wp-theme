@@ -37,13 +37,13 @@
 		},
 		rolling_hills: {
 			colors: {
-				primary_bg_color: '#f2f2f2',
+				primary_bg_color: '#ede7dc',
 				header_bg_color: '#d1bfb1',
 				footer_bg_color: '#8cca39',
-				accent_text_color: '#7c0101',
+				accent_text_color: '#2c5b2c',
 				nav_bg_color: '#724716',
 				sidebar_header_bg_color: '#996b3d',
-				sidebar_bg_color: '#b5b5b5',
+				sidebar_bg_color: '#ffffff',
 				main_bg_color: '#ffffff'
 			},
 			footer_art_preset: 'hills.png'

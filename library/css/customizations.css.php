@@ -182,10 +182,21 @@ h2, .h2,
 
 
 #header-wrap { background-color: $header_bg_color; }
-#mobile-menu-bg { background-color: @mobile-nav-bg-color; }
+#mobile-menu-bg {
+	background-color: @mobile-nav-bg-color;
+	.social-media-icons a {
+		color: contrast( @mobile-nav-bg-color, black, white );
+	}
+}
 #mobile-icons {
 	background-color: $header_bg_color;
 	border-color: darken( saturate( $header_bg_color, 10% ), 10% );
+}
+
+#header-title {
+	h1, h2 {
+		color: contrast( $header_bg_color, black, white );
+	}
 }
 
 #container #mobile-nav {
@@ -193,6 +204,7 @@ h2, .h2,
 	ul {
 		li {
 			a {
+				color: contrast( @mobile-nav-bg-color, black, white );
 				border-bottom-color: darken( @mobile-nav-bg-color, 8% );
 				&:active {
 					background-color: lighten( @mobile-nav-bg-color, 10% );
@@ -322,12 +334,8 @@ hr {
 	#main {
 		background: $main_bg_color;
 	}
-	#main-nav > .top-nav > ul > li {
-		&.current_page_item,
-		&.current_page_ancestor {
-			background: $main_bg_color;
-		}
-	}
+	
+	
 	.wp-caption {
 		@caption-bg-color: contrast( $main_bg_color,
 			darken( desaturate( $main_bg_color, 15% ), 25% ),
@@ -345,15 +353,23 @@ hr {
 
 @media only screen and (min-width: 768px) {
 	.parallax {
-		#inner-header, #main-header {
+		#inner-header,
+		&.parallax-fade-all #main-header {
 			background-color: $header_bg_color; /* support for browsetards */
-			background-color: fadeout( $header_bg_color, 15% );
+			background-color: fadeout( $header_bg_color, 20% );
 		}
 		#main-header {
 			height: {$header_height}px;
 		}
-		&.not-faded #main-header {
-			background: none;
+		&.parallax-fade-none,
+		&.parallax-fade-logo {
+			#main-header {
+				background: none;
+			}
+		}
+		&.parallax-fade-logo #main-header a {
+			background: fadeout( $header_bg_color, 20% );
+			height: 100%;
 		}
 	}
 	
@@ -361,46 +377,60 @@ hr {
 		background-color: $header_bg_color;
 	}
 	
-	#main-nav {
-		.top-nav > ul > li {
-			&.current_page_item, &.current_page_ancestor {
-				background-color: $primary_bg_color;
-			}
-			&.page_item_has_children:hover,
-			> .children {
-				background: lighten( $header_bg_color, 15% );
-				> li {
-					border-bottom: 1px solid lighten( $header_bg_color, 3% );
-					border-top: 1px solid lighten( $header_bg_color, 27%% );
+	
+	/* function to help define main nav colors */
+	.mainNavColors( @nav-text-color; @nav-active-bg-color; @nav-child-bg-color-base; @nav-hover-bg-color ) {
+		
+		#inner-header .social-media-icons a {
+			color: @nav-text-color;
+		}
+		
+		#main-nav {
+			.top-nav > ul > li {
+				a {
+					color: @nav-text-color;
+				}
+				&.current_page_item,
+				&.current_page_ancestor {
+					background-color: @nav-active-bg-color;
+					a {
+						color: contrast( @nav-active-bg-color, #333, #ddd );
+					}
+				}
+				
+				&:hover. {
+					background: @nav-hover-bg-color;
+				}
+				
+				&.page_item_has_children:hover,
+				> .children {
+					background: lighten( @nav-child-bg-color-base, 8% );
+					a:hover {
+						color: contrast( lighten( @nav-child-bg-color-base, 8% ), black, white );
+					}
+					> li {
+						border-bottom: 1px solid lighten( @nav-child-bg-color-base, 2% );
+						border-top: 1px solid lighten( @nav-child-bg-color-base, 14% );
+					}
 				}
 			}
 		}
 	}
 	
+	/* tab-style nav */
+	.mainNavColors( contrast( $header_bg_color, #444, #ddd ), $primary_bg_color, $header_bg_color, $header_bg_color );
 	
+	/* bar-style nav */
 	.nav-above-header,
 	.nav-below-header.sidebar-style-column {
+		.mainNavColors( contrast( $nav_bg_color, #444, #ddd ), darken( $nav_bg_color, 12% ), $nav_bg_color, lighten( $nav_bg_color, 8% ) );
 		
 		#inner-header {
 			background: $nav_bg_color;
 		}
-		
-		#main-nav .top-nav > ul > li {
-			&.current_page_item,
-			&.current_page_ancestor {
-				background: darken( $nav_bg_color, 12% );
-			}
-			
-			&:hover,
-			> .children {
-				background: lighten( $nav_bg_color, 12% );
-				> li {
-					border-bottom: 1px solid $nav_bg_color;
-					border-top: 1px solid lighten( $nav_bg_color, 24% );
-				}
-			}
-		}
 	}
+	
+	
 	.nav-below-header.sidebar-style-column.parallax #inner-header {
 		background: $nav_bg_color; /* support for browsetards */
 		background: fadeout( $nav_bg_color, 20% );

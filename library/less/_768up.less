@@ -51,7 +51,7 @@ HEADER SYTLES
 #main-header {
 	width: 100%;
 	height: auto;
-	min-height: 115px;
+	min-height: 155px;
 	margin: 0 auto;
 	padding-top: 1px;
 	z-index: 0;
@@ -196,7 +196,6 @@ NAVIGATION STYLES
 			z-index: 10;
 			
 			a {
-				color: #333;
 				font-family: @link-serif;
 				display: block;
 				padding: 0.35em 1em 0.25em;
@@ -206,10 +205,6 @@ NAVIGATION STYLES
 				
 				&:hover {
 					text-decoration: none;
-					color: black;
-				}
-				&:active {
-					color: black;
 				}
 			}
 			
@@ -427,7 +422,7 @@ ROUNDED CORNERS
 	
 	&.nav-above-header,
 	&.sidebar-style-column,
-	&.parallax.not-faded {
+	&.parallax.parallax-fade-none {
 		#main-nav .top-nav > ul > li {
 			.borderRadius( 0 );
 		}
@@ -500,7 +495,7 @@ NAVIGATION LOCATION
 .nav-above-header {
 	margin-top: 2.2em;
 	
-	#main-header {
+	#main-header > a {
 		padding-bottom: 20px;
 	}
 	
@@ -520,21 +515,6 @@ NAVIGATION LOCATION
 
 .nav-above-header,
 .nav-below-header.sidebar-style-column {
-	#inner-header {
-		.social-media-icons a {
-				color: white;
-			}
-	}
-	
-	#main-nav .top-nav > ul > li {
-		a {
-			color: #ccc;
-			&:hover, &:active {
-				color: white;
-			}
-		}
-	}
-	
 	&.text-shadows {
 		#main-nav ul li a,
 		.social-media-icons a {
