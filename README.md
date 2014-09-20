@@ -27,7 +27,7 @@ Please let me know if you use this theme--you certainly have permission, but I'm
 * Ability to use a custom logo in page header
 * Ability to choose location of navigation bar
 * Ability to choose overall page layout style
-* Ability to choose colors of most elements
+* Ability to choose colors of most elements (and includes many pre-defined color schemes)
 * Ability to choose from a large list of subtle background patterns
 * Ability to enable/disable rounded corners, box shadows, text shadows, and image borders
 * Ability to choose from a large selection of fonts (hosted on Google Fonts)

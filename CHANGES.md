@@ -1,3 +1,12 @@
+#### 1.3.0
+* Added several footer art presets
+* Added several color scheme presets
+* Added support for dark background colors in the header, widgets, widget headers, and main navigation (text color automatically switches to white when using a dark background)
+* Added support for bright background colors in the footer
+* Added image fading options for parallax header (fade entire image, or just under the logo/title)
+* Main area automatically removes its box shadow when Main Background Color and Primary Background Color are the same
+* Added .gitignore and removed files to be ignored from now on
+
 #### 1.2.4
 * Added browser caching for the dynamic-php-generated customizations css file
 * Added partial support for IE 8

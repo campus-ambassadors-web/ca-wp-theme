@@ -1,0 +1,5 @@
+# cached files from the customizations css file #
+*.css.cache.*
+
+# PHP error log #
+error_log
