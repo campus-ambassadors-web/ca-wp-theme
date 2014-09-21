@@ -150,16 +150,10 @@ img {
 04. LINK STYLES
 *********************/
 
+
 a, a:visited {
-	color: @link-color;
 	text-decoration: none;
 	transition: color 0.2s;
-}
-a:hover {
-	color: @link-hover;
-}
-a:active {
-	color: @link-active;
 }
 
 /******************************************************************
@@ -529,9 +523,6 @@ body.home #main {
 			&:hover {
 				color: black;
 			}
-			&:active {
-				color: @link-active;
-			}
 		}
 		
 		ul {
@@ -555,9 +546,6 @@ body.home #main {
 				
 				&:hover {
 					color: black;
-				}
-				&:active {
-					color: @link-active;
 				}
 				
 				&:before {
@@ -863,7 +851,6 @@ hr.clear-break {
 			float: left;
 			display: block;
 			margin-left: 6px;
-			background: @link-color; 
 			transition: background 0.2s;
 			
 			a {
@@ -876,10 +863,6 @@ hr.clear-break {
 				
 				&:hover {
 					border-bottom: none;
-					color: @link-color;
-				}
-				&:active {
-					background: lighten( @link-color, 40% );
 				}
 			}
 			&:hover {
@@ -1590,7 +1573,6 @@ EXTRA SIDEBAR STYLE
 			margin-bottom: 0;
 		}
 		.widgettitle {
-			border-bottom: 1px solid rgba(0,0,0,0.15);
 			padding-left: 0;
 			padding-right: 0;
 			padding-top: 0.75em;
@@ -1679,7 +1661,7 @@ TEXT SHADOWS
 	}
 	#container .child-nav ul a,
 	.social-media-icons {
-		.textShadow( 0, 1px, 1px, rgba(255,255,255,0.6) );
+		.textShadow( 0, 1px, 0, rgba(0,255,255,0.4) );
 	}
 	
 	#mobile-header-fixed .social-media-icons,

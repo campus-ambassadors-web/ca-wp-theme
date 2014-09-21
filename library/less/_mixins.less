@@ -68,13 +68,6 @@ http://0to255.com/
 @bones-pink:        #f01d4f;
 @bones-blue:        #1990db;
 
-
-@link-color:        #3686b7;
-@link-hover:        #266389;
-@link-active:		#a47273;
-
-@accent-text-color: #696969;
-
 @primary-bg-color:	#eaeaea;
 @secondary-bg-color: #bbb;
 @secondary-bg-color-dark:#b6b6b6;
@@ -339,22 +332,20 @@ BUTTONS
 
 
 .flatlink {
-	background: @link-color;
-	color: white;
+	/* the defining colors for this are in customizations.css.php */
+	color: white !important;
 	text-decoration: none;
 	padding: 0.4em 0.8em;
 	transition: color 0.2s, background 0.2s;
 	
 	&:visited {
-		color: white;
+		color: white !important;
 	}
 	&:hover {
 		background: white;
-		color: @link-color;
 	}
 	&:active {
-		color: black;
-		background: lighten( @link-color, 40% );
+		color: black !important;
 	}
 }
 

@@ -71,6 +71,7 @@ ob_start();
  *		main_bg_color
  *		header_height
  *		accent_text_color
+ *		text_link_color
  *		accent_font
  */
 
@@ -171,17 +172,43 @@ $header_height = intval( get_val_default( 'header_height', 200 ) );
 $nav_bg_color = get_val_default( 'nav_bg_color', '#473f68' );
 $main_bg_color = get_val_default( 'main_bg_color', '#ffffff' );
 $accent_text_color = get_val_default( 'accent_text_color', '#643804' );
+$text_link_color = get_val_default( 'text_link_color', '#3686b7' );
 
 
 echo <<<EOT
 
+
 @mobile-nav-bg-color: desaturate( darken( $header_bg_color, 20% ), 5% );
 
-#container { background-color: $primary_bg_color; }
-h1, .h1,
-h2, .h2,
-.panel-grid .widget > h3:first-child { color: $accent_text_color; }
+@link-color: $text_link_color;
+@link-hover-color: darken( saturate( $text_link_color, 15% ), 15% );
+@link-active-color: $text_link_color;
 
+a, a:visited {
+	color: @link-color;
+}
+a {
+	&:hover {
+		color: @link-hover-color;
+	}
+	&:active {
+		color: @likn-active-color;
+	}
+}
+
+
+#container { background-color: $primary_bg_color; }
+
+@bright-accent-color: desaturate( lighten( $accent_text_color, 15% ), 15% );
+.accentColors( @background-color ) {
+	h1, .h1,
+	h2, .h2,
+	b, blockquote {
+		color: contrast( @background-color, $accent_text_color, @bright-accent-color );
+	}
+}
+.panel-grid .widget > h3:first-child { color: $accent_text_color; }
+.accentColors( $primary_bg_color );
 
 #header-wrap { background-color: $header_bg_color; }
 #mobile-menu-bg {
@@ -223,12 +250,24 @@ h2, .h2,
 	}
 }
 
+/* link color definitions for things in the sidebar. delcare inside of "a { }" */
+.linkColors( @background-color ) {
+	@link-color-for-dark-bg: desaturate( lighten( @link-color, 15% ), 15% );
+	color: contrast( @background-color, @link-color, @link-color-for-dark-bg );
+	&:visited {
+		color: contrast( @background-color, @link-color, @link-color-for-dark-bg );
+	}
+	&:hover {
+		color: contrast( @background-color, @link-hover-color, lighten( desaturate( @link-color-for-dark-bg, 15% ), 15% ) );
+	}
+}
+
 
 #container {
 	.child-nav {
-		h2 a { color: $accent_text_color; }
+		h2 a { .linkColors( $primary_bg_color ) }
 		ul {
-			a { color: $accent_text_color; }
+			a { .linkColors( $primary_bg_color ) }
 			
 			li.current_page_item > a {
 				background: desaturate( darken( $primary_bg_color, 15% ), 10% );
@@ -236,6 +275,8 @@ h2, .h2,
 		}
 	}
 }
+
+
 
 #mobile-child-nav h2 {
 	border-bottom-color: desaturate( darken( $primary_bg_color, 15% ), 10% );
@@ -250,29 +291,32 @@ h2, .h2,
 	}
 }
 
-.entry-content {
-	b, blockquote { color: $accent_text_color }
-}
 
 hr {
 	border-bottom-color: lighten( $primary_bg_color, 20% );
 	border-top-color: darken( $primary_bg_color, 20% );
 }
 
-.widgettitle {
-	background-color: $sidebar_header_bg_color;
-}
-.widget {
-	background-color: $sidebar_bg_color;
-}
+
 .sidebar {
 	.widgettitle {
+		background-color: $sidebar_header_bg_color;
 		color: contrast( $sidebar_header_bg_color, black, #ddd );
 	}
 	.widget {
+		background-color: $sidebar_bg_color;
 		color: contrast( $sidebar_bg_color, black, #ddd );
 	}
 }
+
+
+.sidebar-style-boxes .sidebar .widget a {
+	.linkColors( $sidebar_bg_color );
+}
+.sidebar-style-column .sidebar .widget a {
+	.linkColors( $primary_bg_color );
+}
+
 
 .panel.widget {
 	background-color: transparent;
@@ -298,7 +342,7 @@ hr {
 .bones_page_navi li a,
 .flatlink {
 	&:hover {
-		color: $accent_text_color;
+		color: $accent_text_color !important;
 	}
 	&:active {
 		background: lighten( $accent_text_color, 40% );
@@ -334,14 +378,26 @@ hr {
 	.sidebar {
 		.widgettitle {
 			color: contrast( $primary_bg_color, rgba(0,0,0,0.5), rgba(255,255,255,0.5) );
+			border-bottom: 1px solid contrast( $primary_bg_color, rgba(0,0,0,0.15), rgba(255,255,255,0.15) );
 		}
 		.widget {
 			color: contrast( $primary_bg_color, black, #ddd );
+			.accentColors( $primary_bg_color );
+			.gce-list-event, .gce-tooltip-event {
+				color: contrast( $primary_bg_color, $accent_text_color, @bright-accent-color );
+			}
+		}
+	}
+	#container #mobile-child-nav.child-nav {
+		h2 a,
+		ul a {
+			.linkColors( $main_bg_color);
 		}
 	}
 	
 	#main {
 		background: $main_bg_color;
+		.accentColors( $main_bg_color );
 	}
 	
 	
@@ -349,6 +405,9 @@ hr {
 		.captionColors( $main_bg_color );
 	}
 }
+.sidebar-style-column.text-shadow {
+	
+}****
 
 .parallax #main-header {
 	background: $header_bg_color;

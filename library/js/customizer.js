@@ -28,6 +28,7 @@
 				header_bg_color: '#09080a',
 				footer_bg_color: '#000000',
 				accent_text_color: '#7c0101',
+				text_link_color: '#7c0101',
 				nav_bg_color: '#7c0101',
 				sidebar_header_bg_color: '#7c0101',
 				sidebar_bg_color: '#0a0a0a',
@@ -41,8 +42,9 @@
 				header_bg_color: '#231300',
 				footer_bg_color: '#000000',
 				accent_text_color: '#6b3504',
+				text_link_color: '#a04800',
 				nav_bg_color: '#874b0c',
-				sidebar_header_bg_color: '#c57117',
+				sidebar_header_bg_color: '#89440c',
 				sidebar_bg_color: '#231300',
 				main_bg_color: '#ffffff'
 			},
@@ -51,10 +53,11 @@
 		evergreen: {
 			colors: {
 				primary_bg_color: '#ffffff',
-				header_bg_color: '#003023',
+				header_bg_color: '#1b3025',
 				footer_bg_color: '#05724d',
 				accent_text_color: '#073977',
-				nav_bg_color: '#4a618c',
+				text_link_color: '#00895b',
+				nav_bg_color: '#005438',
 				sidebar_header_bg_color: '#0a6546',
 				sidebar_bg_color: '#e0e0e0',
 				main_bg_color: '#ffffff'
@@ -67,6 +70,7 @@
 				header_bg_color: '#d1bfb1',
 				footer_bg_color: '#8cca39',
 				accent_text_color: '#2c5b2c',
+				text_link_color: '#479b41',
 				nav_bg_color: '#724716',
 				sidebar_header_bg_color: '#996b3d',
 				sidebar_bg_color: '#ffffff',
@@ -80,6 +84,7 @@
 				header_bg_color: '#ffffff',
 				footer_bg_color: '#005496',
 				accent_text_color: '#5b5b5b',
+				text_link_color: '#036cc1',
 				nav_bg_color: '#073977',
 				sidebar_header_bg_color: '#073977',
 				sidebar_bg_color: '#ffffff',
@@ -87,31 +92,33 @@
 			},
 			footer_art_preset: 'house.png'
 		},
-		grey_and_gold: {
-			colors: {
-				primary_bg_color: '#d8d8d8',
-				header_bg_color: '#bfaa78',
-				footer_bg_color: '#bfaa78',
-				accent_text_color: '#917931',
-				nav_bg_color: '#5b490b',
-				sidebar_header_bg_color: '#bfaa78',
-				sidebar_bg_color: '#212121',
-				main_bg_color: '#ffffff'
-			},
-			footer_art_preset: 'none'
-		},
 		purple_mountains: {
 			colors: {
 				primary_bg_color: '#eff4f2',
 				header_bg_color: '#cac3d2',
 				footer_bg_color: '#0b9041',
 				accent_text_color: '#346d36',
+				text_link_color: '#7a6ad1',
 				nav_bg_color: '#473f68',
 				sidebar_header_bg_color: '#7d6eb3',
 				sidebar_bg_color: '#ffffff',
 				main_bg_color: '#ffffff'
 			},
 			footer_art_preset: 'mountains.png'
+		},
+		grey_and_gold: {
+			colors: {
+				primary_bg_color: '#d8d8d8',
+				header_bg_color: '#bfaa78',
+				footer_bg_color: '#bfaa78',
+				accent_text_color: '#917931',
+				text_link_color: '#997226',
+				nav_bg_color: '#5b490b',
+				sidebar_header_bg_color: '#bfaa78',
+				sidebar_bg_color: '#212121',
+				main_bg_color: '#ffffff'
+			},
+			footer_art_preset: 'none'
 		}/*,
 		crimson_nightlife: {
 			primary_bg_color:

@@ -134,6 +134,11 @@ function theme_customization_additions( $wp_customize ) {
 			'default' => '#643804',
 			'active_callback' => 'customizer_callback_is_custom_color_scheme'
 		),
+		'text_link_color' => array(
+			'label' => 'Text link color',
+			'default' => '#3686b7',
+			'active_callback' => 'customizer_callback_is_custom_color_scheme'
+		),
 		'nav_bg_color' => array(
 			'label' => 'Navigation background color',
 			'default' => '#473f68',
@@ -519,7 +524,7 @@ add_action( 'login_enqueue_scripts', 'login_customization_styles', 1000 );
 function customization_styles( $is_login = false ) {
 	
 	$getvars = array();
-	$mod_names = array('bg_pattern', 'accent_font', 'primary_bg_color', 'header_bg_color', 'sidebar_header_bg_color', 'sidebar_bg_color', 'footer_bg_color', 'nav_bg_color', 'main_bg_color', 'accent_text_color', 'header_height');
+	$mod_names = array('bg_pattern', 'accent_font', 'primary_bg_color', 'header_bg_color', 'sidebar_header_bg_color', 'sidebar_bg_color', 'footer_bg_color', 'nav_bg_color', 'main_bg_color', 'accent_text_color', 'text_link_color', 'header_height');
 	foreach( $mod_names as $mod_name ) {
 		$mod = get_theme_mod( $mod_name, false );
 		if ( $mod ) $getvars[$mod_name] = $mod;
