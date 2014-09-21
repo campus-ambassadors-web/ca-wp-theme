@@ -1,3 +1,7 @@
+#### 1.3.1
+* Added link color chooser to customizer
+* Style fixes for links and accent text colors over dark backgrounds
+
 #### 1.3.0
 * Added several footer art presets
 * Added several color scheme presets
