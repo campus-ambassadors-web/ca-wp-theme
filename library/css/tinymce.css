@@ -38,3 +38,16 @@
 	border-top: 1px dashed #bbb;
 	margin: 0 2%;
 }
+
+.flatlink {
+	background: #3686b7;
+	color: white;
+}
+.flatlink:hover {
+	color: #3686b7 !important;
+	background: #eee;
+}
+flatlink:active {
+	color: black !important;
+	background: #3686b7;
+}
