@@ -1,3 +1,6 @@
+#### 1.3.2
+* Small fix to suppress bundled PageBuilder widgets
+
 #### 1.3.1
 * Added link color chooser to customizer
 * Style fixes for links and accent text colors over dark backgrounds
