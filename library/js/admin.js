@@ -37,7 +37,7 @@ jQuery(document).ready( function($) {
 	
 	
 	// remove widgets from the Page Builder plugin that I don't need
-	$('.widget[id*=siteorigin-panels], .panel-type[data-class*=SiteOrigin_Panels_Widgets_], .panel-type[data-class*=SiteOrigin_Panels_Widget_]').remove();
+	$('.widget[id*=siteorigin-panels], .panel-type[data-class*=SiteOrigin_Panels_Widgets_], .panel-type[data-class*=SiteOrigin_Panels_Widget_], .widget[id*="_origin_"').remove();
 	
 	// reorganize widgets
 	$tinymce_widget_panel = $('[data-class=WP_Widget_Black_Studio_TinyMCE].panel-type');
