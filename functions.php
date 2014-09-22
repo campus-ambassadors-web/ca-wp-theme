@@ -504,7 +504,7 @@ class Output_Latest_Posts_Widget extends WP_Widget {
 							<h3 class="h2 entry-title single-title" itemprop="headline"><a href="<?php the_permalink() ?>"><?php the_title(); ?></a></h3>
 							<p class="byline vcard"><?php
 								if ( $instance['byline_author'] ) {
-									?><i class="icon-pencil"></i> <?php echo bones_get_the_author_posts_link();
+									?><i class="icon-pencil"></i> By <?php echo bones_get_the_author_posts_link();
 								}
 								if ( $instance['byline_time'] ) {
 									?><i class="icon-calendar"></i> <time class="updated" datetime="<?php echo get_the_time('Y-m-j') ?>" pubdate><?php echo get_the_time(get_option('date_format')) ?></time> <?php
