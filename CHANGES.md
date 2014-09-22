@@ -1,3 +1,7 @@
+#### 1.3.4
+* Minor style improvements
+* The "posts page" now outputs the content of that page before looping through posts
+
 #### 1.3.3
 * Small fix to suppress bundled PageBuilder widgets
 * Suppress comments/trackbacks on pages

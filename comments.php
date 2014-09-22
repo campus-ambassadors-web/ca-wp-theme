@@ -107,7 +107,7 @@ The comments page for Bones
 		<?php comment_id_fields(); ?>
 	</p>
 
-	<div class="alert alert-info">
+	<div class="alert">
 		<p id="allowed_tags" class="small"><strong>XHTML:</strong> <?php _e('You can use these tags', 'bonestheme'); ?>: <code><?php echo allowed_tags(); ?></code></p>
 	</div>
 

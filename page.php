@@ -32,7 +32,7 @@
 									$secondary_nav = get_secondary_nav( $id );
 									if ( !empty( $secondary_nav ) ) : ?>
 										<nav id="mobile-child-nav" class="child-nav">
-											<?php secondary_nav( $id ); ?>
+											<?php echo $secondary_nav; ?>
 										</nav>
 									<?php endif; ?>
 								</footer> <!-- end article footer -->
@@ -64,7 +64,7 @@
 							$secondary_nav = get_secondary_nav( $id );
 							if ( !empty( $secondary_nav ) ) : ?>
 								<nav id="desktop-child-nav" class="child-nav sidebar">
-									<?php secondary_nav( $id ); ?>
+									<?php echo $secondary_nav; ?>
 								</nav>
 							<?php endif; ?>
 							
