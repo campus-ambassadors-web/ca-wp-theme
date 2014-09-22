@@ -695,6 +695,15 @@ function help_dashboard_widget_function( $post, $callback_args ) {
 }
 
 
+/************* ROW STYLES FOR PAGE BUILDER *****************/
+
+function custom_panels_row_styles($styles) {
+	$styles['darker-bg'] = 'Darker background';
+	$styles['lighter-bg'] = 'Lighter background';
+	return $styles;
+}
+add_filter('siteorigin_panels_row_styles', 'custom_panels_row_styles');
+
 
 // generic function
 

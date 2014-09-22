@@ -1,6 +1,7 @@
-#### 1.3.2.2
+#### 1.3.3
 * Small fix to suppress bundled PageBuilder widgets
 * Suppress comments/trackbacks on pages
+* Added row styles for Page Builder plugin
 
 #### 1.3.2.1
 * Fix for flatlink styles in tinymce editor
