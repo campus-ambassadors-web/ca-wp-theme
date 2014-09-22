@@ -352,11 +352,13 @@ hr {
 }
 .bones_page_navi li a,
 .flatlink {
+	border-color: $accent_text_color;
 	&:hover {
 		color: $accent_text_color !important;
+		border-color: white;
 	}
 	&:active {
-		background: lighten( $accent_text_color, 40% );
+		border-color: $accent_text_color;
 	}
 }
 

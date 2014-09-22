@@ -342,7 +342,9 @@ BUTTONS
 	color: white !important;
 	text-decoration: none;
 	padding: 0.4em 0.8em;
-	transition: color 0.2s, background 0.2s;
+	border: 1px solid transparent;
+	border-color: transparent;
+	transition: color 0.2s, background 0.2s, border-color 0.2s;
 	
 	&:visited {
 		color: white !important;
@@ -351,7 +353,6 @@ BUTTONS
 		background: white;
 	}
 	&:active {
-		color: black !important;
 	}
 }
 
