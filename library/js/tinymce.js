@@ -103,7 +103,7 @@ insert button
 						button_text: '',
 						link: 'http://',
 						size: '100%',
-						style: 'nice-button',
+						style: 'flatlink',
 						position: 'inline'
 					};
 					
@@ -147,8 +147,8 @@ insert button
 							label: 'Button style',
 							value: values.style,
 							values: [
-								{ text: 'Raised grey', value: 'nice-button' },
-								{ text: 'Flat colored', value: 'flatlink' }
+								{ text: 'Flat colored', value: 'flatlink' },
+								{ text: 'Raised grey', value: 'nice-button' }
 							]
 						}, {
 							type: 'listbox',
