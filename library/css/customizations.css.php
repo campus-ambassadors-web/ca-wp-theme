@@ -196,6 +196,17 @@ a {
 	}
 }
 
+input[type=text],
+input[type=email],
+input[type=url],
+textarea {
+	&:focus {
+		border: 1px solid $accent_text_color;
+		-webkit-box-shadow: inset 1px 1px 2px 0 rgba(0, 0, 0, 0.2), 0 0 8px 0 fadeout($accent_text_color, 50%);
+		-moz-box-shadow: inset 1px 1px 2px 0 rgba(0, 0, 0, 0.2), 0 0 8px 0 fadeout($accent_text_color, 50%);
+		box-shadow: inset 1px 1px 2px 0 rgba(0, 0, 0, 0.2), 0 0 8px 0 fadeout($accent_text_color, 50%);
+	}
+}
 
 #container { background-color: $primary_bg_color; }
 
