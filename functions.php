@@ -73,6 +73,15 @@ you like. Enjoy!
 */
 
 
+/************* REMOVE COMMENTS FROM PAGES ********************/
+
+add_action( 'init', 'remove_post_feature_support', 10 );
+function remove_post_feature_support() {
+	remove_post_type_support( 'page', 'comments' );
+	remove_post_type_support( 'page', 'trackbacks' );
+}
+
+
 /************* ACTIVE SIDEBARS ********************/
 
 // Sidebars & Widgetizes Areas
