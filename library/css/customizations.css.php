@@ -32,12 +32,14 @@ $cached_file_name_base = 'customizations.css.cache.' . ( isLoginPage() ? 'login'
 // this will also cause the cache to refresh if this script has changed, since the script's filemtime is passed as a GET parameter
 $cached_file_name = $cached_file_name_base . md5( serialize( $_GET ) );
 
-$file_contents = file_get_contents( $cached_file_name );
-if ( $file_contents !== false ) {
-	// we've already cached the compiled CSS for the given GET variables. just get those results and echo them.
-	echo "/* cached CSS */\n";
-	echo $file_contents;
-	exit;
+if ( file_exists( $cached_file_name ) ) {
+	$file_contents = @file_get_contents( $cached_file_name );
+	if ( $file_contents !== false ) {
+		// we've already cached the compiled CSS for the given GET variables. just get those results and echo them.
+		echo "/* cached CSS */\n";
+		echo $file_contents;
+		exit;
+	}
 }
 
 
@@ -91,14 +93,13 @@ if ( isset( $_GET['bg_pattern'] ) ) {
 //////////////////////
 // if login page
 if ( isLoginPage() ) {
+	$bg = get_val_default( 'primary_bg_color', '#e9e0cc' );
+	echo "html { background-color: $bg; }";
 	if ( isset( $_GET['bg_pattern'] ) && $_GET['bg_pattern'] != 'none' ) {
-		$bg = get_val_default( 'primary_bg_color', '#e9e0cc' );
-		
 		echo <<<EOT
 		html {
 			background-image: url(../images/bg-patterns/subtle/{$_GET['bg_pattern']}.png);
 			background-repeat: repeat;
-			background-color: $bg
 		}
 		$media_query_2x {
 			html {
