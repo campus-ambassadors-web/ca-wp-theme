@@ -282,7 +282,6 @@ function theme_customization_additions( $wp_customize ) {
 			'philosopher'	=> 'Philosopher',
 			'quicksand'		=> 'Quicksand',
 			'bad_script'	=> 'Bad Script',
-			'bilbo'			=> 'Bilbo',
 			'lobster'		=> 'Lobster',
 			'fira_mono'		=> 'Fira Mono',
 			'luckiest_guy'	=> 'Luckiest Guy',

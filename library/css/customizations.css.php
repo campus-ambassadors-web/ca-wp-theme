@@ -659,6 +659,12 @@ if ( isset( $_GET['accent_font'] ) ) {
 		#mobile-nav a, .child-nav a, #main-nav a {
 			font-weight: 400 !important;
 		}
+		/* adjust font size */
+		.entry-content, .commentlist .comment_content, .widget_black_studio_tinymce .textwidget {
+			blockquote {
+				font-size: 1.2em;
+			}
+		}
 		<?php
 	} else if ( $accent_font == 'alegreya_sc' ) {
 		?>
@@ -736,8 +742,17 @@ if ( isset( $_GET['accent_font'] ) ) {
 		  src: local('Quicksand Bold'), local('Quicksand-Bold'), url(http://fonts.gstatic.com/s/quicksand/v4/32nyIRHyCu6iqEka_hbKsugdm0LZdjqr5-oayXSOefg.woff2) format('woff2');
 		  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
 		}
-		h1, h2, h3, h4, h5, .h1, .h2, .h3, .h4, .h5 {
+		h1, h2, .h1, .h2 {
 			font-weight: 400 !important;
+		}
+		h3, h4, h5, .h3, .h4, .h5, .entry-content blockquote, .widget_black_studio_tinymce .textwidget blockquote {
+			font-family: accent_link_font;
+		}
+		/* adjust font size */
+		.entry-content, .commentlist .comment_content, .widget_black_studio_tinymce .textwidget {
+			blockquote {
+				font-size: 1.02em;
+			}
 		}
 		<?php
 	}
@@ -756,21 +771,11 @@ if ( isset( $_GET['accent_font'] ) ) {
 		#mobile-nav a, .child-nav a, #main-nav a {
 			font-weight: 400 !important;
 		}
-		<?php
-	} else if ( $accent_font == 'bilbo' ) {
-		?>
-		@font-face {
-		  font-family: 'accent_header_font';
-		  font-style: normal;
-		  font-weight: 400;
-		  src: local('Bilbo Swash Caps'), local('BilboSwashCaps-Regular'), url(http://fonts.gstatic.com/s/bilboswashcaps/v7/UB_-crLvhx-PwGKW1oosDkQKLJqOwopPoTIHsnJrFJg.woff2) format('woff2');
-		  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
-		}
-		h1, h2, h3, h4, h5, .h1, .h2, .h3, .h4, .h5 {
-			font-weight: 400 !important;
-		}
-		blockquote {
-			font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif !important;
+		/* adjust font size */
+		.entry-content, .commentlist .comment_content, .widget_black_studio_tinymce .textwidget {
+			blockquote {
+				font-size: 1.2em;
+			}
 		}
 		<?php
 	} else if ( $accent_font == 'lobster' ) {
@@ -785,6 +790,12 @@ if ( isset( $_GET['accent_font'] ) ) {
 		h1, h2, h3, h4, h5, .h1, .h2, .h3, .h4, .h5,
 		#mobile-nav a, .child-nav a, #main-nav a {
 			font-weight: 400 !important;
+		}
+		/* adjust font size */
+		.entry-content, .commentlist .comment_content, .widget_black_studio_tinymce .textwidget {
+			blockquote {
+				font-size: 1.2em;
+			}
 		}
 		<?php
 	}

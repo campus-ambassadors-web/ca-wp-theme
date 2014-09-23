@@ -1,6 +1,7 @@
 #### 1.3.5
 * Login page css fix
 * Added font face and style choices for paragraph text
+* Fixes for certain special cases for some accent font choices, and removed one troublesome font choice ("Bilbo")
 
 #### 1.3.4
 * Minor style improvements
