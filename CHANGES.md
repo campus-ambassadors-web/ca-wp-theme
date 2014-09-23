@@ -1,3 +1,7 @@
+#### 1.3.5
+* Login page css fix
+* Added font face and style choices for paragraph text
+
 #### 1.3.4
 * Minor style improvements
 * The "posts page" now outputs the content of that page before looping through posts

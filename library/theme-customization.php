@@ -244,6 +244,26 @@ function theme_customization_additions( $wp_customize ) {
 		'priority'	=> 15
 	));
 	
+	// body font
+	$wp_customize->add_setting( 'body_font', array(
+		'default'     => 'tahoma'
+	));
+	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'body_font', array(
+		'label'		=> __( 'Small text font', 'bonestheme' ),
+		'section'	=> 'font_section',
+		'settings'	=> 'body_font',
+		'type'		=> 'select',
+		'choices'	=> array(
+			'tahoma'		=> 'Tahoma',
+			'open_sans'		=> 'Open Sans',
+			'lato'			=> 'Lato',
+			'raleway'		=> 'Raleway',
+			'pt_serif'		=> 'PT Serif Caption',
+			'bitter'		=> 'Bitter',
+			'libre'			=> 'Libre Baskerville'
+		)
+	)));
+	
 	// accent font
 	$wp_customize->add_setting( 'accent_font', array(
 		'default'     => 'palatino'
@@ -270,6 +290,36 @@ function theme_customization_additions( $wp_customize ) {
 		)
 	)));
 	
+	// paragraph line height
+	$wp_customize->add_setting( 'p_line', array(
+		'default'     => '1.5'
+	));
+	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'p_line', array(
+		'label'		=> __( 'Paragraph line height', 'bonestheme' ),
+		'section'	=> 'font_section',
+		'settings'	=> 'p_line',
+		'type'		=> 'select',
+		'choices'	=> array(
+			'1.5'	=> 'Normal',
+			'1.75'	=> 'Wide',
+			'2'		=> 'Expanded'
+		)
+	)));
+	
+	// paragraph font size
+	$wp_customize->add_setting( 'p_size', array(
+		'default'     => '100'
+	));
+	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'p_size', array(
+		'label'		=> __( 'Paragraph font size', 'bonestheme' ),
+		'section'	=> 'font_section',
+		'settings'	=> 'p_size',
+		'type'		=> 'select',
+		'choices'	=> array(
+			'100'		=> 'Normal',
+			'115'		=> 'Larger'
+		)
+	)));
 	
 	/////////////////////////
 	// Header photos
@@ -524,7 +574,7 @@ add_action( 'login_enqueue_scripts', 'login_customization_styles', 1000 );
 function customization_styles( $is_login = false ) {
 	
 	$getvars = array();
-	$mod_names = array('bg_pattern', 'accent_font', 'primary_bg_color', 'header_bg_color', 'sidebar_header_bg_color', 'sidebar_bg_color', 'footer_bg_color', 'nav_bg_color', 'main_bg_color', 'accent_text_color', 'text_link_color', 'header_height');
+	$mod_names = array('bg_pattern', 'accent_font', 'body_font', 'primary_bg_color', 'header_bg_color', 'sidebar_header_bg_color', 'sidebar_bg_color', 'footer_bg_color', 'nav_bg_color', 'main_bg_color', 'accent_text_color', 'text_link_color', 'header_height', 'p_line', 'p_size');
 	foreach( $mod_names as $mod_name ) {
 		$mod = get_theme_mod( $mod_name, false );
 		if ( $mod ) $getvars[$mod_name] = $mod;

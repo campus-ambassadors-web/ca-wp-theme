@@ -74,7 +74,10 @@ ob_start();
  *		header_height
  *		accent_text_color
  *		text_link_color
+ *		body_font
  *		accent_font
+ *		p_line
+ *		p_size
  */
 
 
@@ -539,6 +542,64 @@ if ( $primary_bg_color == $main_bg_color ) {
 		box-shadow: none;
 	}
 EOT;
+}
+
+
+////////////////////////////////////////////
+// p_line (line height) ////////////////////
+////////////////////////////////////////////
+if ( isset( $_GET['p_line'] ) ) {
+	?>.entry-content, .commentlist .comment_content {
+		p, dl, ul, ol, pre, blockquote {
+			line-height: <?php echo $_GET['p_line'] ?>;
+		}
+	}<?php
+}
+
+
+////////////////////////////////////////////
+// p_size (font size) //////////////////////
+////////////////////////////////////////////
+if ( isset( $_GET['p_size'] ) ) {
+	?>.entry-content, .commentlist .comment_content {
+		p, dl, ul, ol, pre, blockquote {
+			font-size: <?php echo $_GET['p_size'] ?>%;
+			/* font size is relative, so nested list items will keep growing in size unless we do the line below */
+			p, dl, ul, ol, pre, blockquote {
+				font-size: 100%;
+			}
+		}
+	}<?php
+}
+
+////////////////////////////////////////////
+// body_font ///////////////////////////////
+////////////////////////////////////////////
+if ( isset( $_GET['body_font'] ) ) {
+	$body_font = $_GET['body_font'];
+	
+	if ( $body_font == 'tahoma' ) {
+		// do nothing. this is the default.
+		
+	} else if ( $body_font == 'lato' ) {
+		?>@import url(http://fonts.googleapis.com/css?family=Lato:400,400italic);
+		body { font-family: Lato, sans-serif; }<?php
+	} else if ( $body_font == 'raleway' ) {
+		?>@import url(http://fonts.googleapis.com/css?family=Raleway:400,700);
+		body { font-family: Raleway, sans-serif; }<?php
+	} else if ( $body_font == 'open_sans' ) {
+		?>@import url(http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,700,400);
+		body { font-family: 'Open Sans', sans-serif; }<?php
+	} else if ( $body_font == 'pt_serif' ) {
+		?>@import url(http://fonts.googleapis.com/css?family=PT+Serif+Caption:400,400italic);
+		body { font-family: 'PT Serif Caption', serif; }<?php
+	} else if ( $body_font == 'bitter' ) {
+		?>@import url(http://fonts.googleapis.com/css?family=Bitter:400,700,400italic);
+		body { font-family: Bitter, serif; }<?php
+	} else if ( $body_font == 'libre' ) {
+		?>@import url(http://fonts.googleapis.com/css?family=Libre+Baskerville:400,700,400italic);
+		body { font-family: 'Libre Baskerville', serif; }<?php
+	}
 }
 
 
