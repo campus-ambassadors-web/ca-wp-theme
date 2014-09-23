@@ -97,7 +97,6 @@ if ( isset( $_GET['bg_pattern'] ) ) {
 // if login page
 if ( isLoginPage() ) {
 	$bg = get_val_default( 'primary_bg_color', '#e9e0cc' );
-	echo "html { background-color: $bg; }";
 	if ( isset( $_GET['bg_pattern'] ) && $_GET['bg_pattern'] != 'none' ) {
 		echo <<<EOT
 		html {
