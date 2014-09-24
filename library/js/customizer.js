@@ -32,7 +32,7 @@
 				nav_bg_color: '#7c0101',
 				sidebar_header_bg_color: '#7c0101',
 				sidebar_bg_color: '#0a0a0a',
-				main_bg_color: '#e1e6ef'
+				page_bg_color: '#444f5e'
 			},
 			footer_art_preset: 'city2.png'
 		},
@@ -46,7 +46,7 @@
 				nav_bg_color: '#874b0c',
 				sidebar_header_bg_color: '#89440c',
 				sidebar_bg_color: '#231300',
-				main_bg_color: '#ffffff'
+				page_bg_color: '#523d2d'
 			},
 			footer_art_preset: 'desert.png'
 		},
@@ -60,7 +60,7 @@
 				nav_bg_color: '#005438',
 				sidebar_header_bg_color: '#0a6546',
 				sidebar_bg_color: '#e0e0e0',
-				main_bg_color: '#ffffff'
+				page_bg_color: '#cad2ca'
 			},
 			footer_art_preset: 'forest.png'
 		},
@@ -74,7 +74,7 @@
 				nav_bg_color: '#724716',
 				sidebar_header_bg_color: '#996b3d',
 				sidebar_bg_color: '#ffffff',
-				main_bg_color: '#ffffff'
+				page_bg_color: '#dcdcd9'
 			},
 			footer_art_preset: 'hills.png'
 		},
@@ -88,7 +88,7 @@
 				nav_bg_color: '#073977',
 				sidebar_header_bg_color: '#073977',
 				sidebar_bg_color: '#ffffff',
-				main_bg_color: '#efecdc'
+				page_bg_color: '#ffffff'
 			},
 			footer_art_preset: 'house.png'
 		},
@@ -102,7 +102,7 @@
 				nav_bg_color: '#473f68',
 				sidebar_header_bg_color: '#7d6eb3',
 				sidebar_bg_color: '#ffffff',
-				main_bg_color: '#ffffff'
+				page_bg_color: '#382d38'
 			},
 			footer_art_preset: 'mountains.png'
 		},
@@ -116,7 +116,7 @@
 				nav_bg_color: '#5b490b',
 				sidebar_header_bg_color: '#bfaa78',
 				sidebar_bg_color: '#212121',
-				main_bg_color: '#ffffff'
+				page_bg_color: '#494949'
 			},
 			footer_art_preset: 'none'
 		}/*,
@@ -128,7 +128,7 @@
 			nav_bg_color:
 			sidebar_header_bg_color:
 			sidebar_bg_color:
-			main_bg_color:
+			page_bg_color:
 			footer_art_preset:
 		}*/
 	}

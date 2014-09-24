@@ -420,8 +420,7 @@ ROUNDED CORNERS
 		.borderRadius( 5px, 5px, 0, 0 );
 	}
 	
-	&.nav-above-header,
-	&.sidebar-style-column,
+	&.nav-style-bar,
 	&.parallax.parallax-fade-none {
 		#main-nav .top-nav > ul > li {
 			.borderRadius( 0 );
@@ -513,8 +512,13 @@ NAVIGATION LOCATION
 	}
 }
 
-.nav-above-header,
-.nav-below-header.sidebar-style-column {
+.nav-below-header.nav-style-bar.sidebar-style-boxes {
+	#inner-header {
+		max-width: none;
+	}
+}
+
+.nav-style-bar {
 	&.text-shadows {
 		#main-nav ul li a,
 		.social-media-icons a {

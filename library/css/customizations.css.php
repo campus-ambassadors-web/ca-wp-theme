@@ -70,7 +70,7 @@ ob_start();
  *		sidebar_bg_color
  *		footer_bg_color
  *		nav_bg_color
- *		main_bg_color
+ *		page_bg_color
  *		header_height
  *		accent_text_color
  *		text_link_color
@@ -173,7 +173,7 @@ $sidebar_bg_color = get_val_default( 'sidebar_bg_color', '#ffffff' );
 $footer_bg_color = get_val_default( 'footer_bg_color', '#0b9041' );
 $header_height = intval( get_val_default( 'header_height', 200 ) );
 $nav_bg_color = get_val_default( 'nav_bg_color', '#473f68' );
-$main_bg_color = get_val_default( 'main_bg_color', '#ffffff' );
+$page_bg_color = get_val_default( 'page_bg_color', '#ffffff' );
 $accent_text_color = get_val_default( 'accent_text_color', '#643804' );
 $text_link_color = get_val_default( 'text_link_color', '#3686b7' );
 
@@ -328,7 +328,7 @@ hr {
 	.linkColors( $sidebar_bg_color );
 }
 .sidebar-style-column .sidebar .widget a {
-	.linkColors( $primary_bg_color );
+	.linkColors( $primary_bg_color);
 }
 
 
@@ -381,15 +381,10 @@ hr {
 
 .sidebar-style-column {
 	.all-sidebars {
-		background: lighten( $primary_bg_color, 5% ); /* support for browsetards */
-		background: lighten( fadeout( $primary_bg_color, 33% ), 5% );
 		.widget,
 		.widgettitle {
 			background: none;
 		}
-	}
-	&.bg-pattern-none .all-sidebars {
-		background: none;
 	}
 	.sidebar {
 		.widgettitle {
@@ -404,26 +399,20 @@ hr {
 			}
 		}
 	}
+	#container { background-color: $page_bg_color; }
+	
 	#container #mobile-child-nav.child-nav {
 		h2 a,
 		ul a {
-			.linkColors( $main_bg_color);
+			.linkColors( $primary_bg_color);
 		}
 	}
-	
-	#main {
-		background: $main_bg_color;
-		.accentColors( $main_bg_color );
-	}
-	
-	
-	.wp-caption {
-		.captionColors( $main_bg_color );
+	#footer-image-wrap,
+	#inner-content {
+		background-color: $primary_bg_color;
 	}
 }
-.sidebar-style-column.text-shadow {
-	
-}****
+
 
 .parallax #main-header {
 	background: $header_bg_color;
@@ -467,8 +456,11 @@ hr {
 	/* function to help define main nav colors */
 	.mainNavColors( @nav-text-color; @nav-active-bg-color; @nav-child-bg-color-base; @nav-hover-bg-color ) {
 		
-		#inner-header .social-media-icons a {
-			color: @nav-text-color;
+		#inner-header {
+			background: @nav-child-bg-color-base;
+			.social-media-icons a {
+				color: @nav-text-color;
+			}
 		}
 		
 		#main-nav {
@@ -509,39 +501,27 @@ hr {
 				}
 			}
 		}
-	}
-	
-	/* tab-style nav */
-	.mainNavColors( contrast( $header_bg_color, #444, #ddd ), $primary_bg_color, $header_bg_color, $header_bg_color );
-	
-	/* bar-style nav */
-	.nav-above-header,
-	.nav-below-header.sidebar-style-column {
-		.mainNavColors( contrast( $nav_bg_color, #444, #ddd ), darken( $nav_bg_color, 12% ), $nav_bg_color, lighten( $nav_bg_color, 8% ) );
 		
-		#inner-header {
-			background: $nav_bg_color;
+		&.nav-below-header.parallax #inner-header {
+			background: @nav-child-bg-color-base; /* support for browsetards */
+			background: fadeout( @nav-child-bg-color-base, 20% );
 		}
 	}
 	
+	/* tab-style nav */
+	.nav-style-tabs {
+		.mainNavColors( contrast( $header_bg_color, #444, #ddd ), $primary_bg_color, $header_bg_color, $header_bg_color );
+	}
 	
-	.nav-below-header.sidebar-style-column.parallax #inner-header {
-		background: $nav_bg_color; /* support for browsetards */
-		background: fadeout( $nav_bg_color, 20% );
+	/* bar-style nav */
+	.nav-style-bar {
+		.mainNavColors( contrast( $nav_bg_color, #444, #ddd ), darken( $nav_bg_color, 12% ), $nav_bg_color, lighten( $nav_bg_color, 8% ) );
 	}
+	
 }
 
 EOT;
 
-if ( $primary_bg_color == $main_bg_color ) {
-	echo <<<EOT
-	.box-shadows.sidebar-style-column #main {
-		-webkit-box-shadow: none;
-		-moz-box-shadow: none;
-		box-shadow: none;
-	}
-EOT;
-}
 
 
 ////////////////////////////////////////////

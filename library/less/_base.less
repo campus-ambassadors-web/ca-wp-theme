@@ -1652,6 +1652,18 @@ EXTRA SIDEBAR STYLE
 	#inner-content {
 		width: 100%;
 	}
+	#footer-image-wrap {
+		max-width: 1140px;
+		margin: 0 auto;
+	}
+	#footer-image-center {
+		margin-bottom: -1px; /* fix for image rendering bug */
+	}
+	.footer {
+		max-width: 1140px;
+		margin: 0 auto;
+		z-index: 70;
+	}
 	#main {
 		padding: 0 2% 2em;
 	}
@@ -1690,8 +1702,15 @@ BOX SHADOWS
 		.widget {
 			.boxShadow( none );
 		}
-		#main {
+		#inner-content {
 			.boxShadow( 0, 0, 4px, 0, rgba(0,0,0,0.3) );
+		}
+		#footer-image-wrap {
+			.boxShadow( 0, 4px, 4px, 0, rgba(0,0,0,0.3) );
+			margin-top: -4px; /* close up the gap in the shadows on the side */
+		}
+		#inner-content {
+			padding-bottom: 4px; /* cancel out the effect of the negative margin in the footer wrap */
 		}
 	}
 	.wp-caption img,

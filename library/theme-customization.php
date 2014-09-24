@@ -62,22 +62,23 @@ function theme_customization_additions( $wp_customize ) {
 		'type'		=> 'radio',
 		'choices'	=> array(
 			'sidebar-style-boxes'	=> 'Floating sidebar',
-			'sidebar-style-column'	=> 'Columns'
+			'sidebar-style-column'	=> 'One column'
 		)
 	)));
 	
 	// nav location
 	$wp_customize->add_setting( 'nav_location', array(
-		'default'     => 'nav-below-header'
+		'default'     => 'nav-below-header nav-style-tabs'
 	));
 	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'nav_location', array(
-		'label'		=> 'Navigation bar location',
+		'label'		=> 'Navigation bar location and style',
 		'section'	=> 'layout_section',
 		'settings'	=> 'nav_location',
 		'type'		=> 'radio',
 		'choices'	=> array(
-			'nav-below-header'	=> 'Below header',
-			'nav-above-header'	=> 'Fixed at top of window'
+			'nav-below-header nav-style-tabs'	=> 'Below header (tabs)',
+			'nav-below-header nav-style-bar'	=> 'Below header (bar)',
+			'nav-above-header nav-style-bar'	=> 'Fixed at top of window'
 		)
 	)));
 	
@@ -154,8 +155,8 @@ function theme_customization_additions( $wp_customize ) {
 			'default' => '#ffffff',
 			'active_callback' => 'customizer_callback_is_custom_color_scheme_and_not_column_sidebar'
 		),
-		'main_bg_color' => array(
-			'label' => 'Main content background color',
+		'page_bg_color' => array(
+			'label' => 'Page background color',
 			'default' => '#ffffff',
 			'active_callback' => 'customizer_callback_is_custom_color_scheme_and_column_sidebar'
 		)
@@ -593,7 +594,7 @@ add_action( 'login_enqueue_scripts', 'login_customization_styles', 1000 );
 function customization_styles( $is_login = false ) {
 	
 	$getvars = array();
-	$mod_names = array('bg_pattern', 'accent_font', 'body_font', 'primary_bg_color', 'header_bg_color', 'sidebar_header_bg_color', 'sidebar_bg_color', 'footer_bg_color', 'nav_bg_color', 'main_bg_color', 'accent_text_color', 'text_link_color', 'header_height', 'p_line', 'p_size');
+	$mod_names = array('bg_pattern', 'accent_font', 'body_font', 'primary_bg_color', 'header_bg_color', 'sidebar_header_bg_color', 'sidebar_bg_color', 'footer_bg_color', 'nav_bg_color', 'page_bg_color', 'accent_text_color', 'text_link_color', 'header_height', 'p_line', 'p_size');
 	foreach( $mod_names as $mod_name ) {
 		$mod = get_theme_mod( $mod_name, false );
 		if ( $mod ) $getvars[$mod_name] = $mod;
@@ -623,10 +624,8 @@ function customizer_callback_is_parallax() {
 }
 function customizer_callback_show_nav_bg_color() {
 	if ( !customizer_callback_is_custom_color_scheme() ) return false;
-	$nav_loc = get_theme_mod( 'nav_location', 'nav-below-header' );
-	$sidebar_style = get_theme_mod( 'sidebar_style', 'sidebar-style-boxes' );
-	if ( $nav_loc == 'nav-above-header' ||
-	 $nav_loc == 'nav-below-header' && $sidebar_style == 'sidebar-style-column' ) {
+	$nav_loc = get_theme_mod( 'nav_location', 'nav-below-header nav-style-tabs' );
+	if ( strpos( $nav_loc, 'nav-style-bar' ) !== false ) {
 		return true;
 	} else return false;
 }
