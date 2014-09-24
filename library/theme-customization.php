@@ -343,7 +343,8 @@ function theme_customization_additions( $wp_customize ) {
 		'priority'	=> 10,
 		'choices'	=> array(
 			'polaroid'	=> 'Polaroid',
-			'parallax' => 'Parallax'
+			'parallax' => 'Parallax',
+			'slider-header' => 'Homepage slideshow'
 		)
 	)));
 	
@@ -566,6 +567,16 @@ function theme_customization_additions( $wp_customize ) {
 }
 add_action( 'customize_register', 'theme_customization_additions' );
 
+
+function modify_header_photo_control() {
+	// remove the slider header option if metaslider is not enabled
+	global $wp_customize;
+	$control = $wp_customize->get_control('header_photo_style');
+	if ( !is_plugin_active( 'ml-slider/ml-slider.php' ) ) {
+		unset( $control->choices['slider-header'] );
+	}
+}
+add_action( 'admin_init', 'modify_header_photo_control' );
 
 $header_photo_func_count = 0;
 function customize_header_image_control_library_tab_handler() {
