@@ -668,6 +668,10 @@ function show_social_media_icons() {
 				></a><?php
 			}
 		}
+		$option_value = get_theme_mod( 'show_rss_icon' );
+		if ( $option_value ) {
+			?><a class="icon-feed" href="<?php bloginfo('rss2_url') ?>" title="Blog RSS feed"></a><?php
+		}
 		?>
 	</div>
 	<?php

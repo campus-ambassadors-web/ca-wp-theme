@@ -39,7 +39,7 @@
 	// classes to add to the body
 	$class_options = array( get_theme_mod('sidebar_style', 'sidebar-style-boxes'), get_theme_mod('nav_location', 'nav-below-header'), get_theme_mod('header_photo_style', 'polaroid'), get_theme_mod('parallax_fade', 'parallax-fade-none' ), ( get_theme_mod('bg_pattern', 'none') == 'none' ? 'bg-pattern-none' : '' ) );
 	// efficiently add options based on checkboxes
-	$class_options_cbs = array( 'rounded_corners', 'box_shadows', 'text_shadows', 'image_borders' );
+	$class_options_cbs = array( 'rounded_corners', 'box_shadows', 'text_shadows', 'image_borders', 'responsive_galleries' );
 	foreach ( $class_options_cbs as $option_name ) {
 		$use_option = get_theme_mod( $option_name, false );
 		if ( $use_option ) array_push( $class_options, str_replace( '_', '-', $option_name ) );

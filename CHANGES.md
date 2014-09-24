@@ -1,3 +1,8 @@
+#### 1.4.0
+* Added RSS feed icon next to social media icons
+* Added gallery support and combined it with fancybox
+* Added option to make galleries always flow well despite the window width
+
 #### 1.3.5
 * Login page css fix
 * Added font face and style choices for paragraph text

@@ -21,6 +21,7 @@ Please let me know if you use this theme--you certainly have permission, but I'm
 * Extra **TinyMCE editor features**: insert a button, insert a "clearing break/newline" insert a revealable section (hidden at first, shows at the click of a button)
 * **Updates automatically** if you have the [github-updater](https://github.com/afragen/github-updater) plugin installed
 * Designed to work well with the following awesome **plugins**: [Page Builder by Site Origin](https://wordpress.org/plugins/siteorigin-panels/), [Black Studio TinyMCE Widget](https://wordpress.org/plugins/black-studio-tinymce-widget/), [MetaSlider](https://wordpress.org/plugins/ml-slider/), [Google Calendar Events](https://wordpress.org/plugins/google-calendar-events/), [Image Widget](https://wordpress.org/plugins/image-widget/)
+* Makes ordinary wordpress image galleries into **swanky fancybox-powered** galleries
 * Large amount of theme style/layout customizability (see the next section)
 
 ### Theme Customizability

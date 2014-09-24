@@ -501,45 +501,65 @@ function theme_customization_additions( $wp_customize ) {
 			'settings'	=> $option_id
 		)));
 	}
-	
-	
-	/////////////////////////////////////////////
-	// Google Analytics
-	/////////////////////////////////////////////
-	$wp_customize->add_section( 'google_analytics_section', array(
-		'title'		=> __( 'Google Analytics', 'bonestheme' ),
-		'description' => 'Google Analytics can track visitor statistics. For more information, see the <a href="http://www.google.com/analytics/" target="_blank">analytics website</a>.',
-		'priority'	=> 150
+	// rss feed icon
+	$wp_customize->add_setting( 'show_rss_icon', array(
+		'default'	=> false
 	));
+	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'show_rss_icon', array(
+		'label'		=> 'Show RSS feed icon',
+		'section'	=> 'social_media_section',
+		'settings'	=> 'show_rss_icon',
+		'type'		=> 'checkbox'
+	)));
+	
+	
+	/////////////////////////////////////////////
+	// Misc Options
+	/////////////////////////////////////////////
+	$wp_customize->add_section( 'misc_section', array(
+		'title'		=> __( 'Misc. Options', 'bonestheme' ),
+		'priority'	=> 500
+	));
+	
+	// google analytics
 	$wp_customize->add_setting( 'google_analytics_id', array(
 		'default'	=> '',
 		'sanitize_callback' => 'esc_html'
 	));
 	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'google_analytics_id', array(
-		'label'		=> 'Tracking ID (UA-########-#)',
-		'section'	=> 'google_analytics_section',
-		'settings'	=> 'google_analytics_id'
+		'label'		=> 'Google Analytics Tracking ID',
+		'description' => 'Google Analytics can track visitor statistics. <a href="http://www.google.com/analytics/" target="_blank">More information here</a>. The ID is in the format UA-########-#',
+		'section'	=> 'misc_section',
+		'settings'	=> 'google_analytics_id',
+		'priority'	=> 15
 	)));
 	
-	
-	/////////////////////////////////////////////
-	// Sidebar options
-	/////////////////////////////////////////////
-	$wp_customize->add_section( 'sidebar_options_section', array(
-		'title'		=> __( 'Sidebar Options', 'bonestheme' ),
-		'priority'	=> 160
-	));
+	// sidebar options
 	$wp_customize->add_setting( 'number_of_sidebars', array(
 		'default' => 'one'
 	));
 	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'number_of_sidebars', array(
-		'section'	=> 'sidebar_options_section',
+		'label'		=> 'Sidebar',
+		'section'	=> 'misc_section',
 		'settings'	=> 'number_of_sidebars',
 		'type'		=> 'radio',
 		'choices'	=> array(
 			'one'		=> 'Use one sidebar throughout the site',
 			'two'		=> 'Use a separate sidebar for posts'
-		)
+		),
+		'priority'	=> 10
+	)));
+	
+	// gallery flow
+	$wp_customize->add_setting( 'responsive_galleries', array(
+		'default' => true
+	));
+	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'responsive_galleries', array(
+		'label'		=> 'Ignore \'columns\' for galleries and make them flow well for any size screen',
+		'section'	=> 'misc_section',
+		'settings'	=> 'responsive_galleries',
+		'type'		=> 'checkbox',
+		'priority'	=> 5
 	)));
 	
 }

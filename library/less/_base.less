@@ -806,20 +806,56 @@ p > a.more-link:first-child {
 
 /* image gallery styles */
 .gallery {
-
 	dl {
-
+		float: left;
+		position: relative;
+		margin: 0;
 		a {}
 
-		img {}
-
+		img {
+			margin-bottom: 0;
+		}
 	}
 
-	dt {}
+	dt {
+		line-height: 0;
+	}
 
-	dd {}
+	dd {
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		text-align: center;
+		width: 100%;
+		height: 0;
+		margin: 0;
+		padding: 0 0.4em;
+		background: fadeout( black, 25% );
+		color: #ddd;
+		pointer-events: none;
+		overflow: hidden;
+		/* vertically align text center, for smart browsers */
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		
+		transition: height 0.5s, padding 0.5s;
+	}
+	dl:hover dd {
+		height: 100%;
+		padding: 0.4em;
+	}
 
 } /* end .gallery */
+.responsive-galleries .gallery {
+	br {
+		display: none;
+	}
+	br:last-child {
+		display: block;
+	}
+}
+
 
 /* gallery caption styles */
 .gallery-caption {}
@@ -1580,6 +1616,9 @@ ROUNDED CORNERS
 	.flatlink {
 		.borderRadius( 4px );
 	}
+	.gallery img {
+		.borderRadius( 0 );
+	}
 }
 
 
@@ -1635,14 +1674,8 @@ BOX SHADOWS
 	.wp-caption {
 		.boxShadow( 2px, 2px, 4px, 0, rgba(0, 0, 0, 0.3) );
 	}
-	.wp-caption img {
-		.boxShadow( none );
-	}
 	.widget {
 		.boxShadow( 0, 1px, 4px, 0px, rgba(0,0,0,0.3) );
-	}
-	.panel.widget {
-		.boxShadow( none );
 	}
 	.gce-qtip {
 		.boxShadow( 0, 1px, 10px, 0, rgba(0,0,0,0.8) );
@@ -1661,6 +1694,9 @@ BOX SHADOWS
 			.boxShadow( 0, 0, 4px, 0, rgba(0,0,0,0.3) );
 		}
 	}
+	.wp-caption img,
+	.gallery img,
+	.panel.widget,
 	.no-shadow {
 		.boxShadow( none ) !important;
 	}
@@ -1731,5 +1767,8 @@ IMAGE BORDERS
 		border: 0;
 		left: auto;
 		margin-top: auto;
+	}
+	.gallery img {
+		border: none;
 	}
 }
