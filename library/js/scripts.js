@@ -127,7 +127,7 @@ $(document).ready(function($) {
 			// enable captions in fancybox
 			var dd = $(this).find('dd');
 			if ( dd ) {
-				$(this).find('a').attr('title', dd.text());
+				$(this).find('a').attr('title', dd.text().trim());
 			}
 			// add all links in this caption to a group and call fancybox
 			$(this).find('a').attr('data-fancybox-group', index).fancybox();
