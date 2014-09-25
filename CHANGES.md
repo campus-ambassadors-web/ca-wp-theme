@@ -1,3 +1,6 @@
+#### 1.4.1
+* Style fixes for calendar feed list and horizontal overflows
+
 #### 1.4.0
 * Added RSS feed icon next to social media icons
 * Added gallery support and combined it with fancybox

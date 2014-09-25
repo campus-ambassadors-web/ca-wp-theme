@@ -47,6 +47,7 @@ body {
 	color: black;
 	min-width: 320px;
 	margin: 0 auto;
+	overflow-x: hidden;
 }
 #container {
 	/* background-color: @primary-bg-color;
@@ -238,7 +239,6 @@ h5, .h5 {
 *********************/
 
 #homepage-slider .metaslider {
-	overflow: hidden;
 	max-width: 1140px !important;
 }
 
@@ -1520,12 +1520,12 @@ view.
 }
 
 .event-date-month {
+	font-family: @header-serif;
 	font-size: 100%;
 	float: left;
 	text-transform: uppercase;
 	text-align: center;
 	line-height: 1;
-	margin-top: -0.2em;
 	
 	.event-date {
 		font-size: 190%;
@@ -1543,7 +1543,10 @@ view.
 }
 .event-thru {
 	font-size: 70%;
-	margin: 0.8em 0;
+	margin: 0.7em 0 0.8em;
+	padding: 0.3em 0;
+	border: 1px dotted white;
+	border-width: 1px 0;
 }
 .event-description {
 	font-size: 90%;

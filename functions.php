@@ -709,10 +709,12 @@ function add_suggest_box_to_gce_feed() {
 function do_suggested_event_builder_code() {
 	$suggested_code = <<<EOT
 <div class="event-date-month">
+<div class="event-day">[start-custom format="D"]</div>
 <div class="event-date">[start-custom format="d"]</div>
 <div class="event-month">[start-custom format="M"]</div>
 [if-multi-day]
 <div class="event-thru">THRU</div>
+<div class="event-day">[end-custom format="D"]</div>
 <div class="event-date">[end-custom format="d"]</div>
 <div class="event-month">[end-custom format="M"]</div>
 [/if-multi-day]

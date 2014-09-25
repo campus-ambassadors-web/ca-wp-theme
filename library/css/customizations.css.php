@@ -221,6 +221,9 @@ textarea {
 	.event-title,
 	.event-date-month {
 		color: contrast( @background-color, $accent_text_color, @bright-accent-color );
+		.event-thru {
+			border-color: contrast( @background-color, $accent_text_color, @bright-accent-color );
+		}
 	}
 }
 .panel-grid .widget > h3:first-child { color: $accent_text_color; }
