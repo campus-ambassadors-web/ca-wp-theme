@@ -5,6 +5,7 @@
 * Changed multi-column layout style to single-column style and updated color schemes
 * Added an optional image slider to the front page
 * Added a 'none' option for header photos
+* Improved Google Calendar Events styles
 
 #### 1.3.5
 * Login page css fix

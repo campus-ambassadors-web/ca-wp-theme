@@ -86,6 +86,7 @@ $(document).ready(function($) {
 	});
 	$(window).resize( function() {
 		adjustFixedHeader();
+		adjustGoogleCalendar();
 	});
 	function adjustFixedHeader() {
 		if ( $('#wpadminbar').length > 0 && $('#wpadminbar').css('position') !== 'fixed' ) {
@@ -96,6 +97,29 @@ $(document).ready(function($) {
 	}
 	adjustFixedHeader();
  	
+	
+	// adjust calendar grid based on its width
+	function adjustGoogleCalendar() {
+		$('table.gce-calendar').each( function() {
+			$(this).toggle(false);
+			table_width = $(this).parent().innerWidth();
+			$(this).toggle(true);
+			$(this).find('td').css({
+				'font-size':	table_width / 20 + 'px',
+				'padding':		table_width / 30 + 'px'
+			});
+			$('.gce-change-month').addClass('flatlink');
+			$(this).data('adjusted', true);
+		});
+	}
+	adjustGoogleCalendar();
+	// watch the calendar to see if it's reloaded. update the height if so
+	window.setInterval( function() {
+		if ( $('table.gce-calendar').data('adjusted') !== true ) {
+			adjustGoogleCalendar();
+		}
+	}, 1/60 );
+	
 	
 	// apply fancybox to galleries
 	$('.gallery').each( function( index ) {

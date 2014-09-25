@@ -348,6 +348,9 @@ hr {
 .gce-event-where, .gce-event-when {
 	color: desaturate( lighten( $accent_text_color, 15% ), 15% );
 }
+td.gce-has-events {
+	color: $accent_text_color !important;
+}
 
 .bones_page_navi li,
 .flatlink {

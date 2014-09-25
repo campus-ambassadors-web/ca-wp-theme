@@ -1491,9 +1491,58 @@ view.
 /*********************
 14. GOOGLE CALENDAR PLUGIN STYLES
 *********************/
-gce-month-title {
-	font-size: 150%;
+.gce-widget-grid .gce-calendar {
+	.gce-caption {
+		font-family: @header-serif;
+		font-size: 150%;
+		position: relative;
+	}
+	.gce-next,
+	.gce-prev {
+		font-size: 80%;
+		display: block;
+		width: auto;
+		position: absolute;
+		top: 0;
+		a {
+			display: block;
+			padding: 0 0.8em 0.2em;
+		}
+	}
+	.gce-next { right: 0 }
+	.gce-prev { left: 0 }
+	.gce-change-month {
+		margin-bottom: 0.2em;
+	}
 }
+.sidebar .gce-widget-grid .gce-calendar .gce-caption {
+	font-size: 125%;
+}
+
+.event-date-month {
+	font-size: 100%;
+	float: left;
+	text-transform: uppercase;
+	text-align: center;
+	font-family: arial;
+	line-height: 1;
+	margin-top: 0.2em;
+	span {
+		color: fadeout( black, 50% ) !important;
+	}
+	
+	.event-date {
+		font-size: 190%;
+	}
+}
+.event-title {
+	font-family: @header-serif;
+	font-size: 130%;
+}
+.gce-list-event {
+	margin-left: 3em;
+}
+
 
 #container a.gce-change-month {
 	border-bottom: none;
@@ -1519,12 +1568,11 @@ gce-month-title {
 		.gce-list li:first-child {
 			margin-top: 0;
 		}
-		.gce-widget-list {
-			ul { list-style: none }
+		.gce-list {
+			list-style: none;
 			li .gce-list-title {
-				border-top: 1px dotted #ccc !important;
-				margin-top: -1em !important;
-				padding-top: 0.5em !important;
+				border-top: 1px solid fadeout( black, 80% ) !important;
+				padding-top: 1em !important;
 			}
 			li:first-child .gce-list-title {
 				margin-top: 0 !important;
