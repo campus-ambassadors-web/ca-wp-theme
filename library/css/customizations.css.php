@@ -217,7 +217,9 @@ textarea {
 .accentColors( @background-color ) {
 	h1, .h1,
 	h2, .h2,
-	b, blockquote {
+	b, blockquote,
+	.event-title,
+	.event-date-month {
 		color: contrast( @background-color, $accent_text_color, @bright-accent-color );
 	}
 }
@@ -320,6 +322,10 @@ hr {
 	.widget {
 		background-color: $sidebar_bg_color;
 		color: contrast( $sidebar_bg_color, black, #ddd );
+		.accentColors( $sidebar_bg_color );
+	}
+	.gce-list li {
+		border-top-color: contrast( $sidebar_bg_color, fadeout( black, 80% ), fadeout( white, 80% ) ) !important;
 	}
 }
 
@@ -342,15 +348,11 @@ hr {
 #inner-footer {
 	background-color: $footer_bg_color;
 }
-.gce-list-event, .gce-tooltip-event {
-	color: $accent_text_color;
-}
-.gce-event-where, .gce-event-when {
-	color: desaturate( lighten( $accent_text_color, 15% ), 15% );
-}
+
 td.gce-has-events {
 	color: $accent_text_color !important;
 }
+
 
 .bones_page_navi li,
 .flatlink {
@@ -397,9 +399,9 @@ td.gce-has-events {
 		.widget {
 			color: contrast( $primary_bg_color, black, #ddd );
 			.accentColors( $primary_bg_color );
-			.gce-list-event, .gce-tooltip-event {
-				color: contrast( $primary_bg_color, $accent_text_color, @bright-accent-color );
-			}
+		}
+		.gce-list li {
+			border-top-color: contrast( $primary_bg_color, fadeout( black, 80% ), fadeout( white, 80% ) ) !important;
 		}
 	}
 	#container { background-color: $page_bg_color; }

@@ -6,6 +6,7 @@
 * Added an optional image slider to the front page
 * Added a 'none' option for header photos
 * Improved Google Calendar Events styles
+* Added recommended Event Builder code to GCE feed edit page
 
 #### 1.3.5
 * Login page css fix

@@ -699,6 +699,39 @@ function help_dashboard_widget_function( $post, $callback_args ) {
 }
 
 
+/************* ADD A META BOX TO GOOGLE CALENDAR EVENTS EDIT PAGES *****************/
+
+function add_suggest_box_to_gce_feed() {
+	if ( is_plugin_active( 'google-calendar-events/google-calendar-events.php' ) ) {
+		add_meta_box( 'suggested_event_builder_code', 'Suggested Event Builder Code', 'do_suggested_event_builder_code', 'gce_feed', 'normal', 'high' );
+	}
+}
+function do_suggested_event_builder_code() {
+	$suggested_code = <<<EOT
+<div class="event-date-month">
+<div class="event-date">[start-custom format="d"]</div>
+<div class="event-month">[start-custom format="M"]</div>
+[if-multi-day]
+<div class="event-thru">THRU</div>
+<div class="event-date">[end-custom format="d"]</div>
+<div class="event-month">[end-custom format="M"]</div>
+[/if-multi-day]
+</div>
+
+<div class="gce-list-event gce-tooltip-event">
+<div class="event-title">[event-title]</div>
+<div class="event-timeplace">[location] [if-not-all-day]<br />[start-time] &ndash; [end-time] [/if-not-all-day] </div>
+[if-description]
+<div class="event-description">[description]</div>
+[/if-description]
+</div>
+EOT;
+	?><h4>For the best visual style and integration with the Campus Ambassadors theme, copy and paste the following code into the Event Builder panel above (using the Text tab)</h4>
+	<textarea style="width:100%; height: 8em" onclick="this.focus();this.select()" readonly="readonly"><?php echo htmlspecialchars( $suggested_code ) ?></textarea>
+	<?php
+}
+add_action('add_meta_boxes', 'add_suggest_box_to_gce_feed');
+
 /************* ROW STYLES FOR PAGE BUILDER *****************/
 
 function custom_panels_row_styles($styles) {
