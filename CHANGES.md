@@ -1,3 +1,6 @@
+#### 1.4.2
+* CSS bugfixes
+
 #### 1.4.1
 * Style fixes for calendar feed list and horizontal overflows
 
