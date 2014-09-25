@@ -9,7 +9,13 @@ Template Name: No Sidebar
 			<div id="content">
 
 				<div id="inner-content" class="wrap clearfix">
-
+					
+					<?php //homepage slider
+					if ( is_front_page() ) {
+						show_homepage_slider();
+					}
+					?>
+					
 						<div id="main" class="twelvecol first clearfix" role="main">
 
 							<?php if (have_posts()) : while (have_posts()) : the_post(); ?>

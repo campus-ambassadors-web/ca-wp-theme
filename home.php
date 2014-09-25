@@ -3,7 +3,13 @@
 			<div id="content">
 
 				<div id="inner-content" class="wrap clearfix">
-
+					
+					<?php //homepage slider
+					if ( is_home() && is_front_page() ) {
+						show_homepage_slider();
+					}
+					?>
+					
 						<div id="main" class="eightcol first clearfix" role="main">
 							<?php
 							// display the page content before showing the blog

@@ -3,6 +3,8 @@
 * Added gallery support and combined it with fancybox
 * Added option to make galleries always flow well despite the window width
 * Changed multi-column layout style to single-column style and updated color schemes
+* Added an optional image slider to the front page
+* Added a 'none' option for header photos
 
 #### 1.3.5
 * Login page css fix

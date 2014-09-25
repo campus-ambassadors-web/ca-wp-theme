@@ -327,7 +327,7 @@ function theme_customization_additions( $wp_customize ) {
 	// header photo style
 	$wp_customize->add_section( 'header_photo_section', array(
 		'title'      => __( 'Header Photos', 'bonestheme' ),
-		'description' => 'Add up to four photos to use as decoration in the header.',
+		'description' => 'Add some photos to use as decoration in the header.',
 		'panel'		=> 'theme_style_panel',
 		'priority'   => 70
 	));
@@ -344,9 +344,10 @@ function theme_customization_additions( $wp_customize ) {
 		'choices'	=> array(
 			'polaroid'	=> 'Polaroid',
 			'parallax' => 'Parallax',
-			'slider-header' => 'Homepage slideshow'
+			'header-photos-none' => 'None'
 		)
 	)));
+	
 	
 	// fade out parallax image
 	$wp_customize->add_setting( 'parallax_fade', array(
@@ -393,6 +394,7 @@ function theme_customization_additions( $wp_customize ) {
 			'label'		=> 'Header image ' . ($index+1),
 			'section'	=> 'header_photo_section',
 			'settings'	=> $id,
+			'active_callback' => 'customizer_callback_use_header_photos', 
 			'priority'	=> 30
 		));
 		$wp_customize->add_control( $control );
@@ -458,6 +460,27 @@ function theme_customization_additions( $wp_customize ) {
 		array_push( $footer_art_values, get_theme_mod( $control->id ) );
 	}
 	
+	
+	/////////////////////////
+	// Homepage slider
+	$wp_customize->add_section( 'front_page_slider_section', array(
+		'title'		=> __( 'Front Page Slideshow', 'bonestheme' ),
+		'description' => 'Put a big beautiful slideshow on the front page.',
+		'priority'	=> 140
+	));
+	$wp_customize->add_setting( 'front_slider_num', array(
+		'default'	=> 0
+	));
+	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'front_slider_num', array(
+		'description' => 'You will need to set the width of the slider you choose to 1140px. Make this change on the <a href="' . admin_url( 'admin.php?page=metaslider' ) . '" target="_blank">Meta Slider</a> page.',
+		'section'	=> 'front_page_slider_section',
+		'settings'	=> 'front_slider_num',
+		'type'		=> 'select',
+		'priority'	=> 15,
+		'choices'	=> array(
+			0 => 'None'
+		) // blank for now but we'll fill it later.
+	)));
 	
 	/////////////////////////
 	// Social media icons
@@ -568,15 +591,37 @@ function theme_customization_additions( $wp_customize ) {
 add_action( 'customize_register', 'theme_customization_additions' );
 
 
-function modify_header_photo_control() {
+function add_options_to_slider_control() {
+	if ( get_current_screen()->base != 'customize' ) return;
 	// remove the slider header option if metaslider is not enabled
 	global $wp_customize;
-	$control = $wp_customize->get_control('header_photo_style');
+	$slider_chooser_control = $wp_customize->get_control('front_slider_num');
 	if ( !is_plugin_active( 'ml-slider/ml-slider.php' ) ) {
-		unset( $control->choices['slider-header'] );
+		$slider_chooser_control->description = "The Meta Slider plugin must be installed and activated in order to use this feature.";
+	} else {
+		// populate the slider chooser with options
+		// get list of all sliders
+		$args = array(
+			'post_type' => 'ml-slider',
+			'post_status' => 'publish',
+			'suppress_filters' => 1, // wpml, ignore language filter
+			'order' => 'ASC',
+			'posts_per_page' => -1
+		);
+		$args = apply_filters( 'metaslider_all_meta_sliders_args', $args );
+		$all_sliders = get_posts( $args );
+		if ( empty( $all_sliders ) ) {
+			$slider_chooser_control->description = "You haven't made any sliders! <a href='" . admin_url( 'admin.php?page=metaslider' ) . "'>Add one here</a> then come back to this page.";
+		} else {
+			foreach( $all_sliders as $slideshow ) {
+				$slider_chooser_control->choices[ $slideshow->ID ] = $slideshow->post_title;
+			}
+		}
 	}
 }
-add_action( 'admin_init', 'modify_header_photo_control' );
+add_action( 'current_screen', 'add_options_to_slider_control' );
+
+
 
 $header_photo_func_count = 0;
 function customize_header_image_control_library_tab_handler() {
@@ -628,6 +673,15 @@ function login_customization_styles() {
 }
 
 
+function show_homepage_slider() {
+	$slider_id = get_theme_mod( 'front_slider_num', false );
+	if ( $slider_id ) {
+		echo '<div id="homepage-slider">';
+		echo do_shortcode( '[metaslider id=' . $slider_id . ']' );
+		echo '</div>';
+	}
+}
+
 
 function customizer_callback_is_parallax() {
 	$header_photo_style = get_theme_mod( 'header_photo_style', 'polaroid' );
@@ -663,6 +717,10 @@ function customizer_callback_is_custom_footer_and_custom_color_scheme() {
 function customizer_callback_is_custom_color_scheme() {
 	$color_scheme = get_theme_mod( 'color_preset', 'crimson_nightlife' );
 	return ( $color_scheme == 'custom' );
+}
+function customizer_callback_use_header_photos() {
+	$header_photo_style = get_theme_mod( 'header_photo_style', 'polaroid' );
+	return ( $header_photo_style == 'polaroid' || $header_photo_style == 'parallax' );
 }
 
 
