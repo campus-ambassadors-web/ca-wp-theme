@@ -1,3 +1,6 @@
+#### 1.4.3
+* Javascript bugfix which caused issued for Firefox
+
 #### 1.4.2
 * CSS bugfixes
 
