@@ -195,7 +195,7 @@ a {
 		color: @link-hover-color;
 	}
 	&:active {
-		color: @likn-active-color;
+		color: @link-active-color;
 	}
 }
 
@@ -590,11 +590,48 @@ if ( isset( $_GET['body_font'] ) ) {
 }
 
 
+
 ////////////////////////////////////////////
 // accent_font /////////////////////////////
 ////////////////////////////////////////////
 if ( isset( $_GET['accent_font'] ) ) {
 	$accent_font = $_GET['accent_font'];
+	
+	?>
+	.setAccentFonts( @header-font; @link-font ) {
+		h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5,
+		.entry-content blockquote,
+		.widget_black_studio_tinymce .textwidget blockquote,
+		.gce-widget-grid .gce-calendar .gce-caption,
+		.event-date-month,
+		.event-title {
+			font-family: @header-font, "Palatino Linotype", "Book Antiqua", Palatino, serif;
+		}
+		
+		#container #mobile-nav ul li a,
+		#container .child-nav h2 a,
+		#container .child-nav ul a,
+		#main-nav ul li a {
+			font-family: @link-font, "Palatino Linotype", "Book Antiqua", Palatino, serif;
+		}
+	}
+	
+	.unboldAccentFonts() {
+		h1, h2, h3, h4, h5, .h1, .h2, .h3, .h4, .h5,
+		#mobile-nav a, .child-nav a, #main-nav a {
+			font-weight: 400 !important;
+		}
+	}
+	
+	.adjustBlockquoteFontSize( @blockquote-font-size ) {
+		/* adjust font size of blockquotes */
+		.widget_black_studio_tinymce .textwidget {
+			blockquote {
+				font-size: @blockquote-font-size;
+			}
+		}
+	}
+	<?php
 	
 	if ( $accent_font == 'palatino' ) {
 			// do nothing. this is the default.
@@ -603,207 +640,74 @@ if ( isset( $_GET['accent_font'] ) ) {
 	/* ------------------ serif ---------------- */
 	} else if ( $accent_font == 'lora' ) {
 		?>
-		@font-face {
-		  font-family: 'accent_header_and_link_font';
-		  font-style: normal;
-		  font-weight: 700;
-		  src: local('Lora Bold'), local('Lora-Bold'), url(http://fonts.gstatic.com/s/lora/v8/P18Nsu9EiYldSvHIj_0e5w.woff2) format('woff2');
-		  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
-		}
-		@font-face {
-		  font-family: 'accent_header_and_link_font';
-		  font-style: italic;
-		  font-weight: 400;
-		  src: local('Lora Italic'), local('Lora-Italic'), url(http://fonts.gstatic.com/s/lora/v8/_RSiB1sBuflZfa9fxV8cOg.woff2) format('woff2');
-		  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
-		}
-		@font-face {
-		  font-family: 'accent_header_and_link_font';
-		  font-style: normal;
-		  font-weight: 400;
-		  src: local('Lora'), local('Lora-Regular'), url(http://fonts.gstatic.com/s/lora/v8/4vqKRIwnQQGUQQh-PnvdMA.woff2) format('woff2');
-		  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
-		}
+		@import url(http://fonts.googleapis.com/css?family=Lora:400,400italic,700);
+		.setAccentFonts( Lora, Lora );
 		<?php
 	} else if ( $accent_font == 'josefin_slab' ) {
 		?>
-		@font-face {
-		  font-family: 'accent_header_and_link_font';
-		  font-style: normal;
-		  font-weight: 400;
-		  src: local('Josefin Slab'), local('JosefinSlab'), url(http://fonts.gstatic.com/s/josefinslab/v5/46aYWdgz-1oFX11flmyEfegdm0LZdjqr5-oayXSOefg.woff2) format('woff2');
-		  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
-		}
-		/* latin */
-		@font-face {
-		  font-family: 'accent_header_and_link_font';
-		  font-style: italic;
-		  font-weight: 400;
-		  src: local('Josefin Slab Italic'), local('JosefinSlab-Italic'), url(http://fonts.gstatic.com/s/josefinslab/v5/etsUjZYO8lTLU85lDhZwUhMBlNeli-0RcAdOFWWLdxQ.woff2) format('woff2');
-		  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
-		}
-		h1, h2, h3, h4, h5, .h1, .h2, .h3, .h4, .h5,
-		#mobile-nav a, .child-nav a, #main-nav a {
-			font-weight: 400 !important;
-		}
-		/* adjust font size */
-		.entry-content, .commentlist .comment_content, .widget_black_studio_tinymce .textwidget {
-			blockquote {
-				font-size: 1.2em;
-			}
-		}
+		@import url(http://fonts.googleapis.com/css?family=Josefin+Slab:400,400italic);
+		.setAccentFonts( "Josefin Slab", "Josefin Slab" );
+		.unboldAccentFonts();
+		.adjustBlockquoteFontSize( 1.2em );
 		<?php
 	} else if ( $accent_font == 'alegreya_sc' ) {
 		?>
-		@font-face {
-		  font-family: 'accent_header_font';
-		  font-style: normal;
-		  font-weight: 400;
-		  src: local('Alegreya SC'), local('AlegreyaSC-Regular'), url(http://fonts.gstatic.com/s/alegreyasc/v6/-74JUGs8W14C5cCBFRS30-L2WfuF7Qc3ANwCvwl0TnA.woff2) format('woff2');
-		  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
-		}
-		@font-face {
-		  font-family: 'accent_header_font';
-		  font-style: italic;
-		  font-weight: 400;
-		  src: local('Alegreya SC Italic'), local('AlegreyaSC-Italic'), url(http://fonts.gstatic.com/s/alegreyasc/v6/GOqmv3FLsJ2r6ZALMZVBmlGX6R4v-P3fCrxUne8Jf1A.woff2) format('woff2');
-		  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
-		}
-		h1, h2, h3, h4, h5, .h1, .h2, .h3, .h4, .h5,
-		#mobile-nav a, .child-nav a, #main-nav a {
-			font-weight: 400 !important;
-		}
+		@import url(http://fonts.googleapis.com/css?family=Alegreya+SC:400,400italic);
+		.setAccentFonts( "Alegreya SC", "Palatino Linotype" );
+		.unboldAccentFonts();
 		<?php
 	}
 	
 	/* ------------------ sans serif ---------------- */
 	else if ( $accent_font == 'cabin' ) {
 		?>
-		@font-face {
-		  font-family: 'accent_header_and_link_font';
-		  font-style: normal;
-		  font-weight: 400;
-		  src: local('Cabin Regular'), local('Cabin-Regular'), url(http://fonts.gstatic.com/s/cabin/v6/yQOMOX5hR0-6LTD879t-PQ.woff2) format('woff2');
-		  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
-		}
-		/* latin */
-		@font-face {
-		  font-family: 'accent_header_and_link_font';
-		  font-style: normal;
-		  font-weight: 700;
-		  src: local('Cabin Bold'), local('Cabin-Bold'), url(http://fonts.gstatic.com/s/cabin/v6/82B-3YlzWJm8zbCrVEmc_vesZW2xOQ-xsNqO47m55DA.woff2) format('woff2');
-		  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
-		}
+		@import url(http://fonts.googleapis.com/css?family=Cabin:400,700);
+		.setAccentFonts( Cabin, Cabin );
 		<?php
 	} else if ( $accent_font == 'philosopher' ) {
 		?>
-		@font-face {
-		  font-family: 'accent_header_and_link_font';
-		  font-style: normal;
-		  font-weight: 400;
-		  src: local('Philosopher'), url(http://fonts.gstatic.com/s/philosopher/v6/OttjxgcoEsufOGSINYBGLY4P5ICox8Kq3LLUNMylGO4.woff2) format('woff2');
-		  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
-		}
-		@font-face {
-		  font-family: 'accent_header_and_link_font';
-		  font-style: normal;
-		  font-weight: 700;
-		  src: local('Philosopher Bold'), local('Philosopher-Bold'), url(http://fonts.gstatic.com/s/philosopher/v6/napvkewXG9Gqby5vwGHICIlIZu-HDpmDIZMigmsroc4.woff2) format('woff2');
-		  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
-		}
+		@import url(http://fonts.googleapis.com/css?family=Philosopher:400,700);
+		.setAccentFonts( Philosopher, Philosopher );
 		<?php
 	} else if ( $accent_font == 'quicksand' ) {
 		?>
-		@font-face {
-		  font-family: 'accent_header_font';
-		  font-style: normal;
-		  font-weight: 400;
-		  src: local('Quicksand Regular'), local('Quicksand-Regular'), url(http://fonts.gstatic.com/s/quicksand/v4/sKd0EMYPAh5PYCRKSryvW1tXRa8TVwTICgirnJhmVJw.woff2) format('woff2');
-		  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
-		}
-		/* latin */
-		@font-face {
-		  font-family: 'accent_link_font';
-		  font-style: normal;
-		  font-weight: 700;
-		  src: local('Quicksand Bold'), local('Quicksand-Bold'), url(http://fonts.gstatic.com/s/quicksand/v4/32nyIRHyCu6iqEka_hbKsugdm0LZdjqr5-oayXSOefg.woff2) format('woff2');
-		  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
-		}
+		@import url(http://fonts.googleapis.com/css?family=Quicksand:400,700);
+		.setAccentFonts( Quicksand, Quicksand );
 		h1, h2, .h1, .h2 {
 			font-weight: 400 !important;
 		}
-		h3, h4, h5, .h3, .h4, .h5, .entry-content blockquote, .widget_black_studio_tinymce .textwidget blockquote {
+		/*
+		h3, h4, h5, .h3, .h4, .h5,
+		.entry-content blockquote, .widget_black_studio_tinymce .textwidget blockquote {
 			font-family: accent_link_font;
 		}
-		/* adjust font size */
-		.entry-content, .commentlist .comment_content, .widget_black_studio_tinymce .textwidget {
-			blockquote {
-				font-size: 1.02em;
-			}
-		}
+		*/
+		.adjustBlockquoteFontSize( 1.02em );
 		<?php
 	}
 	
 	/* ------------------------ script -------------------------- */
 	else if ( $accent_font == 'bad_script' ) {
 		?>
-		@font-face {
-		  font-family: 'accent_header_and_link_font';
-		  font-style: normal;
-		  font-weight: 400;
-		  src: local('Bad Script Regular'), local('BadScript-Regular'), url(http://fonts.gstatic.com/s/badscript/v5/rL_b2ND61EQmMOJ8CRr1fiEAvth_LlrfE80CYdSH47w.woff2) format('woff2');
-		  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
-		}
-		h1, h2, h3, h4, h5, .h1, .h2, .h3, .h4, .h5,
-		#mobile-nav a, .child-nav a, #main-nav a {
-			font-weight: 400 !important;
-		}
-		/* adjust font size */
-		.entry-content, .commentlist .comment_content, .widget_black_studio_tinymce .textwidget {
-			blockquote {
-				font-size: 1.2em;
-			}
-		}
+		@import url(http://fonts.googleapis.com/css?family=Bad+Script:400);
+		.setAccentFonts( "Bad Script", "Bad Script" );
+		.unboldAccentFonts();
+		.adjustBlockquoteFontSize( 1.2em );
 		<?php
 	} else if ( $accent_font == 'lobster' ) {
 		?>
-		@font-face {
-		  font-family: 'accent_header_and_link_font';
-		  font-style: normal;
-		  font-weight: 400;
-		  src: local('Lobster'), url(http://fonts.gstatic.com/s/lobster/v9/cycBf3mfbGkh66G5NhszPQ.woff2) format('woff2');
-		  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
-		}
-		h1, h2, h3, h4, h5, .h1, .h2, .h3, .h4, .h5,
-		#mobile-nav a, .child-nav a, #main-nav a {
-			font-weight: 400 !important;
-		}
-		/* adjust font size */
-		.entry-content, .commentlist .comment_content, .widget_black_studio_tinymce .textwidget {
-			blockquote {
-				font-size: 1.2em;
-			}
-		}
+		@import url(http://fonts.googleapis.com/css?family=Lobster:400);
+		.setAccentFonts( Lobster, Lobster );
+		.unboldAccentFonts();
+		.adjustBlockquoteFontSize( 1.2em );
 		<?php
 	}
 	
 	/* ------------------------ monospace -------------------- */
 	else if ( $accent_font == 'fira_mono' ) {
 		?>
-		@font-face {
-		  font-family: 'accent_header_and_link_font';
-		  font-style: normal;
-		  font-weight: 400;
-		  src: local('Fira Mono'), local('FiraMono'), url(http://fonts.gstatic.com/s/firamono/v3/SlRWfq1zeqXiYWAN-lnG-hJtnKITppOI_IvcXXDNrsc.woff2) format('woff2');
-		  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
-		}
-		@font-face {
-		  font-family: 'accent_header_and_link_font';
-		  font-style: normal;
-		  font-weight: 700;
-		  src: local('Fira Mono Bold'), local('FiraMono-Bold'), url(http://fonts.gstatic.com/s/firamono/v3/l24Wph3FsyKAbJ8dfExTZzy24DTBG-RpCwXaYkM4aks.woff2) format('woff2');
-		  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
-		}
+		@import url(http://fonts.googleapis.com/css?family=Fira+Mono:400,700);
+		.setAccentFonts( "Fira Mono", "Fira Mono" );
 		#mobile-nav a, .child-nav a, #main-nav a {
 			font-weight: 400 !important;
 		}
@@ -813,27 +717,14 @@ if ( isset( $_GET['accent_font'] ) ) {
 	/* ------------------------- special -------------------- */
 	else if ( $accent_font == 'luckiest_guy' ) {
 		?>
-		@font-face {
-		  font-family: 'accent_header_and_link_font';
-		  font-style: normal;
-		  font-weight: 400;
-		  src: local('Luckiest Guy'), local('LuckiestGuy-Regular'), url(http://fonts.gstatic.com/s/luckiestguy/v5/5718gH8nDy3hFVihOpkY5Ogdm0LZdjqr5-oayXSOefg.woff2) format('woff2');
-		  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
-		}
-		h1, h2, h3, h4, h5, .h1, .h2, .h3, .h4, .h5,
-		#mobile-nav a, .child-nav a, #main-nav a {
-			font-weight: 400 !important;
-		}
+		@import url(http://fonts.googleapis.com/css?family=Luckiest+Guy:400);
+		.setAccentFonts( "Luckiest Guy", "Luckiest Guy" );
+		.unboldAccentFonts();
 		<?php
 	} else if ( $accent_font == 'vast_shadow' ) {
 		?>
-		@font-face {
-		  font-family: 'accent_header_font';
-		  font-style: normal;
-		  font-weight: 400;
-		  src: local('Vast Shadow Regular'), local('VastShadow-Regular'), url(http://fonts.gstatic.com/s/vastshadow/v6/vUwwSAve1had6QNw3_7lJeL2WfuF7Qc3ANwCvwl0TnA.woff2) format('woff2');
-		  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
-		}
+		@import url(http://fonts.googleapis.com/css?family=Vast+Shadow:400);
+		.setAccentFonts( "Vast Shadow", "Palatino Linotype" );
 		h1, h2, h3, h4, h5, .h1, .h2, .h3, .h4, .h5 {
 			font-weight: 400 !important;
 		}
