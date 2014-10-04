@@ -7,14 +7,14 @@ Template Name: No Sidebar
 <?php get_header(); ?>
 
 			<div id="content">
-
+				
+				<?php //homepage slider
+				if ( is_front_page() ) {
+					show_homepage_slider();
+				}
+				?>
+				
 				<div id="inner-content" class="wrap clearfix">
-					
-					<?php //homepage slider
-					if ( is_front_page() ) {
-						show_homepage_slider();
-					}
-					?>
 					
 						<div id="main" class="twelvecol first clearfix" role="main">
 

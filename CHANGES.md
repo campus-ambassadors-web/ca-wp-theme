@@ -1,3 +1,7 @@
+#### 1.4.5
+* CSS bugfixes for the homepage slider
+* Added a tutorial video on the dashboard
+
 #### 1.4.4
 * CSS bugfixes
 

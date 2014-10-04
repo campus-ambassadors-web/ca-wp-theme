@@ -211,7 +211,10 @@ textarea {
 	}
 }
 
-#container { background-color: $primary_bg_color; }
+#container,
+#homepage-slider .metaslider {
+	background-color: $primary_bg_color;
+}
 
 @bright-accent-color: desaturate( lighten( $accent_text_color, 15% ), 15% );
 .accentColors( @background-color ) {
@@ -416,7 +419,8 @@ td.gce-has-events {
 		}
 	}
 	#footer-image-wrap,
-	#inner-content {
+	#inner-content,
+	#homepage-slider .metaslider {
 		background-color: $primary_bg_color;
 	}
 }

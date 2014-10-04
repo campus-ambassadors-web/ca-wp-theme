@@ -676,7 +676,7 @@ function login_customization_styles() {
 function show_homepage_slider() {
 	$slider_id = get_theme_mod( 'front_slider_num', false );
 	if ( $slider_id ) {
-		echo '<div id="homepage-slider">';
+		echo '<div id="homepage-slider" class="wrap">';
 		echo do_shortcode( '[metaslider id=' . $slider_id . ']' );
 		echo '</div>';
 	}

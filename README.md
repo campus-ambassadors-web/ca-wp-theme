@@ -4,7 +4,7 @@ Campus Ambassadors WordPress theme
 A full-featured, mobile-friendly WordPress theme developed for Campus Ambassadors ministries.
 
 Contributors: [Ransom Christofferson](https://github.com/ransoing)
-This theme has been tested with WP versions 3.9 through 4.0
+This theme has been tested with WP versions 3.9 through 4.0+
 
 Feel free to use this theme for your own site, although you'll need to change the favicon.
 Please let me know if you use this theme--you certainly have permission, but I'm just curious if other people will use it.

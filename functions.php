@@ -690,12 +690,23 @@ add_action('wp_dashboard_setup', 'add_help_dashboard_widget' );
 
 // Function used in the action hook
 function add_help_dashboard_widget() {
-	add_meta_box('help_tutorials_dashboard_widget', 'Help Tutorials', 'help_dashboard_widget_function', 'dashboard', 'side');
+	add_meta_box('help_tutorials_dashboard_widget', 'Website Tutorial Video', 'help_dashboard_widget_function', 'dashboard', 'side');
 }
 
 // Function that outputs the contents of the dashboard widget
 function help_dashboard_widget_function( $post, $callback_args ) {
-	echo "Tutorial slideshows will go here.";
+	?>
+	<iframe width="560" height="315" style="width:100%;" src="//www.youtube.com/embed/QKOXDozGmR8" frameborder="0" allowfullscreen></iframe>
+	<ul>
+		<li>For more on user roles, see "Summary of Roles" at <a href="http://codex.wordpress.org/Roles_and_Capabilities#Summary_of_Roles" target="_blank">http://codex.wordpress.org/Roles_and_Capabilities#Summary_of_Roles</a></li>
+		<li>For more on the Meta Slider, see <a href="https://www.youtube.com/watch?v=o0f3uAvL6Ic" target="_blank">https://www.youtube.com/watch?v=o0f3uAvL6Ic</a></li>
+		<li>For more on Page Builder, see <a href="http://siteorigin.com/page-builder/" target="_blank">http://siteorigin.com/page-builder/</a></li>
+		<li>For more on including a Google Calendar, see "Find Your Feed URL" and "Add a Feed" at <a href="http://wpdocs.philderksen.com/google-calendar-events/" target="_blank">http://wpdocs.philderksen.com/google-calendar-events/</a></li>
+		<li>For generic information on Wordpress, see <a href="https://codex.wordpress.org/Main_Page" target="_blank">https://codex.wordpress.org/Main_Page</a></li>
+		<li>For more on visitor analytics, send your question to the email address below.</li>
+	</ul>
+	<p>For more help, contact <a href="mailto:webmaster@campusambassadors.com">webmaster@campusambassadors.com</a></p>
+	<?php
 }
 
 
