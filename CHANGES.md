@@ -1,3 +1,6 @@
+#### 1.4.6
+* Fixed a javascript issue in the theme customizer
+
 #### 1.4.5
 * CSS bugfixes for the homepage slider
 * Added a tutorial video on the dashboard

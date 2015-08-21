@@ -133,22 +133,27 @@
 		}*/
 	}
 	
-	// when the color scheme preset dropdown is changed, change all these other settings too
-	$('#customize-control-color_preset select').change( function() {
-		var scheme = color_schemes[ $(this).val() ];
-		if ( scheme != undefined ) {
-			// update colors
-			$.each( scheme.colors, function( key, val ) {
-				updateColorPicker( key, val );
-			});
-			// update footer art dropdown
-			var $footer_art_dropdown = $('#customize-control-footer_art_preset select');
-			$footer_art_dropdown.find('option[selected]').removeAttr('selected');
-			$footer_art_dropdown.find('option[value="' + scheme.footer_art_preset + '"]').attr('selected', 'selected');
-			$footer_art_dropdown.change();
-		}
-	});
-	
+	// keep trying to find this select element until it's finally loaded
+	var v = setInterval( function() {
+		if ( $('#customize-control-color_preset select').length == 0 ) return;
+		
+		clearInterval( v );
+		// when the color scheme preset dropdown is changed, change all these other settings too
+		$('#customize-control-color_preset select').change( function() {
+			var scheme = color_schemes[ $(this).val() ];
+			if ( scheme != undefined ) {
+				// update colors
+				$.each( scheme.colors, function( key, val ) {
+					updateColorPicker( key, val );
+				});
+				// update footer art dropdown
+				var $footer_art_dropdown = $('#customize-control-footer_art_preset select');
+				$footer_art_dropdown.find('option[selected]').removeAttr('selected');
+				$footer_art_dropdown.find('option[value="' + scheme.footer_art_preset + '"]').attr('selected', 'selected');
+				$footer_art_dropdown.change();
+			}
+		});
+	}, 20 );
 	
 	
 	
