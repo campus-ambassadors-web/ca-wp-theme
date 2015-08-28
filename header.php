@@ -124,9 +124,11 @@
 					<div id="header-photos">
 						<?php
 						foreach( $header_photos as $header_photo_id ) {
+							// attachment info may be saved as either the full image URL or the image ID, depending on arbitrary changes by WP devs
+							$attachment_id = is_int( $header_photo_id ) ? $header_photo_id : attachment_url_to_postid( $header_photo_id );
 							?>
 							<div>
-								<img class="header-photo" src="<?php echo wp_get_attachment_thumb_url( $header_photo_id ) ?>" />
+								<img class="header-photo" src="<?php echo wp_get_attachment_thumb_url( $attachment_id ) ?>" />
 							</div>
 							<?php
 						}

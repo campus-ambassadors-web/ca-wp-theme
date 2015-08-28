@@ -399,9 +399,10 @@ function theme_customization_additions( $wp_customize ) {
 		));
 		$wp_customize->add_control( $control );
 		// add a media library tab to the control
-		$control->add_tab( 'library', __( 'Media Library', 'bonestheme' ), 'customize_header_image_control_library_tab_handler' );
-		$control->remove_tab( 'upload-new' );
-		$control->remove_tab(' uploaded' );
+		// these function are now deprecated
+		//$control->add_tab( 'library', __( 'Media Library', 'bonestheme' ), 'customize_header_image_control_library_tab_handler' );
+		//$control->remove_tab( 'upload-new' );
+		//$control->remove_tab(' uploaded' );
 		array_push( $header_photo_values, get_theme_mod( $control->id ) );
 	}
 	

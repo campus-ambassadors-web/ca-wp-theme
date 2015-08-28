@@ -1,3 +1,8 @@
+#### 1.4.7
+* Fixed CSS box shadow issues
+* Fixed style integration for Google Calendar Events plugin
+* Fixed header image issue due to change in WP_Customize_Image_Control class
+
 #### 1.4.6
 * Fixed a javascript issue in the theme customizer
 

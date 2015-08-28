@@ -1563,9 +1563,10 @@ view.
 #container a.gce-change-month {
 	border-bottom: none;
 }
-.gce-qtip-content {
+.qtip-content {
+	font-size: 14px !important;
 	padding: 0.2em 0.4em !important;
-	border: 1px solid #555;
+	
 	/* don't show the date in the grid calendar popup */
 	.event-date-month {
 		display: none;
@@ -1681,13 +1682,13 @@ ROUNDED CORNERS
 	.widgettitle {
 		.borderRadius( 4px, 4px, 0, 0 );
 	}
-	.gce-qtip {
+	.qtip {
 		.borderRadius( 4px ) !important;
 	}
 	.widget,
 	.widget_sp_image img,
 	.qtip-contentWrapper,
-	.gce-qtip-content,
+	.qtip-content,
 	.gce-event-info,
 	.gce-widget-list,
 	.entry-content img,
@@ -1776,8 +1777,11 @@ BOX SHADOWS
 	.widget {
 		.boxShadow( 0, 1px, 4px, 0px, rgba(0,0,0,0.3) );
 	}
-	.gce-qtip {
-		.boxShadow( 0, 1px, 10px, 0, rgba(0,0,0,0.8) );
+	.so-panel.widget {
+		.boxShadow( none );
+	}
+	.qtip {
+		.boxShadow( 0, 1px, 5px, 0, rgba(0,0,0,0.5) );
 	}
 	.bones_page_navi li,
 	.bones_page_navi a,
