@@ -1,0 +1,7 @@
+{
+    // compile sass
+    "version": "0.1.0",
+    "command": "lessc",
+    "isShellCommand": true,
+    "args": ["--clean-css", "library/less/style.less", "library/css/style.css"]
+}
