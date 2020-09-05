@@ -62,7 +62,8 @@ function theme_customization_additions( $wp_customize ) {
 		'type'		=> 'radio',
 		'choices'	=> array(
 			'sidebar-style-boxes'	=> 'Floating sidebar',
-			'sidebar-style-column'	=> 'One column'
+			'sidebar-style-column'	=> 'One column',
+			'sidebar-style-fullwidth' => 'Full width'
 		)
 	)));
 	

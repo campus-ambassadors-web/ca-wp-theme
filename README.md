@@ -42,3 +42,16 @@ Please let me know if you use this theme--you certainly have permission, but I'm
 * If you have box shadows enabled, remove the shadow from a specific element by giving it the `no-shadow` class
 * If you have image borders enabled, remove the border from a specific image by giving it the `no-border` class
 * Enable the theme's 403 page by inserting the following line in your .htaccess file: `ErrorDocument 403 /wp-content/themes/ca-wp-theme/403.html`
+
+
+## Development
+To compile and minify the LESS CSS, perform this setup:
+```bash
+npm install -g less@2.7
+npm install -g less-plugin-clean-css
+```
+
+Then each time you want to compile and minify, run:
+```bash
+lessc library/less/style.less library/css/style.css --clean-css="--s1 --advanced"
+```

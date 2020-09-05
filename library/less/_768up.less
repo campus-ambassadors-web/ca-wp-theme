@@ -453,6 +453,35 @@ SIDEBAR STYLE
 }
 
 
+.sidebar-style-fullwidth,
+.page-template-page-fullwidth,
+.page-template-page-fullwidth_no_sidebar {
+	.all-sidebars {
+		clear: both;
+	}
+
+	.sidebar {
+		display: flex;
+		margin: 2em auto;
+		justify-content: center;
+		flex-wrap: wrap;
+
+		.widget {
+			flex: 1 0 230px;
+			max-width: 400px;
+			margin-left: 10px;
+			margin-right: 10px;
+		}
+	}
+
+	.panel-layout .panel-grid.panel-no-style,
+	.all-sidebars {
+		padding-left: 0 !important;
+		padding-right: 0 !important;
+	}
+}
+
+
 /*********************
 BOX SHADOWS
 *********************/

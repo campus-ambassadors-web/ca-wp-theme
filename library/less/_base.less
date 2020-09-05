@@ -535,6 +535,51 @@ body.home #main {
 	padding-top: 2em;
 }
 
+.sidebar-style-fullwidth,
+.page-template-page-fullwidth,
+.page-template-page-fullwidth_no_sidebar {
+	#main {
+		padding: 0 0 2em 0 !important;
+	}
+
+	.wrap,
+	#main,
+	.all-sidebars,
+	#footer-image-wrap,
+	footer.footer,
+	#header-wrap {
+		max-width: none !important;
+		width: 100% !important;
+	}
+
+	#main-header {
+		max-width: 1140px !important;
+	}
+
+	.panel-layout {
+		.panel-row-style {
+			padding: 40px 20px;
+			justify-content: center !important;
+		}
+		.panel-grid-cell {
+			max-width: 1140px;
+		}
+		.panel-grid {
+			justify-content: center !important;
+		}
+		.panel-grid.panel-no-style {
+			max-width: 1140px;
+			margin: 0 auto;
+		}
+	}
+
+	.panel-layout .panel-grid.panel-no-style,
+	.all-sidebars.fourcol {
+		padding-left: 20px;
+		padding-right: 20px;
+	}
+}
+
 #container {
 	
 	.child-nav {
